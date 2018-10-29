@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "221277998028",
+    "firebase_url": "https://foodland-a0cd8.firebaseio.com",
+    "project_id": "foodland-a0cd8",
+    "storage_bucket": "foodland-a0cd8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221277998028:android:59da94ab00fcb083",
+        "android_client_info": {
+          "package_name": "com.example.jugjig.foodland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221277998028-scee3c00j61kvk8vagg4n1ktbs9okmb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1Pg45QqD_QtluOEyboq0mg2EelCKzHvc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
