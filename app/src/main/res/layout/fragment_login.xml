@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
->>
+>
+
 
 
     <ScrollView
 
         android:layout_width="match_parent"
-        android:layout_height="368dp"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="56dp"
         tools:ignore="MissingConstraints">
@@ -21,10 +22,18 @@
             android:orientation="vertical"
             android:padding="50dp">
 
-
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/logo"
+                android:layout_gravity="center"
+                />
 
             <EditText
                 android:id="@+id/login_userid"
+                android:background="@drawable/shape_loginbox"
+                android:layout_marginTop="20dp"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,6 +43,8 @@
 
             <EditText
                 android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,19 +54,24 @@
 
             <Button
                 android:id="@+id/login_btn"
-                android:layout_width="284dp"
-                android:layout_height="40dp"
+                android:background="@drawable/shape_login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="login" />
 
 
             <TextView
                 android:id="@+id/login_register_Btn"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:text="Register"
-                android:textColor="#000" />
+                android:text="Register New Account"
+                android:textColor="@color/colorApp"
+ />
 
 
         </LinearLayout>

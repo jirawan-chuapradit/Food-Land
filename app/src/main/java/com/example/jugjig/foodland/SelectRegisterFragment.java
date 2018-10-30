@@ -7,20 +7,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-public class RegisterFragment extends Fragment {
+
+
+public class SelectRegisterFragment extends Fragment {
 
     public View onCreateView
             (@NonNull LayoutInflater inflater,
              @Nullable ViewGroup container,
              @Nullable Bundle savedInstanceState) {
-
-        //
-        return inflater.inflate(R.layout.fragment_register,container,false);
+        return inflater.inflate(R.layout.select_register, container, false);
     }
 
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onActivityCreated
+            (@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        selectCustomer();
+        selectRestaurant();
+    }
+
+    void selectCustomer(){
+
+    }
+
+    void selectRestaurant(){
 
     }
 }
