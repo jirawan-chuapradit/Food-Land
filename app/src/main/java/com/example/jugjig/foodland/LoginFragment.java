@@ -1,5 +1,6 @@
 package com.example.jugjig.foodland;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,15 +14,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jugjig.foodland.customer.RegisterCustomerFragment;
+import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.restaurant.RegisterRestFragment;
+import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginFragment extends Fragment {
 
 
+
+    //Firebase
+    private FirebaseAuth fbAuth;
+    private FirebaseFirestore firestore;
+    private String uid,role;
+    ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -36,6 +51,12 @@ public class LoginFragment extends Fragment {
     public void onActivityCreated
             (@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //Firebase
+        firestore = FirebaseFirestore.getInstance();
+        fbAuth = FirebaseAuth.getInstance();
+
+
 
 //        if(FirebaseAuth.getInstance().getCurrentUser()!= null){
 //
@@ -85,16 +106,34 @@ public class LoginFragment extends Fragment {
 
 
                 else {
-
+                    // Loading data dialog
+                    progressDialog = new ProgressDialog(getActivity());
+                    progressDialog.setMessage("Please waiting...");
+                    progressDialog.show();
 
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(_userIdStr,_passwordStr)
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    chkIsVeriFied(authResult.getUser());
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    uid = fbAuth.getCurrentUser().getUid();
+                                    getRole();
 
                                 }
-                            }).addOnFailureListener(new OnFailureListener() {
+                            })
+//                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                                @Override
+//                                public void onSuccess(AuthResult authResult) {
+//                                    //GET VALUDE FROM FIREBASE
+//                                    uid = fbAuth.getCurrentUser().getUid();
+//
+////                                    chkIsVeriFied(authResult.getUser());
+//
+//                                    getRole();
+//                                    GotoMenu();
+//
+//                                }
+//                            })
+                            .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             FirebaseAuth.getInstance().signOut();
@@ -105,8 +144,42 @@ public class LoginFragment extends Fragment {
                     });
                 }}
         });
-
     }
+
+    private void GotoMenu() {
+        progressDialog.dismiss();
+        if(role.equals("restaurant")){
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_view,new RestViewProfileFragment())
+                    .commit();
+            Log.d("USER", "GOTO Restaurant Menu");
+        }else if (role.equals("customer")){
+
+            Log.d("USER", "GOTO Customer Menu");
+        }
+    }
+
+    private void getRole() {
+        firestore.collection("UserProfile")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        UserProfile userProfile = documentSnapshot.toObject(UserProfile.class);
+                        role = userProfile.getRole();
+                        GotoMenu();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("USER", "ERROR = " + e.getMessage());
+                    }
+                });
+    }
+
     void chkIsVeriFied(final FirebaseUser _user) {
 
         //USER CONFIRM EMAIL

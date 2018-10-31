@@ -2,9 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
@@ -22,9 +20,9 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="56dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="75dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,100 +30,115 @@
             android:orientation="vertical"
             android:padding="50dp">
 
+
+
             <EditText
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
+                android:id="@+id/registerFname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/shape_loginbox"
-                android:id="@+id/registerName"
-
-                android:inputType="text"
-                android:hint="ชื่อจริง - นามสกุล"
                 android:ems="10"
-                />
 
+                android:hint="ชื่อ"
+                android:inputType="text"
+                android:padding="10dp" />
 
             <EditText
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
+                android:id="@+id/registerLname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/shape_loginbox"
+                android:ems="10"
+
+                android:hint="นามสกุล"
+                android:inputType="text"
+                android:padding="10dp" />
+
+
+            <EditText
                 android:id="@+id/registerEmail"
-                android:inputType="text"
-                android:hint="อีเมล"
-                android:ems="10" />
-
-            <EditText
-                android:background="@drawable/shape_loginbox"
-                android:id="@+id/registerBirth"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:inputType="text"
-                android:hint="เบอร์โทร"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
                 android:ems="10"
-                />
+                android:hint="อีเมล"
+                android:inputType="text"
+                android:padding="10dp" />
 
+            <EditText
+                android:id="@+id/registerPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
+                android:ems="10"
+                android:hint="เบอร์โทร"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/registerRestDesc"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
+                android:ems="10"
+                android:hint="รายละเอียดร้านค้า"
+                android:inputType="text"
+                android:padding="10dp"
+                android:scrollbarStyle="insideInset"/>
 
 
             <EditText
-                android:background="@drawable/shape_loginbox"
                 android:id="@+id/registerPassword"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:inputType="textPassword"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
+                android:ems="10"
                 android:hint="รหัสผ่าน"
-                android:ems="10" />
-
+                android:inputType="textPassword"
+                android:padding="10dp" />
 
 
             <EditText
-                android:background="@drawable/shape_loginbox"
                 android:id="@+id/registerRePassword"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:inputType="textPassword"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
+                android:ems="10"
                 android:hint="ยืนยันรหัสผ่าน"
-                android:ems="10" />
-
-
-
-
-
-
+                android:inputType="textPassword"
+                android:padding="10dp" />
 
 
             <Button
                 android:id="@+id/registerBtn"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shape_login_btn"
-                android:text="สมัครสมาชิก"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_login_btn"
+                android:text="สมัครสมาชิก" />
 
 
             <Button
                 android:id="@+id/back_login_btn"
-                android:layout_marginTop="10dp"
-                android:text="BACK TO LOGIN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/shape_login_btn"
-                />
-
+                android:text="BACK TO LOGIN" />
 
 
         </LinearLayout>
