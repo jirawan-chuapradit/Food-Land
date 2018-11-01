@@ -158,8 +158,8 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         EditText passwordEdt = getView().findViewById(R.id.registerPassword);
         EditText repasswordEdt = getView().findViewById(R.id.registerRePassword);
 
-        fName = fNameEdt.getText().toString();
-        lName = lNameEdt.getText().toString();
+        fName = fNameEdt.getText().toString().toUpperCase();
+        lName = lNameEdt.getText().toString().toUpperCase();
         email = emailEdt.getText().toString();
         phone = phoneEdt.getText().toString();
         restDesc = descEdt.getText().toString();
