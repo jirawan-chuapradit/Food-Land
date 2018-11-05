@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.jugjig.foodland.customer.HomeFragment;
+
 public class MainActivity extends AppCompatActivity {
 
 //    private TextView mTextMessage;
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_view, new LoginFragment())
+                    .replace(R.id.main_view, new HomeFragment())
                     .commit();
         }
 
