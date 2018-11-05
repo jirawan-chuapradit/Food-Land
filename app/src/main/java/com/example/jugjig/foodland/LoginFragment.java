@@ -198,7 +198,6 @@ public class LoginFragment extends Fragment {
             Toast.makeText
                     (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
                     .show();
-
         }
 
 
