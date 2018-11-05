@@ -24,25 +24,25 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="350dp"
             android:layout_weight="1"
             android:gravity="center">
 
             <Button
                 android:id="@+id/customer_regis"
-                android:background="@drawable/customer_logo"
-                android:layout_marginTop="50dp"
                 android:layout_width="50dp"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="50dp"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:background="@drawable/regis_user"
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/rest_regis"
                 android:layout_marginTop="50dp"
-                android:background="@drawable/res_icon"
+                android:background="@drawable/regis_restaurant"
                 android:layout_width="50dp"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
         </LinearLayout>
