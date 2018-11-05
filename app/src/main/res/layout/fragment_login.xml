@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="E-mail"
+                android:hint="example@gmail.com"
                 android:inputType="text" />
 
             <EditText
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="password"
+                android:hint="••••••••"
                 android:inputType="textPassword" />
 
             <Button
@@ -57,8 +57,11 @@
                 android:background="@drawable/shape_login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:text="login" />
+                android:text="เข้าสู่ระบบ" />
 
 
             <TextView
@@ -66,10 +69,11 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="170dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:text="Register New Account"
+                android:text="ลงทะเบียน"
+                android:textSize="20dp"
                 android:textColor="@color/colorApp"
  />
 

@@ -29,26 +29,26 @@ public class RegisterCustomerFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        backBtn();
+//        backBtn();
 
     }
 
-    void backBtn(){
-        Button backBtn = (Button) getView().findViewById(R.id.back_login_btn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("LOGIN", "go back to login");
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view, new LoginFragment())
-                        .commit();
-                Toast.makeText(
-                        getActivity(),
-                        "go back to login",
-                        Toast.LENGTH_SHORT
-                ).show();
-            }
-        });
-    }
+//    void backBtn(){
+//        Button backBtn = (Button) getView().findViewById(R.id.back_login_btn);
+//        backBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("LOGIN", "go back to login");
+//                getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.main_view, new LoginFragment())
+//                        .commit();
+//                Toast.makeText(
+//                        getActivity(),
+//                        "go back to login",
+//                        Toast.LENGTH_SHORT
+//                ).show();
+//            }
+//        });
+//    }
 }
