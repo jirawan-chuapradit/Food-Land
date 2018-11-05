@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jugjig.foodland.customer.CusViewProfileFragment;
 import com.example.jugjig.foodland.customer.RegisterCustomerFragment;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.example.jugjig.foodland.restaurant.RegisterRestFragment;
@@ -31,11 +32,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class LoginFragment extends Fragment {
 
 
-
     //Firebase
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
-    private String uid,role;
+    private String uid, role;
     ProgressDialog progressDialog;
 
     @Nullable
@@ -55,7 +55,6 @@ public class LoginFragment extends Fragment {
         //Firebase
         firestore = FirebaseFirestore.getInstance();
         fbAuth = FirebaseAuth.getInstance();
-
 
 
 //        if(FirebaseAuth.getInstance().getCurrentUser()!= null){
@@ -94,67 +93,53 @@ public class LoginFragment extends Fragment {
                 String _passwordStr = _password.getText().toString();
 
 
-                if (_userIdStr.isEmpty() || _passwordStr.isEmpty()){
+                if (_userIdStr.isEmpty() || _passwordStr.isEmpty()) {
                     Toast.makeText(
                             getActivity(),
                             "กรุณาระบุ user or password",
                             Toast.LENGTH_SHORT
                     ).show();
-                    Log.d("USER","USER OR PASSWORD IS EMPTY" );
+                    Log.d("USER", "USER OR PASSWORD IS EMPTY");
 
-                }
+                } else {
 
 
-                else {
-                    // Loading data dialog
-                    progressDialog = new ProgressDialog(getActivity());
-                    progressDialog.setMessage("Please waiting...");
-                    progressDialog.show();
-
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(_userIdStr,_passwordStr)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(_userIdStr, _passwordStr)
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    uid = fbAuth.getCurrentUser().getUid();
-                                    getRole();
+                                public void onSuccess(AuthResult authResult) {
+                                    chkIsVeriFied(authResult.getUser());
 
                                 }
-                            })
-//                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//                                @Override
-//                                public void onSuccess(AuthResult authResult) {
-//                                    //GET VALUDE FROM FIREBASE
-//                                    uid = fbAuth.getCurrentUser().getUid();
-//
-////                                    chkIsVeriFied(authResult.getUser());
-//
-//                                    getRole();
-//                                    GotoMenu();
-//
-//                                }
-//                            })
-                            .addOnFailureListener(new OnFailureListener() {
+                            }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             FirebaseAuth.getInstance().signOut();
                             Log.d("USER", "INVALID USER OR PASSWORD");
-                            Toast.makeText(getContext(),"ERROR = "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     });
-                }}
+//
+                }
+            }
         });
     }
 
     private void GotoMenu() {
-        progressDialog.dismiss();
-        if(role.equals("restaurant")){
+
+        if (role.equals("restaurant")) {
             getActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_view,new RestViewProfileFragment())
+                    .replace(R.id.main_view, new RestViewProfileFragment())
                     .commit();
             Log.d("USER", "GOTO Restaurant Menu");
-        }else if (role.equals("customer")){
+        } else if (role.equals("customer")) {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_view, new CusViewProfileFragment())
+                    .commit();
+
 
             Log.d("USER", "GOTO Customer Menu");
         }
@@ -180,17 +165,17 @@ public class LoginFragment extends Fragment {
                 });
     }
 
+
     void chkIsVeriFied(final FirebaseUser _user) {
 
         //USER CONFIRM EMAIL
         if(_user.isEmailVerified()){
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_view,new RegisterCustomerFragment())
-                    .commit();
-            Log.d("USER", "GOTO Menu");
+
+            uid = fbAuth.getCurrentUser().getUid();
+
+            getRole();
             Toast.makeText
-                    (getContext(),"EMAIL IS VERIFIED , GO TO MENU",Toast.LENGTH_SHORT)
+                    (getContext(),"EMAIL IS VERIFIED , GO TO PROFILE",Toast.LENGTH_SHORT)
                     .show();
         }else{
             FirebaseAuth.getInstance().signOut();

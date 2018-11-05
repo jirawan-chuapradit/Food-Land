@@ -171,6 +171,7 @@
 
             <EditText
                 android:id="@+id/regis_pass_cus"
+                android:inputType="textPassword"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/shape_loginbox"
                 android:layout_width="50dp"
@@ -199,6 +200,7 @@
 
             <EditText
                 android:id="@+id/regis_rePass_cus"
+                android:inputType="textPassword"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/shape_loginbox"
                 android:layout_width="50dp"
@@ -209,7 +211,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/regis_cus_btn"
             android:background="@drawable/shape_login_btn"
             android:layout_width="300dp"
             android:layout_gravity="center"
@@ -219,6 +221,8 @@
             android:textStyle="bold"
             android:layout_marginTop="5dp"
             android:text="สมัครสมาชิก" />
+
+
     </LinearLayout>
 
 
