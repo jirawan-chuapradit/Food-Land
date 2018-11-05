@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     RecyclerView resList;
     RestaurantListAdapter adapter;
     SearchView search;
-    BottomNavigationView navView;
+//    BottomNavigationView navView;
     ArrayList<Restaurant> restaurants;
     Bundle bundle;
 
@@ -46,8 +46,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        navView = getActivity().findViewById(R.id.bottom_nav_bar);
-        navView.getMenu().getItem(1).setChecked(true);
+//        navView = getActivity().findViewById(R.id.bottom_nav_bar);
+//        navView.getMenu().getItem(1).setChecked(true);
 
         setSearchBar();
 
@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
         } else {
             Log.wtf("home", "old fragment");
             restaurants = getArguments().getParcelableArrayList("restaurants");
-            setNavigation();
+//            setNavigation();
             adapter = new RestaurantListAdapter();
             adapter.setItemList(restaurants);
             resList.setAdapter(adapter);
@@ -90,29 +90,29 @@ public class HomeFragment extends Fragment {
         bundle = new Bundle();
         bundle.putParcelableArrayList("restaurants", restaurants);
         setArguments(bundle);
-        setNavigation();
+//        setNavigation();
     }
 
-    void setNavigation() {
-        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.navigation_history:
-                        HistoryFragment history = new HistoryFragment();
-                        history.setArguments(bundle);
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, history).addToBackStack(null).commit();
-                        return true;
-                    case R.id.navigation_profile:
-                        CusViewProfileFragment profileFragment = new CusViewProfileFragment();
-                        profileFragment.setArguments(bundle);
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, profileFragment).addToBackStack(null).commit();
-                        return true;
-                }
-                return false;
-            }
-        });
-    }
+//    void setNavigation() {
+//        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                switch (menuItem.getItemId()) {
+//                    case R.id.navigation_history:
+//                        HistoryFragment history = new HistoryFragment();
+//                        history.setArguments(bundle);
+//                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, history).addToBackStack(null).commit();
+//                        return true;
+//                    case R.id.navigation_profile:
+//                        CusViewProfileFragment profileFragment = new CusViewProfileFragment();
+//                        profileFragment.setArguments(bundle);
+//                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, profileFragment).addToBackStack(null).commit();
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
+//    }
 
     void setSearchBar() {
         search = getActivity().findViewById(R.id.home_searchBar);

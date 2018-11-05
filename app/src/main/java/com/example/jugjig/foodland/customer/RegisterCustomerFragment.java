@@ -30,7 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RegisterCustomerFragment extends Fragment {
 
     private Button registerBtn;
-    private String fName,lName,email,phone,password,rePassword,uid;
+    private String fName, lName, email, phone, password, rePassword, uid;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
 
@@ -43,7 +43,7 @@ public class RegisterCustomerFragment extends Fragment {
              @Nullable Bundle savedInstanceState) {
 
         //
-        return inflater.inflate(R.layout.fragment_register_customer,container,false);
+        return inflater.inflate(R.layout.fragment_register_customer, container, false);
     }
 
 
@@ -53,7 +53,6 @@ public class RegisterCustomerFragment extends Fragment {
         //Firebase
         fbAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
 
 
         register();
@@ -72,30 +71,39 @@ public class RegisterCustomerFragment extends Fragment {
                 getParameter();
 
                 //check parameter
-                if(fName.isEmpty()||lName.isEmpty()||email.isEmpty()
-                        || phone.isEmpty()||password.isEmpty()||rePassword.isEmpty()){
+                if (fName.isEmpty() || lName.isEmpty() || email.isEmpty()
+                        || phone.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
                     Log.d("REGISTER", "PARAMETER IS EMPTY");
-                    Toast.makeText(getActivity(),"กรุณากรอกข้อมูลให้ครบถ้วน",Toast.LENGTH_SHORT).show();
-                }
-                else if(!password.equals(rePassword)){
+                    Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
+                } else if (!password.equals(rePassword)) {
                     Log.d("REGISTER", "PASSWORD IS NOT EQUALS REPASSWORD");
-                    Toast.makeText(getActivity(),"รหัสผ่านไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
-                }
-                else if(password.length() <= 5 || rePassword.length() <= 5){
+                    Toast.makeText(getActivity(), "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+                } else if (password.length() <= 5 || rePassword.length() <= 5) {
                     Log.d("REGISTER", "รหัสผ่านน้อยกว่า 6 ตัว");
-                    Toast.makeText(getActivity(),"กรุณาระบุรหัสผ่านมากกว่า 5 ตัว",Toast.LENGTH_SHORT).show();
-                }
-                else {
-
-
-                    fbAuth.createUserWithEmailAndPassword(email,password)
+                    Toast.makeText(getActivity(), "กรุณาระบุรหัสผ่านมากกว่า 5 ตัว", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Loading data dialog following owner network speed
+                    progressDialog = new ProgressDialog(getActivity());
+                    progressDialog.setMessage("Please waiting...");
+                    progressDialog.show();
+                    fbAuth.createUserWithEmailAndPassword(email, password)
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     uid = fbAuth.getCurrentUser().getUid();
                                     setParameter();
-                                    sendVerifiedEmail(authResult.getUser());
+//                                    sendVerifiedEmail(authResult.getUser());
 
+                                    fbAuth.getInstance().signOut();
+                                    Log.d("LOGIN", "Send verify e-mail successful");
+                                    getActivity().getSupportFragmentManager()
+                                            .beginTransaction()
+                                            .addToBackStack(null)
+                                            .replace(R.id.main_view, new LoginFragment())
+                                            .commit();
+                                    Toast.makeText
+                                            (getContext(), "Please Verify Your E-Mail", Toast.LENGTH_SHORT)
+                                            .show();
                                 }
                             });
 
@@ -128,7 +136,7 @@ public class RegisterCustomerFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.d("REGISTER", "ERROR =" + e.getMessage());
-                        Toast.makeText(getContext(),"ERROR = "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -153,38 +161,39 @@ public class RegisterCustomerFragment extends Fragment {
 
     }
 
-    void sendVerifiedEmail(FirebaseUser _user){
-        _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-
-                fbAuth.getInstance().signOut();
-                Log.d("LOGIN", "Send verify e-mail successful");
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.main_view, new LoginFragment())
-                        .commit();
-                Toast.makeText
-                        (getContext(),"Please Verify Your E-Mail",Toast.LENGTH_SHORT)
-                        .show();
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-                Toast.makeText(getActivity(),"ERROR = " + e.getMessage()
-                        ,Toast.LENGTH_SHORT)
-                        .show();
-
-                Log.d("LOGIN", "Send vefiry e-mail failure");
-
-            }
-        });
-    }
-
-
+    /****************************************************************
+     * อาจจะต้องมีการ register หลายๆรอบ จนกว่าregister จะนิ่ง ยังไม่อยากให้เปิด verfiled mail*
+     ****************************************************************/
+//    void sendVerifiedEmail(FirebaseUser _user){
+//        _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//
+//                fbAuth.getInstance().signOut();
+//                Log.d("LOGIN", "Send verify e-mail successful");
+//                getActivity().getSupportFragmentManager()
+////                        .beginTransaction()
+////                        .addToBackStack(null)
+////                        .replace(R.id.main_view, new LoginFragment())
+////                        .commit();
+//                Toast.makeText
+//                        (getContext(),"Please Verify Your E-Mail",Toast.LENGTH_SHORT)
+//                        .show();
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//
+//                Toast.makeText(getActivity(),"ERROR = " + e.getMessage()
+//                        ,Toast.LENGTH_SHORT)
+//                        .show();
+//
+//                Log.d("LOGIN", "Send vefiry e-mail failure");
+//
+//            }
+//        });
+//    }
 
 
 }
