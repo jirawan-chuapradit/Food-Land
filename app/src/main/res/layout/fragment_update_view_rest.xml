@@ -32,8 +32,21 @@
 
 
 
-            <TextView
-                android:id="@+id/restName"
+            <EditText
+                android:id="@+id/update_rest_fname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_loginbox"
+                android:ems="10"
+                android:inputType="text"
+
+                android:hint="ชื่อจริง"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/update_rest_lname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -41,9 +54,9 @@
                 android:background="@drawable/shape_loginbox"
                 android:ems="10"
 
-                android:hint="ชื่อ"
-                android:padding="10dp" />
-
+                android:hint="นามสกุล"
+                android:padding="10dp"
+                android:inputType="text"/>
 
 
             <TextView
@@ -55,10 +68,11 @@
                 android:background="@drawable/shape_loginbox"
                 android:ems="10"
                 android:hint="อีเมล"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="text"/>
 
-            <TextView
-                android:id="@+id/restPhone"
+            <EditText
+                android:id="@+id/update_rest_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -66,10 +80,11 @@
                 android:background="@drawable/shape_loginbox"
                 android:ems="10"
                 android:hint="เบอร์โทร"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:inputType="number"/>
 
-            <TextView
-                android:id="@+id/restDesc"
+            <EditText
+                android:id="@+id/update_rest_desc"
                 android:layout_width="match_parent"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
@@ -78,13 +93,15 @@
                 android:ems="10"
                 android:hint="รายละเอียดร้านค้า"
                 android:padding="10dp"
-                android:scrollbarStyle="insideInset"/>
+                android:scrollbarStyle="insideInset"
+                android:inputType="text"/>
 
             <Button
-                android:id="@+id/update_profile"
-                android:text="แก้ไขข้อมูลส่วนตัว"
+                android:id="@+id/saveBtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Save"/>
 
         </LinearLayout>
 

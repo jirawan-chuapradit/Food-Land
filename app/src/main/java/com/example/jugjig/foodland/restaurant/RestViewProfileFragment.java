@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class RestViewProfileFragment extends Fragment {
+public class RestViewProfileFragment extends Fragment implements View.OnClickListener {
 
     @Nullable
     @Override
@@ -33,6 +35,7 @@ public class RestViewProfileFragment extends Fragment {
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
     private String uid,name,phone,desc,email;
+    Button updateBtn;
     ProgressDialog progressDialog;
 
 
@@ -54,6 +57,10 @@ public class RestViewProfileFragment extends Fragment {
 
         getParameter();
         setParmeter();
+
+        //getParameter from fragment
+        updateBtn = getView().findViewById(R.id.update_profile);
+        updateBtn.setOnClickListener(this);
 
     }
 
@@ -93,5 +100,22 @@ public class RestViewProfileFragment extends Fragment {
         profilePhone = getView().findViewById(R.id.restPhone);
         profileDesc = getView().findViewById(R.id.restDesc);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v==updateBtn){
+            Log.d("USER ","CLICK UPDATE PROFILE");
+            updateProfile();
+        }
+    }
+
+    private void updateProfile() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_view, new UpdateRestProfile())
+                .commit();
+
+        Log.d("USER ", "GO TO UPDATE PROFILE");
     }
 }
