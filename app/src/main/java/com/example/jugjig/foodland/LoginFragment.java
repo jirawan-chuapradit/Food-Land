@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jugjig.foodland.customer.CusViewProfileFragment;
+import com.example.jugjig.foodland.customer.HomeFragment;
 import com.example.jugjig.foodland.customer.RegisterCustomerFragment;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.example.jugjig.foodland.restaurant.RegisterRestFragment;
@@ -137,7 +138,7 @@ public class LoginFragment extends Fragment {
         } else if (role.equals("customer")) {
             getActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_view, new CusViewProfileFragment())
+                    .replace(R.id.main_view, new HomeFragment())
                     .commit();
 
 
@@ -183,6 +184,7 @@ public class LoginFragment extends Fragment {
             Toast.makeText
                     (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
                     .show();
+
         }
 
 
