@@ -4,4 +4,8 @@
     <string name="title_history">History</string>
     <string name="title_profile">Profile</string>
     <string name="title_activity_cus_main">CusMainActivity</string>
+    <string name="title_activity_rest_main">RestMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

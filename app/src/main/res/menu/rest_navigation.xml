@@ -3,18 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_history"
-        android:icon="@drawable/ic_history_black_24dp"
-        android:title="History" />
+        android:id="@+id/rest_nav_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_restaurants"
-        android:icon="@drawable/ic_restaurant_black_24dp"
-        android:title="Restaurants"
-        />
+        android:id="@+id/rest_nav_power"
+        android:icon="@drawable/ic_power"
+        android:title="On-Off" />
 
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/rest_nav_profile"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Profile" />
 
@@ -23,5 +22,8 @@
         <!--android:icon="@drawable/ic_log_out"-->
         <!--android:title="Log out"-->
         <!--app:showAsAction="always" />-->
+
+
+
 
 </menu>

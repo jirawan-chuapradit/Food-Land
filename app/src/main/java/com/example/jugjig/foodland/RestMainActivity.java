@@ -8,14 +8,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-
 import com.example.jugjig.foodland.customer.CusViewProfileFragment;
-import com.example.jugjig.foodland.customer.HistoryFragment;
 import com.example.jugjig.foodland.customer.HomeFragment;
 import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 
-public class CusMainActivity extends AppCompatActivity {
-
+public class RestMainActivity extends AppCompatActivity {
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -24,26 +21,18 @@ public class CusMainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_history:
-                   getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.cus_main_view, new HistoryFragment())
-                            .commit();
-                    Log.d("CUSTOMER", "GOTO  HISTORY");
+                case R.id.rest_nav_home:
+                    Log.d("RESTAURANT", "Click Home");
                     return true;
-                case R.id.navigation_restaurants:
+                case R.id.rest_nav_power:
+                    Log.d("RESTAURANT", "Click Power");
+                    return true;
+                case R.id.rest_nav_profile:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.cus_main_view, new HomeFragment())
+                            .replace(R.id.rest_main_view, new RestViewProfileFragment())
                             .commit();
-                    Log.d("CUSTOMER", "GOTO  Home");
-                    return true;
-                case R.id.navigation_profile:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.cus_main_view, new CusViewProfileFragment())
-                            .commit();
-                    Log.d("CUSTOMER", "GOTO  Profile Customer");
+                    Log.d("RESTAURANT", "Click  Profile Restaurant");
                     return true;
             }
             return false;
@@ -53,17 +42,17 @@ public class CusMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cus_main);
+        setContentView(R.layout.activity_rest_main);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.cus_bottom_nav_bar);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.rest_bottom_nav_bar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.cus_main_view,
-                            new HomeFragment()).commit();
-            navigation.setSelectedItemId(R.id.navigation_restaurants);
+                    .replace(R.id.rest_main_view,
+                            new RestViewProfileFragment()).commit();
+            navigation.setSelectedItemId(R.id.rest_nav_profile);
         }
     }
 

@@ -113,7 +113,7 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     private void updateProfile() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_view, new UpdateRestProfile())
+                .replace(R.id.rest_main_view, new UpdateRestProfile())
                 .commit();
 
         Log.d("USER ", "GO TO UPDATE PROFILE");

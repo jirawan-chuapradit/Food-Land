@@ -29,6 +29,8 @@ public class HistoryFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Log.wtf("History", "argument "+ getArguments().getParcelableArrayList("restaurants").size());
+        HomeFragment home = new HomeFragment();
+                        home.setArguments(getArguments());
 //        setNavigation();
     }
 

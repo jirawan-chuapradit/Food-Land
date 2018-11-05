@@ -185,7 +185,7 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
 
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_view, new RestViewProfileFragment())
+                                .replace(R.id.rest_main_view, new RestViewProfileFragment())
                                 .addToBackStack(null)
                                 .commit();
                         Log.d("USER", "GOTO RESTAURANT PROFILE");

@@ -62,6 +62,10 @@ public class HomeFragment extends Fragment {
             Log.wtf("home", "old fragment");
             restaurants = getArguments().getParcelableArrayList("restaurants");
 //            setNavigation();
+            HistoryFragment history = new HistoryFragment();
+            history.setArguments(bundle);
+            CusViewProfileFragment profileFragment = new CusViewProfileFragment();
+            profileFragment.setArguments(bundle);
             adapter = new RestaurantListAdapter();
             adapter.setItemList(restaurants);
             resList.setAdapter(adapter);
@@ -90,6 +94,10 @@ public class HomeFragment extends Fragment {
         bundle = new Bundle();
         bundle.putParcelableArrayList("restaurants", restaurants);
         setArguments(bundle);
+        HistoryFragment history = new HistoryFragment();
+        history.setArguments(bundle);
+        CusViewProfileFragment profileFragment = new CusViewProfileFragment();
+        profileFragment.setArguments(bundle);
 //        setNavigation();
     }
 

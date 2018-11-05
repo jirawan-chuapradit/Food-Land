@@ -118,13 +118,10 @@ public class LoginFragment extends Fragment {
     private void GotoMenu() {
             progressDialog.dismiss();
         if (role.equals("restaurant")) {
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_view, new RestViewProfileFragment())
-                    .commit();
-            Log.d("USER", "GOTO Restaurant Menu");
+            Intent myIntent = new Intent(getActivity(), RestMainActivity.class);
+            getActivity().startActivity(myIntent);
+            Log.d("USER", "GOTO Restaurant Main Activity");
         } else if (role.equals("customer")) {
-
 
             Intent myIntent = new Intent(getActivity(), CusMainActivity.class);
             getActivity().startActivity(myIntent);
