@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland.customer;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,13 +16,16 @@ import android.widget.TextView;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.ProfileCustomer;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.restaurant.UpdateRestProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class CusViewProfileFragment extends Fragment {
+import static android.content.Context.MODE_PRIVATE;
+
+public class CusViewProfileFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_view_cus, container, false);
@@ -30,7 +34,7 @@ public class CusViewProfileFragment extends Fragment {
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
-    private String uid,name,phone,desc,email;
+    private String uid,fname,lname,phone,email;
     Button updateBtn;
     ProgressDialog progressDialog;
 
@@ -52,8 +56,8 @@ public class CusViewProfileFragment extends Fragment {
         getParameter();
         setParmeter();
 
-
-//        updateBtn = getView().findViewById(R.id.update_profile);
+        updateBtn = getView().findViewById(R.id.update_profile);
+        updateBtn.setOnClickListener(this);
 
 
     }
@@ -66,11 +70,12 @@ public class CusViewProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         ProfileCustomer cusProfile = documentSnapshot.toObject(ProfileCustomer.class);
-                        name = cusProfile.getfName()+"  "+cusProfile.getlName();
+                        fname = cusProfile.getfName();
+                        lname = cusProfile.getlName();
                         phone = cusProfile.getPhone();
                         email = cusProfile.getEmail();
 
-                        profileName.setText("ชื่อ : "+name);
+                        profileName.setText("ชื่อ : "+fname+"  "+lname);
                         profileEmail.setText("อีเมลล์ : "+email);
                         profilePhone.setText("เบอร์โทร : "+phone);
                         Log.d("USER", "SHOW USER INFORMATION");
@@ -93,4 +98,27 @@ public class CusViewProfileFragment extends Fragment {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v==updateBtn){
+            Log.d("USER ","CLICK UPDATE PROFILE");
+            updateProfile();
+        }
+    }
+
+    private void updateProfile() {
+        SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+        prefs.putString("cus_f_name", fname);
+        prefs.putString("cus_l_name", lname);
+        prefs.putString("cus_email", email);
+        prefs.putString("cus_phone", phone);
+        prefs.apply();
+
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.cus_main_view, new UpdateCusProfile())
+                .commit();
+
+        Log.d("USER ", "GO TO UPDATE PROFILE");
+    }
 }

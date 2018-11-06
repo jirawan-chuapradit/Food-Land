@@ -83,7 +83,6 @@ public class LoginFragment extends Fragment {
                     Log.d("USER", "USER OR PASSWORD IS EMPTY");
 
                 } else {
-
                     // Loading data dialog following owner network speed
                     progressDialog = new ProgressDialog(getActivity());
                     progressDialog.setMessage("Please waiting...");
@@ -103,7 +102,7 @@ public class LoginFragment extends Fragment {
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            FirebaseAuth.getInstance().signOut();
+                            progressDialog.dismiss();
                             Log.d("USER", "INVALID USER OR PASSWORD");
                             Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
