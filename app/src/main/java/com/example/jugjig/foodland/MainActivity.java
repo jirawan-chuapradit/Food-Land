@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 //        mTextMessage = (TextView) findViewById(R.id.message);
-//        BottomNavigationView cus_menu = (BottomNavigationView) findViewById(R.id.cus_menu);
+//        BottomNavigationView cus_menu = findViewById(R.id.cus_bottom_nav_bar);
 //        cus_menu.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }

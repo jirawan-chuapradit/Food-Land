@@ -3,6 +3,7 @@ package com.example.jugjig.foodland;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,7 +17,7 @@ import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 
 public class CusMainActivity extends AppCompatActivity {
 
-
+    HomeFragment homeFragment = new HomeFragment();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,7 +35,7 @@ public class CusMainActivity extends AppCompatActivity {
                 case R.id.navigation_restaurants:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.cus_main_view, new HomeFragment())
+                            .replace(R.id.cus_main_view, homeFragment)
                             .commit();
                     Log.d("CUSTOMER", "GOTO  Home");
                     return true;
@@ -62,7 +63,7 @@ public class CusMainActivity extends AppCompatActivity {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.cus_main_view,
-                            new HomeFragment()).commit();
+                            homeFragment).commit();
             navigation.setSelectedItemId(R.id.navigation_restaurants);
         }
     }

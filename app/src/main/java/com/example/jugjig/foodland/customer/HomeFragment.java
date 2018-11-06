@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
     RecyclerView resList;
     RestaurantListAdapter adapter;
     SearchView search;
-//    BottomNavigationView navView;
     ArrayList<Restaurant> restaurants;
     Bundle bundle;
 
@@ -40,37 +39,32 @@ public class HomeFragment extends Fragment {
             (@NonNull LayoutInflater inflater,
              @Nullable ViewGroup container,
              @Nullable Bundle savedInstanceState) {
+
+        adapter = new RestaurantListAdapter();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
-    public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        navView = getActivity().findViewById(R.id.bottom_nav_bar);
-//        navView.getMenu().getItem(1).setChecked(true);
-
         setSearchBar();
+
 
         resList = getActivity().findViewById(R.id.home_res_list);
         resList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-        bundle = getArguments();
-        if (bundle == null) {
-            adapter = new RestaurantListAdapter();
-            getData();
-        } else {
-            Log.wtf("home", "old fragment");
-            restaurants = getArguments().getParcelableArrayList("restaurants");
-//            setNavigation();
-            HistoryFragment history = new HistoryFragment();
-            history.setArguments(bundle);
-            CusViewProfileFragment profileFragment = new CusViewProfileFragment();
-            profileFragment.setArguments(bundle);
-            adapter = new RestaurantListAdapter();
+        if (restaurants != null) {
             adapter.setItemList(restaurants);
             resList.setAdapter(adapter);
         }
+        else {
+            getData();
+        }
+    }
 
+    @Override
+    public void setInitialSavedState(@Nullable SavedState state) {
+        super.setInitialSavedState(state);
     }
 
     void getData() {
@@ -82,45 +76,11 @@ public class HomeFragment extends Fragment {
                     restaurants.add((item.toObject(Restaurant.class)));
                 }
                 Log.wtf("home", "size " + restaurants.size());
-
-                putArgument();
                 adapter.setItemList(restaurants);
                 resList.setAdapter(adapter);
             }
         });
     }
-
-    void putArgument() {
-        bundle = new Bundle();
-        bundle.putParcelableArrayList("restaurants", restaurants);
-        setArguments(bundle);
-        HistoryFragment history = new HistoryFragment();
-        history.setArguments(bundle);
-        CusViewProfileFragment profileFragment = new CusViewProfileFragment();
-        profileFragment.setArguments(bundle);
-//        setNavigation();
-    }
-
-//    void setNavigation() {
-//        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()) {
-//                    case R.id.navigation_history:
-//                        HistoryFragment history = new HistoryFragment();
-//                        history.setArguments(bundle);
-//                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, history).addToBackStack(null).commit();
-//                        return true;
-//                    case R.id.navigation_profile:
-//                        CusViewProfileFragment profileFragment = new CusViewProfileFragment();
-//                        profileFragment.setArguments(bundle);
-//                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, profileFragment).addToBackStack(null).commit();
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
-//    }
 
     void setSearchBar() {
         search = getActivity().findViewById(R.id.home_searchBar);
@@ -138,13 +98,4 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList("restaurants", restaurants);
-        Log.wtf("home", "save state");
-    }
-
-
 }
