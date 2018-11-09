@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -57,26 +58,6 @@ public class LoginFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         fbAuth = FirebaseAuth.getInstance();
 
-
-//        if(FirebaseAuth.getInstance().getCurrentUser()!= null){
-//
-//
-//            Log.d("USER", "USER ALREADY LOG IN");
-//            Log.d("USER", "GOTO Menu");
-//            getActivity().getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.main_view,new RegisterCustomerFragment())
-//                    .commit();
-//
-//            Toast.makeText(
-//                    getActivity(),
-//                    "Login Success , Go to menu",
-//                    Toast.LENGTH_SHORT
-//            ).show();
-//
-//            return;
-//        }
-
         initLoginBtn();
         initRegisterBtn();
 
@@ -93,7 +74,6 @@ public class LoginFragment extends Fragment {
                 String _userIdStr = _userId.getText().toString();
                 String _passwordStr = _password.getText().toString();
 
-
                 if (_userIdStr.isEmpty() || _passwordStr.isEmpty()) {
                     Toast.makeText(
                             getActivity(),
@@ -103,19 +83,26 @@ public class LoginFragment extends Fragment {
                     Log.d("USER", "USER OR PASSWORD IS EMPTY");
 
                 } else {
-
+                    // Loading data dialog following owner network speed
+                    progressDialog = new ProgressDialog(getActivity());
+                    progressDialog.setMessage("Please waiting...");
+                    progressDialog.show();
 
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(_userIdStr, _passwordStr)
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    chkIsVeriFied(authResult.getUser());
+                                    Log.d("USER", "Login Success");
+//                                    chkIsVeriFied(authResult.getUser());
+
+                                    uid = fbAuth.getCurrentUser().getUid();
+                                    getRole();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            FirebaseAuth.getInstance().signOut();
+                            progressDialog.dismiss();
                             Log.d("USER", "INVALID USER OR PASSWORD");
                             Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -128,21 +115,16 @@ public class LoginFragment extends Fragment {
     }
 
     private void GotoMenu() {
-
+            progressDialog.dismiss();
         if (role.equals("restaurant")) {
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_view, new RestViewProfileFragment())
-                    .commit();
-            Log.d("USER", "GOTO Restaurant Menu");
+            Intent myIntent = new Intent(getActivity(), RestMainActivity.class);
+            getActivity().startActivity(myIntent);
+            Log.d("USER", "GOTO Restaurant Main Activity");
         } else if (role.equals("customer")) {
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_view, new HomeFragment())
-                    .commit();
 
-
-            Log.d("USER", "GOTO Customer Menu");
+            Intent myIntent = new Intent(getActivity(), CusMainActivity.class);
+            getActivity().startActivity(myIntent);
+            Log.d("USER", "GOTO Customer Main Activity");
         }
     }
 
@@ -166,29 +148,31 @@ public class LoginFragment extends Fragment {
                 });
     }
 
-
-    void chkIsVeriFied(final FirebaseUser _user) {
-
-        //USER CONFIRM EMAIL
-        if(_user.isEmailVerified()){
-
-            uid = fbAuth.getCurrentUser().getUid();
-
-            getRole();
-            Toast.makeText
-                    (getContext(),"EMAIL IS VERIFIED , GO TO PROFILE",Toast.LENGTH_SHORT)
-                    .show();
-        }else{
-            FirebaseAuth.getInstance().signOut();
-            Log.d("USER", "EMAIL IS NOT VERIFIED");
-            Toast.makeText
-                    (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
-                    .show();
-
-        }
-
-
-    }
+    /****************************************************************
+     * อาจจะต้องมีการ register หลายๆรอบ จนกว่าregister จะนิ่ง ยังไม่อยากให้เปิด verfiled mail*
+     ****************************************************************/
+//    void chkIsVeriFied(final FirebaseUser _user) {
+//
+//        //USER CONFIRM EMAIL
+//        if(_user.isEmailVerified()){
+//
+//            uid = fbAuth.getCurrentUser().getUid();
+////
+////            getRole();
+//            Toast.makeText
+//                    (getContext(),"EMAIL IS VERIFIED , GO TO PROFILE",Toast.LENGTH_SHORT)
+//                    .show();
+//        }else{
+//            FirebaseAuth.getInstance().signOut();
+//            Log.d("USER", "EMAIL IS NOT VERIFIED");
+//            Toast.makeText
+//                    (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
+//                    .show();
+//
+//        }
+//
+//
+//    }
 
     void initRegisterBtn() {
         TextView _registerBtn = (TextView) getView().findViewById(R.id.login_register_Btn);

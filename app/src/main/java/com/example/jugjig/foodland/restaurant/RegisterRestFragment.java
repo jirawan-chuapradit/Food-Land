@@ -50,8 +50,6 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         fbAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
-
-
         //get parameter
         registerBtn = getView().findViewById(R.id.registerBtn);
         backBtn = getView().findViewById(R.id.back_login_btn);
@@ -88,7 +86,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
             Toast.makeText(getActivity(),"กรุณาระบุรหัสผ่านมากกว่า 5 ตัว",Toast.LENGTH_SHORT).show();
         }
         else {
-            // Loading data dialog
+            // Loading data dialog following owner network speed
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Please waiting...");
             progressDialog.show();

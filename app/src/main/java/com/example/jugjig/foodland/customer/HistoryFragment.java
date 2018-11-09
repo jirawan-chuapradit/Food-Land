@@ -17,8 +17,6 @@ import java.util.zip.Inflater;
 
 public class HistoryFragment extends Fragment {
 
-    BottomNavigationView navView;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,25 +26,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.wtf("History", "argument "+ getArguments().getParcelableArrayList("restaurants").size());
-        setNavigation();
+
     }
 
-    void setNavigation() {
-        navView = getActivity().findViewById(R.id.bottom_nav_bar);
-        navView.getMenu().getItem(0).setChecked(true);
-        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.navigation_restaurants:
-                        HomeFragment home = new HomeFragment();
-                        home.setArguments(getArguments());
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, home).commit();
-                        return true;
-                }
-                return false;
-            }
-        });
-    }
 }
