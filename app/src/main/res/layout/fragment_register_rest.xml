@@ -2,19 +2,20 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_blur"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorApp"
-        android:padding="10dp"
-        android:text="ลงทะเบียน"
-        android:textAllCaps="true"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+
+    </LinearLayout>
 
     <ScrollView
 
@@ -25,126 +26,284 @@
         tools:layout_editor_absoluteY="75dp">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="50dp">
+            android:layout_weight="1">
 
+            <TextView
 
-
-            <EditText
-                android:id="@+id/registerFname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-
-                android:hint="ชื่อ"
-                android:inputType="text"
-                android:padding="10dp" />
-
-            <EditText
-                android:id="@+id/registerLname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-
-                android:hint="นามสกุล"
-                android:inputType="text"
-                android:padding="10dp" />
-
-
-            <EditText
-                android:id="@+id/registerEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="อีเมล"
-                android:inputType="text"
-                android:padding="10dp" />
-
-            <EditText
-                android:id="@+id/registerPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="เบอร์โทร"
-                android:inputType="text"
-                android:padding="10dp" />
-
-            <EditText
-                android:id="@+id/registerRestDesc"
-                android:layout_width="match_parent"
-                android:layout_height="128dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="รายละเอียดร้านค้า"
-                android:inputType="text"
                 android:padding="10dp"
-                android:scrollbarStyle="insideInset"/>
+                android:background="@drawable/header"
+                android:text="ลงทะเบียน"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
 
 
-            <EditText
-                android:id="@+id/registerPassword"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="รหัสผ่าน"
-                android:inputType="textPassword"
-                android:padding="10dp" />
+                android:paddingTop="1dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center">
 
+                <TextView
+                    android:text="ชื่อจริง :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
 
-            <EditText
-                android:id="@+id/registerRePassword"
+                <EditText
+                    android:textColor="#000000"
+                    android:hint="First Name"
+                    android:id="@+id/registerFname"
+                    android:textAlignment="viewStart"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="ยืนยันรหัสผ่าน"
-                android:inputType="textPassword"
-                android:padding="10dp" />
+                android:paddingTop="1dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+
+                    android:text="นามสกุล :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/registerLname"
+                    android:textColor="#000000"
+                    android:textAlignment="viewStart"
+                    android:hint="Last Name"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:paddingTop="1dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:text="อีเมล :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <EditText
+
+                    android:id="@+id/registerEmail"
+                    android:textColor="#000000"
+                    android:hint="test@gmail.com"
+                    android:textAlignment="viewStart"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:paddingTop="1dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:text="เบอร์โทรศัพท์ :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/registerPhone"
+                    android:textColor="#000000"
+                    android:hint="xxx-xxx-xxxx"
+                    android:inputType="number"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:paddingTop="1dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:text="รายละเอียดร้านค้า :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/registerRestDesc"
+                    android:textColor="#000000"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:paddingTop="1dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:text="รหัสผ่าน :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/registerPassword"
+                    android:textColor="#000000"
+                    android:hint="••••••"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:paddingTop="1dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:text="ยืนยันรหัสผ่าน :"
+                    android:textStyle="bold"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="5dp"
+                    android:layout_height="30sp"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/registerRePassword"
+                    android:textColor="#000000"
+                    android:hint="••••••"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_loginbox"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    />
+
+
+            </LinearLayout>
 
 
             <Button
                 android:id="@+id/registerBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shape_login_btn"
+                android:background="@drawable/shape_regis_btn"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:text="สมัครสมาชิก" />
 
 
-            <Button
-                android:id="@+id/back_login_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shape_login_btn"
-                android:text="BACK TO LOGIN" />
+
+        </LinearLayout></ScrollView>
 
 
-        </LinearLayout>
 
 
-    </ScrollView>
+
+
+
+
 
 
 

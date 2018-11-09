@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_blur"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
@@ -30,9 +31,10 @@
 
             <Button
                 android:id="@+id/customer_regis"
-                android:layout_width="50dp"
+                android:layout_width="30sp"
                 android:layout_height="200dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginLeft="30sp"
                 android:layout_weight="1"
                 android:background="@drawable/regis_user"
                 android:gravity="center" />
@@ -40,8 +42,10 @@
             <Button
                 android:id="@+id/rest_regis"
                 android:layout_marginTop="50dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="30sp"
                 android:background="@drawable/regis_restaurant"
-                android:layout_width="50dp"
+                android:layout_width="20dp"
                 android:layout_height="200dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
@@ -62,7 +66,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:textColor="@color/colorApp"
+                android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:gravity="center"/>
 
@@ -72,7 +76,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:textSize="30sp"
-                android:textColor="@color/colorApp"
+                android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:gravity="center"/>
