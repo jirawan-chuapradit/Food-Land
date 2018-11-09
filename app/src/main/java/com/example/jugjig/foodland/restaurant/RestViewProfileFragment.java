@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland.restaurant;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class RestViewProfileFragment extends Fragment implements View.OnClickListener {
 
     @Nullable
@@ -34,7 +37,7 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
-    private String uid,name,phone,desc,email;
+    private String uid,fname,lname,phone,desc,email;
     Button updateBtn;
     ProgressDialog progressDialog;
 
@@ -72,12 +75,13 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         UserProfile restProfile = documentSnapshot.toObject(UserProfile.class);
-                        name = restProfile.getfName()+"  "+restProfile.getlName();
+                        fname = restProfile.getfName();
+                        lname = restProfile.getlName();
                         phone = restProfile.getPhone();
                         email = restProfile.getEmail();
                         desc = restProfile.getDesc();
 
-                        profileName.setText("ชื่อ : "+name);
+                        profileName.setText("ชื่อ : "+fname +"  "+ lname);
                         profileEmail.setText("อีเมลล์ : "+email);
                         profilePhone.setText("เบอร์โทร : "+phone);
                         profileDesc.setText("รายละเอียดร้านค้า : "+desc);
@@ -111,6 +115,15 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     }
 
     private void updateProfile() {
+
+        SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+        prefs.putString("rest_f_name", fname);
+        prefs.putString("rest_l_name", lname);
+        prefs.putString("rest_email", email);
+        prefs.putString("rest_phone", phone);
+        prefs.putString("rest_desc", desc);
+        prefs.apply();
+
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.rest_main_view, new UpdateRestProfile())

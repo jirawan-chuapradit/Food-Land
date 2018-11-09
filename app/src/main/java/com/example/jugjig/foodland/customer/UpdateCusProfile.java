@@ -1,4 +1,4 @@
-package com.example.jugjig.foodland.restaurant;
+package com.example.jugjig.foodland.customer;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,19 +16,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class UpdateRestProfile extends Fragment implements View.OnClickListener {
+public class UpdateCusProfile extends Fragment implements View.OnClickListener {
 
-    private String fName, lName, email, phone, desc, uid;
-    private EditText fNameEdt, lNameEdt, phoneEdt, descEdt;
+    private String fName, lName, email, phone, uid;
+    private EditText fNameEdt, lNameEdt, phoneEdt;
     private TextView profileEmail;
     private Button saveBtn;
 
@@ -40,14 +39,11 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
     private FirebaseFirestore firestore;
 
 
-    public View onCreateView
-            (@NonNull LayoutInflater inflater,
-             @Nullable ViewGroup container,
-             @Nullable Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_update_view_rest, container, false);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_update_view_cus,container,false);
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -68,26 +64,28 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
 
 
         saveBtn.setOnClickListener(this);
-
-
     }
+
 
 
     private void showParameter() {
 
         SharedPreferences prefs = getContext().getSharedPreferences("FoodLand", Context.MODE_PRIVATE);
+//
+//        prefs.putString("cus_f_name", fname);
+//        prefs.putString("cus_l_name", lname);
+//        prefs.putString("cus_email", email);
+//        prefs.putString("cus_phone", phone);
 
-        fName = prefs.getString("rest_f_name", "none");
-        lName = prefs.getString("rest_l_name", "none");
-        phone = prefs.getString("rest_phone", "none");
-        email = prefs.getString("rest_email", "none");
-        desc = prefs.getString("rest_desc", "none");
+        fName = prefs.getString("cus_f_name", "none");
+        lName = prefs.getString("cus_l_name", "none");
+        phone = prefs.getString("cus_phone", "none");
+        email = prefs.getString("cus_email", "none");
 
         fNameEdt.setText(fName);
         lNameEdt.setText(lName);
         profileEmail.setText(email);
         phoneEdt.setText(phone);
-        descEdt.setText(desc);
         prefs.edit().clear().commit();
         Log.d("USER", "SHOW USER INFORMATION");
 
@@ -96,11 +94,10 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
 
     private void getParameter() {
 
-        fNameEdt = getView().findViewById(R.id.update_rest_fname);
-        lNameEdt = getView().findViewById(R.id.update_rest_lname);
-        profileEmail = getView().findViewById(R.id.restEmail);
-        phoneEdt = getView().findViewById(R.id.update_rest_phone);
-        descEdt = getView().findViewById(R.id.update_rest_desc);
+        fNameEdt = getView().findViewById(R.id.update_cus_FName);
+        lNameEdt = getView().findViewById(R.id.update_cus_LName);
+        profileEmail = getView().findViewById(R.id.update_cusEmail);
+        phoneEdt = getView().findViewById(R.id.update_cusPhone);
 
     }
 
@@ -125,7 +122,6 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
         fName = fNameEdt.getText().toString().toUpperCase();
         lName = lNameEdt.getText().toString().toUpperCase();
         phone = phoneEdt.getText().toString();
-        desc = descEdt.getText().toString();
         email = profileEmail.getText().toString();
 
         //check parameter
@@ -144,17 +140,12 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
 
     private void setParameter() {
 
-        if (desc.isEmpty()) {
-            desc = "...";
-        }
-
         UserProfile userProfile = UserProfile.getRestProfileInstance();
         userProfile.setfName(fName);
         userProfile.setlName(lName);
         userProfile.setPhone(phone);
         userProfile.setEmail(email);
-        userProfile.setDesc(desc);
-        userProfile.setRole("restaurant");
+        userProfile.setRole("customer");
 
         firestore.collection("UserProfile")
                 .document(uid)
@@ -168,10 +159,10 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
 
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.rest_main_view, new RestViewProfileFragment())
+                                .replace(R.id.cus_main_view, new CusViewProfileFragment())
                                 .addToBackStack(null)
                                 .commit();
-                        Log.d("USER", "GOTO RESTAURANT PROFILE");
+                        Log.d("USER", "GOTO CUSTOMER PROFILE");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
