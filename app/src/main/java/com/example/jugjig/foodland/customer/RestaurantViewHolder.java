@@ -1,11 +1,11 @@
-package com.example.jugjig.foodland;
+package com.example.jugjig.foodland.customer;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.jugjig.foodland.R;
 
 public class RestaurantViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,22 +1,18 @@
 package com.example.jugjig.foodland.customer;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.jugjig.foodland.R;
-import com.example.jugjig.foodland.RestaurantListAdapter;
 import com.example.jugjig.foodland.model.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,7 +45,6 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setSearchBar();
 
-
         resList = getActivity().findViewById(R.id.home_res_list);
         resList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
@@ -60,11 +55,6 @@ public class HomeFragment extends Fragment {
         else {
             getData();
         }
-    }
-
-    @Override
-    public void setInitialSavedState(@Nullable SavedState state) {
-        super.setInitialSavedState(state);
     }
 
     void getData() {

@@ -1,4 +1,4 @@
-package com.example.jugjig.foodland;
+package com.example.jugjig.foodland.customer;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.Restaurant;
 
 import java.util.ArrayList;
