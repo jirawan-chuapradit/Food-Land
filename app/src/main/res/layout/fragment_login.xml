@@ -26,58 +26,63 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:srcCompat="@drawable/logo"
+                app:srcCompat="@drawable/logo_o_black"
                 android:layout_gravity="center"
                 />
 
             <EditText
                 android:id="@+id/login_userid"
-                android:background="@drawable/shape_loginbox"
+                android:hint="example@gmail.com"
+                android:background="@drawable/fill_shape_input"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
+                android:textSize="20px"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="example@gmail.com"
+
                 android:inputType="text" />
 
             <EditText
                 android:padding="10dp"
+                android:textSize="20px"
+                android:hint="password"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
+                android:background="@drawable/fill_shape_input"
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="••••••••"
+
                 android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/login_btn"
-                android:background="@drawable/shape_login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:text="เข้าสู่ระบบ" />
+                android:background="@drawable/shape_login_btn"
+                android:text="เข้าสู่ระบบ"
+                android:textColor="@color/white"
+                android:textSize="37px"
+                android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/login_register_Btn"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
+                android:layout_width="54dp"
+                android:layout_height="17dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginLeft="240dp"
+                android:layout_marginTop="20dp"
                 android:text="ลงทะเบียน"
-                android:textSize="20dp"
-                android:textColor="@color/colorApp"
- />
-
-
+                android:textColor="#3E3E3E"
+                android:textSize="20px" />
         </LinearLayout>
 
 
