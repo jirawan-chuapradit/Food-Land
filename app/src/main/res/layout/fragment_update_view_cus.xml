@@ -2,19 +2,44 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_red"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <ScrollView
 
-    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:background="@color/colorApp"
-        android:padding="10dp"
-        android:text="ประวัติส่วนตัว"
-        android:textAllCaps="true"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/icon_signout"
+            android:layout_marginLeft="82dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="ข้อมูลส่วนตัว"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#ffff"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+    </RelativeLayout></ScrollView>
+
 
     <ScrollView
 
@@ -22,76 +47,248 @@
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="75dp">
+        android:layout_marginTop="60dp"
+        tools:layout_editor_absoluteY="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="50dp">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-
-
-            <EditText
-                android:id="@+id/update_cus_FName"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="120dp"
+                android:gravity="center"
+                android:layout_marginTop="0dp"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="120dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:cropToPadding="true"
+                    android:src="@drawable/person"
+                    android:scaleType="centerCrop"
+                    tools:layout_editor_absoluteX="176dp"
+                    tools:layout_editor_absoluteY="68dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
+                >
+                <TextView
+                    android:layout_width="3dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:text="ชื่อจริง : "
+                    android:textColor="@color/colorApp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-                android:hint="ชื่อ"
-                android:padding="10dp" />
+                <EditText
+                    android:id="@+id/update_cus_FName"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:hint="ดาวิกา"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_search"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    /> </LinearLayout>
 
-            <EditText
-                android:id="@+id/update_cus_LName"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:layout_width="6dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:text="นามสกุล : "
+                    android:textColor="@color/colorApp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-                android:hint="นามสกุล"
-                android:padding="10dp" />
+                <EditText
+                    android:id="@+id/update_cus_LName"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:hint="โฮเน่"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_search"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    /> </LinearLayout>
 
-
-
-            <TextView
-                android:id="@+id/update_cusEmail"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="อีเมล"
-                android:padding="10dp" />
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:text="E-mail :  "
+                    android:textColor="@color/colorApp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/update_cusPhone"
+                <EditText
+                    android:id="@+id/update_cusEmail"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:hint="ab@gmail.com"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_search"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    /> </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="เบอร์โทร"
-                android:padding="10dp" />
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:text="เบอร์โทรศัพท์ :  "
+                    android:textColor="@color/colorApp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
+                <EditText
+                    android:id="@+id/update_cusPhone"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:hint=" 085- XXX - XXXX"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_search"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    /> </LinearLayout>
 
-
-            <Button
-                android:id="@+id/saveBtn"
-                android:text="บันทึก"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:text="รหัสผ่าน :  "
+                    android:textColor="@color/colorApp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/update_cusPassword"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:hint=" ••••••"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_search"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    /> </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="0.4"
+                    android:gravity="center"
+                    android:text="ยืนยันรหัสผ่าน :  "
+                    android:textColor="@color/colorApp"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-    </ScrollView>
+                <EditText
+                    android:id="@+id/update_cusRePassword"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:hint=" ••••••"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/shape_search"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    /> </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:textColor="#ffff"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:background="@drawable/shape_btn_red"
+                    android:text="บันทึก"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    tools:layout_editor_absoluteX="64dp"
+                    tools:layout_editor_absoluteY="370dp" /> </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            ></LinearLayout>
+
+
+        </LinearLayout></ScrollView>
 
 
 

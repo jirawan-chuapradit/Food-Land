@@ -52,20 +52,14 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
         //get parameter
         registerBtn = getView().findViewById(R.id.registerBtn);
-        backBtn = getView().findViewById(R.id.back_login_btn);
+
 
         //attaching listener
         registerBtn.setOnClickListener(this);
-        backBtn.setOnClickListener(this);
 
     }
 
-    void backToLogin(){
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view, new LoginFragment())
-                        .commit();
-    }
+
 
     private void register() {
         //get parameter
@@ -168,11 +162,8 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(v == backBtn){
-            Log.d("REST", "GOTO LOGIN");
-            backToLogin();
-        }
-        else if (v == registerBtn){
+
+         if (v == registerBtn){
             Log.d("REST", "REGISTER");
             register();
         }

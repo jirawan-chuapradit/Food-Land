@@ -11,7 +11,8 @@
         android:id="@+id/navigation_restaurants"
         android:icon="@drawable/ic_restaurant_black_24dp"
         android:title="Restaurants"
-        />
+
+        >@color/colorNav</item>
 
     <item
         android:id="@+id/navigation_profile"

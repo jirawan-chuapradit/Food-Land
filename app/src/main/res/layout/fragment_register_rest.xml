@@ -62,7 +62,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
@@ -96,7 +96,7 @@
                     android:layout_marginTop="7dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
@@ -128,7 +128,7 @@
                     android:layout_marginTop="7dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
@@ -161,14 +161,14 @@
                     android:layout_marginTop="7dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
 
                 <EditText
                     android:id="@+id/registerPhone"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:hint="xxx-xxx-xxxx"
                     android:inputType="number"
                     android:layout_marginTop="7dp"
@@ -194,14 +194,14 @@
                     android:layout_marginTop="7dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
 
                 <EditText
                     android:id="@+id/registerRestDesc"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_marginTop="7dp"
                     android:background="@drawable/shape_loginbox"
                     android:layout_width="50dp"
@@ -225,14 +225,14 @@
                     android:layout_marginTop="7dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
 
                 <EditText
                     android:id="@+id/registerPassword"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:hint="••••••"
                     android:inputType="textPassword"
                     android:layout_marginTop="7dp"
@@ -258,14 +258,14 @@
                     android:layout_marginTop="7dp"
                     android:layout_width="5dp"
                     android:layout_height="30sp"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:layout_weight="1"
                     android:textSize="20dp"
                     android:gravity="center"/>
 
                 <EditText
                     android:id="@+id/registerRePassword"
-                    android:textColor="#000000"
+                    android:textColor="#ffff"
                     android:hint="••••••"
                     android:inputType="textPassword"
                     android:layout_marginTop="7dp"
