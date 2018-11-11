@@ -4,104 +4,218 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorApp"
-        android:padding="10dp"
-        android:text="ประวัติส่วนตัว"
-        android:textAllCaps="true"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
+        android:background="@drawable/register_bg"/>
+
 
     <ScrollView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="75dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="50dp">
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="254dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="61dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="61dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/logo_white" />
 
-
-
-            <EditText
-                android:id="@+id/update_rest_fname"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:inputType="text"
-
-                android:hint="ชื่อจริง"
-                android:padding="10dp" />
-
-            <EditText
-                android:id="@+id/update_rest_lname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-
-                android:hint="นามสกุล"
-                android:padding="10dp"
-                android:inputType="text"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="127dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="125dp"
+                    android:layout_marginRight="118dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/re_font"
+                    android:text="ข้อมูลส่วนตัว"
+                    android:textColor="@color/system_font_color"
+                    android:textSize="35dp" />
+                <Button
+                    android:id="@+id/update_profile"
+                    android:layout_width="65dp"
+                    android:layout_height="77dp"
+                    android:layout_marginLeft="260dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/regis_restaurant_black" />
+                <Button
+                    android:id="@+id/back_btn"
+                    android:layout_width="19dp"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="339dp"
+                    android:background="@drawable/ic_back_icon" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginRight="90dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/re_font"
+                    android:text="-"
+                    android:textColor="@color/system_font_color"
+                    android:textScaleX="13"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
 
             <TextView
-                android:id="@+id/restEmail"
-                android:layout_width="match_parent"
+                android:layout_width="92dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="51dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginRight="232dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/re_font"
+                android:text="ชื่อจริง :"
+                android:textColor="@color/system_font_color"
+                android:textSize="20dp" />
+            <EditText
+                android:id="@+id/update_rest_fname"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:inputType="text"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="อีเมล"
-                android:padding="10dp"
-                android:inputType="text"/>
+                android:fontFamily="@font/re_font"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="44dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:text="นามสกุล :"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/update_rest_lname"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="อีเมล :"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/restEmail"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="44dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:text="เบอร์โทรศัพท์ :"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/update_rest_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="เบอร์โทร"
-                android:padding="10dp"
-                android:inputType="number"/>
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="44dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:text="รายละเอียด :"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/update_rest_desc"
-                android:layout_width="match_parent"
-                android:layout_height="128dp"
+                android:layout_width="290dp"
+                android:layout_height="122dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_loginbox"
-                android:ems="10"
-                android:hint="รายละเอียดร้านค้า"
-                android:padding="10dp"
-                android:scrollbarStyle="insideInset"
-                android:inputType="text"/>
+                android:padding="10dp"/>
+
 
             <Button
                 android:id="@+id/saveBtn"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Save"/>
+                android:layout_gravity="center"
+                android:layout_marginBottom="34dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/shape_login_btn"
+                android:fontFamily="@font/re_font"
+                android:text="ยืนยันการแก้ไข"
+                android:textColor="@color/white"
+                android:textSize="37dp"/>
 
         </LinearLayout>
 

@@ -32,7 +32,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     private String fName, lName, email, phone, restDesc, password, rePassword, uid;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
-    private ImageView back;
+    private Button back;
 
     // Loading data dialog
     ProgressDialog progressDialog;

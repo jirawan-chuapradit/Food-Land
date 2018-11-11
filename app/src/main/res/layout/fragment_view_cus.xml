@@ -79,9 +79,6 @@
                     android:fontFamily="@font/re_font"
                     android:textStyle="bold" />
 
-
-
-
             </RelativeLayout></LinearLayout></ScrollView>
 
 

@@ -36,7 +36,7 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
     private String fName, lName, email, phone, password, rePassword, uid;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
-    private ImageView back;
+    private Button back;
 
 
     // Loading data dialog
