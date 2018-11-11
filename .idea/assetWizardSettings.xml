@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -28,11 +33,11 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="height" value="52" />
+                            <entry key="color" value="3e3e3e" />
+                            <entry key="height" value="59" />
                             <entry key="outputName" value="ic_back2" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Jugjig" />
-                            <entry key="width" value="27" />
                           </map>
                         </option>
                       </PersistentState>

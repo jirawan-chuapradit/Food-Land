@@ -58,7 +58,7 @@
                     android:text="_"
                     android:textScaleX="11"
                     android:textSize="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/font_color"
                     android:textStyle="bold" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                     android:layout_marginRight="121dp"
                     android:layout_weight="1"
                     android:text="ร้านค้า"
-                    android:textColor="@color/black"
+                    android:textColor="@color/font_color"
                     android:textSize="25dp" />
 
                 <ImageView
@@ -89,7 +89,7 @@
                 android:layout_marginRight="239dp"
                 android:layout_weight="1"
                 android:text="ชื่อจริง :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
@@ -112,7 +112,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="นามสกุล :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
@@ -135,7 +135,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:text="อีเมล :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
@@ -159,7 +159,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="เบอร์โทรศัพท์ :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
@@ -181,7 +181,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="รายละเอียด :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
@@ -203,7 +203,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="รหัสผ่าน :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
@@ -226,7 +226,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="ยืนยันรหัสผ่าน :"
-                android:textColor="@color/black"
+                android:textColor="@color/font_color"
                 android:textSize="15dp" />
 
             <EditText
