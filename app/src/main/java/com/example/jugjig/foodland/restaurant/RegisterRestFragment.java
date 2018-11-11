@@ -60,14 +60,10 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         //attaching listener
         registerBtn.setOnClickListener(this);
         back.setOnClickListener(this);
+
     }
 
-    void backToLogin(){
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view, new LoginFragment())
-                        .commit();
-    }
+
 
     private void register() {
         //get parameter

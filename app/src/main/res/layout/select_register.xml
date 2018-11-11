@@ -45,6 +45,7 @@
                 android:layout_marginTop="200dp"
                 android:layout_marginRight="29dp"
                 android:layout_marginBottom="30dp"
+
                 android:layout_weight="1"
                 android:background="@drawable/regis_user_black"
                 android:gravity="center" />

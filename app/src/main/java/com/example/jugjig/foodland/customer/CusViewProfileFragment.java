@@ -75,9 +75,9 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
                         phone = cusProfile.getPhone();
                         email = cusProfile.getEmail();
 
-                        profileName.setText("ชื่อ : "+fname+"  "+lname);
-                        profileEmail.setText("อีเมลล์ : "+email);
-                        profilePhone.setText("เบอร์โทร : "+phone);
+                        profileName.setText("  "+fname+"  "+lname);
+                        profileEmail.setText("  "+email);
+                        profilePhone.setText("  "+phone);
                         Log.d("USER", "SHOW USER INFORMATION");
                         progressDialog.dismiss();
                     }
@@ -102,6 +102,7 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         if(v==updateBtn){
             Log.d("USER ","CLICK UPDATE PROFILE");
+            System.out.println("aaaaaaa");
             updateProfile();
         }
     }

@@ -60,6 +60,15 @@ public class LoginFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         fbAuth = FirebaseAuth.getInstance();
 
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+            Log.d("USER", "USER ALREADY LOG IN");
+            Log.d("USER", "GOTO HomePage");
+            Intent myIntent = new Intent(getActivity(), CusMainActivity.class);
+            getActivity().startActivity(myIntent);
+            return;
+        }
+
         initLoginBtn();
         initRegisterBtn();
 

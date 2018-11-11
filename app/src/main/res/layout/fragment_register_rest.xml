@@ -2,11 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-
-
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <ImageView
         android:layout_width="match_parent"
@@ -20,10 +18,10 @@
 
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
             tools:layout_editor_absoluteX="41dp"
             tools:layout_editor_absoluteY="1dp">
 
@@ -260,8 +258,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 
 </android.support.constraint.ConstraintLayout>
