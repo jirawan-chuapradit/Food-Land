@@ -3,203 +3,226 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_red"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+    <ScrollView
 
-    <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/colorApp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:background="@drawable/register_bg"/>
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="260dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_white"
+
+                />
+
+
+        </RelativeLayout></ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <Button
-        android:layout_marginTop="10dp"
-        android:id="@+id/icon_signout"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/singout"
-        android:layout_alignParentLeft="true"
-         />
 
-        <TextView
 
-            android:layout_width="200dp"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/icon_signout"
-            android:layout_marginLeft="82dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:fontFamily="@font/re_font"
-            android:text="ข้อมูลส่วนตัว"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#ffff"
-            android:textSize="35dp"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_weight="1"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="80dp"
+                android:layout_height="wrap_content">
 
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="111dp"
+                    android:layout_marginTop="124dp"
+                    android:layout_marginRight="52dp"
+                    android:layout_weight="1"
+                    android:text="ข้อมูลส่วนตัว"
+                    android:textStyle="bold"
+                    android:textColor="@color/system_font_color"
+                    android:fontFamily="@font/re_font"
+                    android:textSize="35dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginLeft="105dp"
+                    android:text="_"
+                    android:textScaleX="13"
+                    android:textSize="30dp"
+                    android:textColor="@color/system_font_color"
+                    android:fontFamily="@font/re_font"
+                    android:textStyle="bold" />
+
+
+
+
+            </RelativeLayout></LinearLayout></ScrollView>
 
 
     <ScrollView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="60dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="1dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="center"
-            android:layout_marginTop="0dp"
-            >
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilePic"
-                android:layout_width="120dp"
-                android:layout_height="160dp"
-                android:layout_gravity="center"
-                android:cropToPadding="true"
-                android:src="@drawable/person"
-                android:scaleType="centerCrop"
-                tools:layout_editor_absoluteX="176dp"
-                tools:layout_editor_absoluteY="68dp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         >
-        <TextView
-            android:layout_width="3dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="7dp"
-            android:layout_weight="0.3"
-            android:gravity="center"
-            android:fontFamily="@font/re_font"
-            android:text="ชื่อ : "
-            android:textColor="@color/colorApp"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/cusName"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:fontFamily="@font/re_font"
-            android:hint="aaa bbbb"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:background="@drawable/shape_search"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            /> </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
             <TextView
-                android:layout_width="15dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="130dp"
+                android:fontFamily="@font/re_font"
+                android:layout_marginLeft="20dp"
+                android:text="ชื่อ - นามสกุล : "
+                android:textColor="@color/system_font_color"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cusName"
+                android:layout_marginLeft="20dp"
+
+                android:textColor="#ffff"
+                android:textSize="20dp"
+                android:hint="ดาวิกา  โฮเน่"
+                android:fontFamily="@font/re_font"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/shape_search"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                />
+
+
+
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="7dp"
-                android:layout_weight="0.3"
-                android:gravity="center"
                 android:fontFamily="@font/re_font"
-
                 android:text="E-mail :  "
-                android:textColor="@color/colorApp"
-                android:textSize="25sp"
+                android:textColor="@color/system_font_color"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/cusEmail"
-                android:textColor="#000000"
-                android:textSize="25sp"
-                android:hint="ab@gmail.com"
+                android:textColor="#ffff"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"
                 android:fontFamily="@font/re_font"
-
-                android:layout_gravity="center"
+                android:hint="ab@gmail.com"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/shape_search"
-                android:layout_width="50dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                /> </LinearLayout>
+                />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            >
+
             <TextView
-                android:layout_width="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="7dp"
-                android:layout_weight="0.3"
                 android:gravity="center"
                 android:fontFamily="@font/re_font"
-
                 android:text="เบอร์โทรศัพท์ :  "
-                android:textColor="@color/colorApp"
-                android:textSize="25sp"
+                android:textColor="@color/system_font_color"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/cusPhone"
-                android:textColor="#000000"
-                android:textSize="25sp"
-                android:hint=" 085- XXX - XXXX"
-                android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:textColor="#ffff"
+                android:textSize="20dp"
                 android:fontFamily="@font/re_font"
+                android:layout_marginLeft="20dp"
+                android:hint=" 085- XXX - XXXX"
+                android:layout_marginTop="7dp"
                 android:background="@drawable/shape_search"
-                android:layout_width="50dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                /> </LinearLayout>
+                />
 
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                ></LinearLayout>
 
 
-    </LinearLayout></ScrollView>
-    <RelativeLayout
+        </LinearLayout></ScrollView>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        >
     <Button
         android:id="@+id/update_profile"
-        android:background="@drawable/edit_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="370dp" /></RelativeLayout>
+        android:layout_marginTop="150dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="350dp"
+        android:background="@drawable/edit_profile" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        >
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_marginTop="150dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/singout"
+        />
+    </LinearLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>
