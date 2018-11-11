@@ -76,11 +76,11 @@
                 android:layout_height="26dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="210dp"
+                android:layout_marginLeft="190dp"
                 android:layout_marginTop="20dp"
                 android:text="ลงทะเบียน"
                 android:textColor="#3E3E3E"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
         </LinearLayout>
 
 
