@@ -15,56 +15,109 @@
         tools:layout_editor_absoluteY="56dp"
         tools:ignore="MissingConstraints">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:padding="20dp">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:background="@drawable/new_logo"
+                 />
+        </LinearLayout></ScrollView>
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="90dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-
-        android:padding="20dp">
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="90dp"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center"
-            android:background="@drawable/logo"
-            tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="16dp" />
-    </LinearLayout></ScrollView>
-
-
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:layout_marginTop="0dp"
+            >
 
     <SearchView
         android:id="@+id/home_searchBar"
-        android:layout_width="0dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="360dp"
         android:layout_height="30sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="8dp"
-        android:actionViewClass="android.support.v7.widget.SearchView"
         android:background="@drawable/shape_search"
         android:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+    <Button
+        android:id="@+id/list_res_btn"
+
+        android:layout_width="20dp"
+        android:layout_height="30sp"
+        android:background="@drawable/res_list"
+        android:layout_weight="2"/>
+
+
+        </LinearLayout></LinearLayout></ScrollView>
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="180dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        >
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/home_res_list"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="?attr/actionBarSize"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_searchBar"
-        app:layout_constraintVertical_bias="0.0" />
+         />
+    </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            ></LinearLayout>
+        </LinearLayout>
+
+
+  </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

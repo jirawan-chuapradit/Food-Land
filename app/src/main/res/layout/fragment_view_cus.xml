@@ -30,11 +30,12 @@
             android:layout_marginLeft="82dp"
             android:gravity="center"
             android:padding="10dp"
+            android:fontFamily="@font/re_font"
             android:text="ข้อมูลส่วนตัว"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#ffff"
-            android:textSize="30dp"
+            android:textSize="35dp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp"
@@ -92,15 +93,17 @@
             android:layout_marginTop="7dp"
             android:layout_weight="0.3"
             android:gravity="center"
+            android:fontFamily="@font/re_font"
             android:text="ชื่อ : "
             android:textColor="@color/colorApp"
-            android:textSize="20dp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cusName"
             android:textColor="#000000"
-            android:textSize="20dp"
+            android:textSize="25sp"
+            android:fontFamily="@font/re_font"
             android:hint="aaa bbbb"
             android:layout_gravity="center"
             android:layout_marginTop="7dp"
@@ -123,16 +126,20 @@
                 android:layout_marginTop="7dp"
                 android:layout_weight="0.3"
                 android:gravity="center"
+                android:fontFamily="@font/re_font"
+
                 android:text="E-mail :  "
                 android:textColor="@color/colorApp"
-                android:textSize="20dp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/cusEmail"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="25sp"
                 android:hint="ab@gmail.com"
+                android:fontFamily="@font/re_font"
+
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/shape_search"
@@ -154,18 +161,21 @@
                 android:layout_marginTop="7dp"
                 android:layout_weight="0.3"
                 android:gravity="center"
+                android:fontFamily="@font/re_font"
+
                 android:text="เบอร์โทรศัพท์ :  "
                 android:textColor="@color/colorApp"
-                android:textSize="20dp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/cusPhone"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="25sp"
                 android:hint=" 085- XXX - XXXX"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
+                android:fontFamily="@font/re_font"
                 android:background="@drawable/shape_search"
                 android:layout_width="50dp"
                 android:layout_height="40dp"

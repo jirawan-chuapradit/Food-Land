@@ -27,11 +27,12 @@
             android:layout_marginLeft="82dp"
             android:gravity="center"
             android:padding="10dp"
+            android:fontFamily="@font/re_font"
             android:text="ข้อมูลส่วนตัว"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#ffff"
-            android:textSize="30dp"
+            android:textSize="35dp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp"
@@ -88,17 +89,21 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="7dp"
                     android:layout_weight="0.3"
+                    android:fontFamily="@font/re_font"
+
                     android:gravity="center"
                     android:text="ชื่อจริง : "
                     android:textColor="@color/colorApp"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/update_cus_FName"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:hint="ดาวิกา"
+                    android:fontFamily="@font/re_font"
+
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
                     android:background="@drawable/shape_search"
@@ -120,15 +125,18 @@
                     android:layout_marginTop="7dp"
                     android:layout_weight="0.5"
                     android:gravity="center"
+                    android:fontFamily="@font/re_font"
                     android:text="นามสกุล : "
                     android:textColor="@color/colorApp"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/update_cus_LName"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/re_font"
+
                     android:hint="โฮเน่"
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
@@ -151,15 +159,19 @@
                     android:layout_marginTop="7dp"
                     android:layout_weight="0.3"
                     android:gravity="center"
+                    android:fontFamily="@font/re_font"
+
                     android:text="E-mail :  "
                     android:textColor="@color/colorApp"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/update_cusEmail"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/re_font"
+
                     android:hint="ab@gmail.com"
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
@@ -182,15 +194,19 @@
                     android:layout_marginTop="7dp"
                     android:layout_weight="0.3"
                     android:gravity="center"
+                    android:fontFamily="@font/re_font"
+
                     android:text="เบอร์โทรศัพท์ :  "
                     android:textColor="@color/colorApp"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/update_cusPhone"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/re_font"
+
                     android:hint=" 085- XXX - XXXX"
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
@@ -213,16 +229,20 @@
                     android:layout_marginTop="7dp"
                     android:layout_weight="0.2"
                     android:gravity="center"
+                    android:fontFamily="@font/re_font"
+
                     android:text="รหัสผ่าน :  "
                     android:textColor="@color/colorApp"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/update_cusPassword"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:hint=" ••••••"
+                    android:fontFamily="@font/re_font"
+
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
                     android:background="@drawable/shape_search"
@@ -243,15 +263,19 @@
                     android:layout_marginTop="7dp"
                     android:layout_weight="0.4"
                     android:gravity="center"
+                    android:fontFamily="@font/re_font"
+
                     android:text="ยืนยันรหัสผ่าน :  "
                     android:textColor="@color/colorApp"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/update_cusRePassword"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/re_font"
+
                     android:hint=" ••••••"
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
@@ -272,8 +296,9 @@
                     android:id="@+id/saveBtn"
                     android:textColor="#ffff"
                     android:textStyle="bold"
-                    android:textSize="20dp"
+                    android:textSize="25sp"
                     android:background="@drawable/shape_btn_red"
+                    android:fontFamily="@font/re_font"
                     android:text="บันทึก"
                     android:layout_width="150dp"
                     android:layout_height="50dp"

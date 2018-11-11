@@ -6,13 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/fcTextViewStyle</item>
+    </style>
 
-
-        <!-- To change the popup menu and app text color  -->
-        <item name="android:textColor">@color/colorPrimary</item>
-
-        <!-- To change the background of options menu-->
-        <item name="android:itemBackground">@color/colorNav</item>
+    <style name="fcTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/fc_active</item>
     </style>
 
 </resources>
