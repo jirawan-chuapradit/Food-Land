@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/logo_o_black" />
 
@@ -40,8 +40,8 @@
                 android:padding="10dp"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
-
-                android:textSize="20px" />
+                android:alpha="0.5"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/login_password"
@@ -55,8 +55,8 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-
-                android:textSize="20px" />
+                android:alpha="0.5"
+                android:textSize="15dp" />
 
             <Button
                 android:id="@+id/login_btn"
@@ -66,21 +66,21 @@
                 android:background="@drawable/shape_login_btn"
                 android:text="เข้าสู่ระบบ"
                 android:textColor="@color/white"
-                android:textSize="37px"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/login_register_Btn"
-                android:layout_width="54dp"
-                android:layout_height="17dp"
+                android:layout_width="93dp"
+                android:layout_height="26dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="240dp"
+                android:layout_marginLeft="210dp"
                 android:layout_marginTop="20dp"
                 android:text="ลงทะเบียน"
                 android:textColor="#3E3E3E"
-                android:textSize="20px" />
+                android:textSize="15dp" />
         </LinearLayout>
 
 
