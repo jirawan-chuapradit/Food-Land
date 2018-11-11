@@ -4,9 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorApp">#00FFB3</color>
-    <color name="blackAlpha80">#80000000</color>
+    <color name="blackAlpha30">#33000000</color>
     <color name="black">#FF000000</color>
+    <color name="user_font_color">#707070</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="font_color">#3E3E3E</color>
+    <color name="system_font_color">#3E3E3E</color>
 
 </resources>

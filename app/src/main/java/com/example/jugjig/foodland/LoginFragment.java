@@ -33,7 +33,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginFragment extends Fragment {
-    Typeface myFont;
     //Firebase
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
@@ -54,7 +53,6 @@ public class LoginFragment extends Fragment {
             (@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //set fonts
-        myFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FC Active Regular.ttf");
 
         //Firebase
         firestore = FirebaseFirestore.getInstance();
@@ -77,14 +75,11 @@ public class LoginFragment extends Fragment {
     void initLoginBtn() {
 
         Button _loginBtn = getView().findViewById(R.id.login_btn);
-        _loginBtn.setTypeface(myFont);
         _loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText _userId = (EditText) getView().findViewById(R.id.login_userid);
                 EditText _password = (EditText) getView().findViewById(R.id.login_password);
-                _userId.setTypeface(myFont);
-                _password.setTypeface(myFont);
                 String _userIdStr = _userId.getText().toString();
                 String _passwordStr = _password.getText().toString();
 
@@ -190,7 +185,6 @@ public class LoginFragment extends Fragment {
 
     void initRegisterBtn() {
         TextView _registerBtn = (TextView) getView().findViewById(R.id.login_register_Btn);
-        _registerBtn.setTypeface(myFont);
         _registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

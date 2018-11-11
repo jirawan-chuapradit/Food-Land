@@ -32,7 +32,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterCustomerFragment extends Fragment implements View.OnClickListener {
 
-    Typeface myFont;
     private Button registerBtn;
     private String fName, lName, email, phone, password, rePassword, uid;
     private FirebaseAuth fbAuth;
@@ -55,8 +54,6 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //set fonts
-        myFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FC Active Regular.ttf");
 
         //Firebase
         fbAuth = FirebaseAuth.getInstance();
@@ -75,8 +72,6 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
 
     private void register() {
 
-
-        registerBtn.setTypeface(myFont);
                 getParameter();
                 //check parameter
                 if (fName.isEmpty() || lName.isEmpty() || email.isEmpty()
@@ -159,13 +154,6 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
         EditText phoneEdt = getView().findViewById(R.id.regis_phone_cus);
         EditText passwordEdt = getView().findViewById(R.id.regis_pass_cus);
         EditText repasswordEdt = getView().findViewById(R.id.regis_rePass_cus);
-
-        fNameEdt.setTypeface(myFont);
-        lNameEdt.setTypeface(myFont);
-        emailEdt.setTypeface(myFont);
-        phoneEdt.setTypeface(myFont);
-        passwordEdt.setTypeface(myFont);
-        repasswordEdt.setTypeface(myFont);
 
         fName = fNameEdt.getText().toString().toUpperCase();
         lName = lNameEdt.getText().toString().toUpperCase();

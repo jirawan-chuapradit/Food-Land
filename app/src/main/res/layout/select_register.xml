@@ -75,7 +75,8 @@
                 android:layout_marginBottom="207dp"
                 android:layout_weight="1"
                 android:text="ลูกค้า"
-                android:textColor="@color/black"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
                 android:textSize="25dp" />
 
             <TextView
@@ -86,7 +87,8 @@
                 android:layout_marginBottom="207dp"
                 android:layout_weight="1"
                 android:text="ร้านค้า"
-                android:textColor="@color/black"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
                 android:textSize="25dp" />
         </LinearLayout>
     </LinearLayout>

@@ -7,5 +7,5 @@
     <font
         android:fontStyle="italic"
         android:fontWeight="400"
-        android:font="@font/fc_active" />
+        android:font="@font/fc_active_italic" />
 </font-family>
