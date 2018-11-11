@@ -29,7 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RegisterRestFragment extends Fragment implements View.OnClickListener {
 
     private Button registerBtn;
-    private String fName,lName,email,phone,restDesc,password,rePassword,uid;
+    private String fName, lName, email, phone, restDesc, password, rePassword, uid;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private ImageView back;
@@ -43,7 +43,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
              @Nullable ViewGroup container,
              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_register_rest,container,false);
+        return inflater.inflate(R.layout.fragment_register_rest, container, false);
     }
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -64,35 +64,29 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     }
 
 
-
     private void register() {
         //get parameter
         getParameter();
 
         //check parameter
-        if(fName.isEmpty()||lName.isEmpty()||email.isEmpty()
-                || phone.isEmpty()||password.isEmpty()||rePassword.isEmpty()){
+        if (fName.isEmpty() || lName.isEmpty() || email.isEmpty()
+                || phone.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
             Log.d("REGISTER", "PARAMETER IS EMPTY");
-            Toast.makeText(getActivity(),"กรุณากรอกข้อมูลให้ครบถ้วน",Toast.LENGTH_SHORT).show();
-        }
-        else if(!password.equals(rePassword)){
+            Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
+        } else if (!password.equals(rePassword)) {
             Log.d("REGISTER", "PASSWORD IS NOT EQUALS REPASSWORD");
-            Toast.makeText(getActivity(),"รหัสผ่านไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
-        }
-        else if(password.length() <= 5 || rePassword.length() <= 5){
+            Toast.makeText(getActivity(), "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+        } else if (password.length() <= 5 || rePassword.length() <= 5) {
             Log.d("REGISTER", "รหัสผ่านน้อยกว่า 6 ตัว");
-            Toast.makeText(getActivity(),"กรุณาระบุรหัสผ่านมากกว่า 5 ตัว",Toast.LENGTH_SHORT).show();
-        }
-        else {
+            Toast.makeText(getActivity(), "กรุณาระบุรหัสผ่านมากกว่า 5 ตัว", Toast.LENGTH_SHORT).show();
+        } else {
             // Loading data dialog following owner network speed
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Please waiting...");
-            progressDialog.show();
+            delay();
 
-             if(restDesc.isEmpty()){
-                 restDesc = "...";
-             }
-            fbAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            if (restDesc.isEmpty()) {
+                restDesc = "...";
+            }
+            fbAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     uid = fbAuth.getCurrentUser().getUid();
@@ -103,6 +97,19 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
             });
 
         }
+    }
+
+    void delay() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
+        progressDialog.setMessage("กรุณารอสักครู่...");
+        // Progress Dialog Style Horizontal
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Display Progress Dialog
+        progressDialog.show();
+        // Cannot Cancel Progress Dialog
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     private void setParameter() {
@@ -137,7 +144,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.d("REGISTER", "ERROR =" + e.getMessage());
-                        Toast.makeText(getContext(),"ERROR = "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -166,19 +173,19 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-         if (v == registerBtn){
+        if (v == registerBtn) {
             Log.d("REST", "REGISTER");
             register();
-        }else if(v == back){
-             Log.d("CKICK: ", "BACK");
-             back();
-         }
+        } else if (v == back) {
+            Log.d("CKICK: ", "BACK");
+            back();
+        }
     }
 
     private void back() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_view,new SelectRegisterFragment())
+                .replace(R.id.main_view, new SelectRegisterFragment())
                 .addToBackStack(null)
                 .commit();
         Log.d("CUSTOMER", "GOTO Select Register");

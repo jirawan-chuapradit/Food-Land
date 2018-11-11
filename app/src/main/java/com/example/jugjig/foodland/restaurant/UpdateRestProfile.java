@@ -134,14 +134,23 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
             Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
         } else {
             // Loading data dialog
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Please waiting...");
-            progressDialog.show();
+           delay();
 
             setParameter();
         }
     }
-
+    void delay(){
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
+        progressDialog.setMessage("กรุณารอสักครู่...");
+        // Progress Dialog Style Horizontal
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Display Progress Dialog
+        progressDialog.show();
+        // Cannot Cancel Progress Dialog
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
     private void setParameter() {
 
         if (desc.isEmpty()) {

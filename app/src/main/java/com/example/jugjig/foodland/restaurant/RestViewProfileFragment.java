@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland.restaurant;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,10 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jugjig.foodland.LoginFragment;
+import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
+import com.example.jugjig.foodland.RestMainActivity;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,7 +42,7 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
     private String uid,fname,lname,phone,desc,email;
-    Button updateBtn;
+    Button updateBtn, logoutBtn;
     ProgressDialog progressDialog;
 
 
@@ -54,16 +58,17 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
         uid = fbAuth.getCurrentUser().getUid();
 
         // Loading data dialog
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please waiting...");
-        progressDialog.show();
+        delay();
 
         getParameter();
         setParmeter();
 
         //getParameter from fragment
         updateBtn = getView().findViewById(R.id.update_profile);
+        logoutBtn = getView().findViewById(R.id.log_out_btn);
+
         updateBtn.setOnClickListener(this);
+        logoutBtn.setOnClickListener(this);
 
     }
 
@@ -81,10 +86,10 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
                         email = restProfile.getEmail();
                         desc = restProfile.getDesc();
 
-                        profileName.setText("ชื่อ : "+fname +"  "+ lname);
-                        profileEmail.setText("อีเมลล์ : "+email);
-                        profilePhone.setText("เบอร์โทร : "+phone);
-                        profileDesc.setText("รายละเอียดร้านค้า : "+desc);
+                        profileName.setText(fname +"  "+ lname);
+                        profileEmail.setText(email);
+                        profilePhone.setText(phone);
+                        profileDesc.setText(desc);
                         Log.d("USER", "SHOW USER INFORMATION");
                         progressDialog.dismiss();
                     }
@@ -112,6 +117,18 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
             Log.d("USER ","CLICK UPDATE PROFILE");
             updateProfile();
         }
+        else if(v==logoutBtn){
+            Log.d("USER ","CLICK LOGOUT");
+            logout();
+        }
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent myIntent = new Intent(getActivity(), MainActivity.class);
+        getActivity().startActivity(myIntent);
+
+        Log.d("USER ", "GO TO LOGIN");
     }
 
     private void updateProfile() {
@@ -127,8 +144,22 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.rest_main_view, new UpdateRestProfile())
+                .addToBackStack(null)
                 .commit();
 
         Log.d("USER ", "GO TO UPDATE PROFILE");
+    }
+
+    void delay(){
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
+        progressDialog.setMessage("กรุณารอสักครู่...");
+        // Progress Dialog Style Horizontal
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Display Progress Dialog
+        progressDialog.show();
+        // Cannot Cancel Progress Dialog
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 }

@@ -59,17 +59,30 @@ public class LoginFragment extends Fragment {
         fbAuth = FirebaseAuth.getInstance();
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
+            // Loading data dialog following owner network speed
+            delay();
+            uid = fbAuth.getCurrentUser().getUid();
             Log.d("USER", "USER ALREADY LOG IN");
             Log.d("USER", "GOTO HomePage");
-            Intent myIntent = new Intent(getActivity(), CusMainActivity.class);
-            getActivity().startActivity(myIntent);
-            return;
+            getRole();
         }
 
         initLoginBtn();
         initRegisterBtn();
 
+    }
+
+    void delay(){
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
+        progressDialog.setMessage("กรุณารอสักครู่...");
+        // Progress Dialog Style Horizontal
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Display Progress Dialog
+        progressDialog.show();
+        // Cannot Cancel Progress Dialog
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     void initLoginBtn() {
@@ -93,9 +106,7 @@ public class LoginFragment extends Fragment {
 
                 } else {
                     // Loading data dialog following owner network speed
-                    progressDialog = new ProgressDialog(getActivity());
-                    progressDialog.setMessage("Please waiting...");
-                    progressDialog.show();
+                   delay();
 
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(_userIdStr, _passwordStr)
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
