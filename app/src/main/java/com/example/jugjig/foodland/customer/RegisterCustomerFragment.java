@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland.customer;
 
 import android.app.ProgressDialog;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterCustomerFragment extends Fragment {
 
+    Typeface myFont;
     private Button registerBtn;
     private String fName, lName, email, phone, password, rePassword, uid;
     private FirebaseAuth fbAuth;
@@ -49,6 +51,8 @@ public class RegisterCustomerFragment extends Fragment {
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //set fonts
+        myFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/FC Active Regular.ttf");
 
         //Firebase
         fbAuth = FirebaseAuth.getInstance();
@@ -64,6 +68,8 @@ public class RegisterCustomerFragment extends Fragment {
     private void register() {
 
         registerBtn = getView().findViewById(R.id.regis_cus_btn);
+        registerBtn.setTypeface(myFont);
+
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,12 +151,20 @@ public class RegisterCustomerFragment extends Fragment {
     }
 
     private void getParameter() {
+
         EditText fNameEdt = getView().findViewById(R.id.regis_Fname_cus);
         EditText lNameEdt = getView().findViewById(R.id.regis_Lname_cus);
         EditText emailEdt = getView().findViewById(R.id.regis_mail_cus);
         EditText phoneEdt = getView().findViewById(R.id.regis_phone_cus);
         EditText passwordEdt = getView().findViewById(R.id.regis_pass_cus);
         EditText repasswordEdt = getView().findViewById(R.id.regis_rePass_cus);
+
+        fNameEdt.setTypeface(myFont);
+        lNameEdt.setTypeface(myFont);
+        emailEdt.setTypeface(myFont);
+        phoneEdt.setTypeface(myFont);
+        passwordEdt.setTypeface(myFont);
+        repasswordEdt.setTypeface(myFont);
 
         fName = fNameEdt.getText().toString().toUpperCase();
         lName = lNameEdt.getText().toString().toUpperCase();
