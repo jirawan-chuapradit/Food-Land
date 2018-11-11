@@ -29,6 +29,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="42dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="124dp"
+                android:layout_marginRight="339dp"
+                android:clickable="true"
+                android:src="@drawable/ic_back_icon" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,7 +48,8 @@
                 android:layout_weight="1"
                 android:text="ลงทะเบียน"
                 android:textColor="@color/black"
-                android:textSize="35dp" />
+                android:textSize="35dp"
+                android:fontFamily="@"/>
 
             <TextView
                 android:layout_width="match_parent"

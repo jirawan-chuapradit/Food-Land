@@ -189,6 +189,7 @@ public class LoginFragment extends Fragment {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.main_view, new SelectRegisterFragment())
+                        .addToBackStack(null)
                         .commit();
                 Toast.makeText(
                         getActivity(),

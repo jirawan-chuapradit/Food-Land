@@ -12,11 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
+import com.example.jugjig.foodland.SelectRegisterFragment;
 import com.example.jugjig.foodland.model.ProfileCustomer;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,13 +30,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class RegisterCustomerFragment extends Fragment {
+public class RegisterCustomerFragment extends Fragment implements View.OnClickListener {
 
     Typeface myFont;
     private Button registerBtn;
     private String fName, lName, email, phone, password, rePassword, uid;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
+    private ImageView back;
+
 
     // Loading data dialog
     ProgressDialog progressDialog;
@@ -58,24 +62,22 @@ public class RegisterCustomerFragment extends Fragment {
         fbAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        back = getView().findViewById(R.id.back_btn);
+        registerBtn = getView().findViewById(R.id.regis_cus_btn);
 
         register();
         //attaching listener
+        back.setOnClickListener(this);
+        registerBtn.setOnClickListener(this);
 
 
     }
 
     private void register() {
 
-        registerBtn = getView().findViewById(R.id.regis_cus_btn);
+
         registerBtn.setTypeface(myFont);
-
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //get parameter
                 getParameter();
-
                 //check parameter
                 if (fName.isEmpty() || lName.isEmpty() || email.isEmpty()
                         || phone.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
@@ -114,8 +116,7 @@ public class RegisterCustomerFragment extends Fragment {
                             });
 
                 }
-            }
-        });
+
 
     }
 
@@ -209,5 +210,23 @@ public class RegisterCustomerFragment extends Fragment {
 //        });
 //    }
 
+    private void back() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_view,new SelectRegisterFragment())
+                .addToBackStack(null)
+                .commit();
+        Log.d("CUSTOMER", "GOTO Select Register");
+    }
 
+    @Override
+    public void onClick(View v) {
+        if (v == registerBtn){
+            Log.d("REST", "REGISTER");
+            register();
+        }else if(v == back){
+            Log.d("CKICK: ", "BACK");
+            back();
+        }
+    }
 }

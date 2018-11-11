@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
+import com.example.jugjig.foodland.SelectRegisterFragment;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,10 +28,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterRestFragment extends Fragment implements View.OnClickListener {
 
-    private Button backBtn,registerBtn;
+    private Button registerBtn;
     private String fName,lName,email,phone,restDesc,password,rePassword,uid;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
+    private ImageView back;
 
     // Loading data dialog
     ProgressDialog progressDialog;
@@ -52,12 +55,11 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
         //get parameter
         registerBtn = getView().findViewById(R.id.registerBtn);
-        backBtn = getView().findViewById(R.id.back_login_btn);
+        back = getView().findViewById(R.id.back_btn);
 
         //attaching listener
         registerBtn.setOnClickListener(this);
-        backBtn.setOnClickListener(this);
-
+        back.setOnClickListener(this);
     }
 
     void backToLogin(){
@@ -168,14 +170,22 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(v == backBtn){
-            Log.d("REST", "GOTO LOGIN");
-            backToLogin();
-        }
-        else if (v == registerBtn){
+         if (v == registerBtn){
             Log.d("REST", "REGISTER");
             register();
-        }
+        }else if(v == back){
+             Log.d("CKICK: ", "BACK");
+             back();
+         }
+    }
+
+    private void back() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_view,new SelectRegisterFragment())
+                .addToBackStack(null)
+                .commit();
+        Log.d("CUSTOMER", "GOTO Select Register");
     }
 
 
