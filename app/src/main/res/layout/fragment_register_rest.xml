@@ -7,12 +7,6 @@
     >
 
 
-    <ImageView
-        android:id="@+id/bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/register_bg"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,8 +19,13 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="150dp">
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/register_bg"/>
+
                 <TextView
                     android:layout_width="127dp"
                     android:layout_height="40dp"
@@ -37,12 +36,14 @@
                     android:text="ลงทะเบียน"
                     android:textStyle="bold"
                     android:textColor="@color/system_font_color"
-                    android:textSize="35dp" />
+                    android:textSize="35dp"
+                    android:layout_marginTop="150dp"/>
                 <Button
-                    android:layout_width="65dp"
+                    android:layout_width="60dp"
                     android:layout_height="77dp"
                     android:layout_marginLeft="260dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="150dp"
                     android:background="@drawable/regis_restaurant_black" />
                 <Button
                     android:id="@+id/back_btn"
@@ -50,13 +51,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
                     android:layout_marginRight="339dp"
+                    android:layout_marginTop="150dp"
                     android:background="@drawable/ic_back_icon" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
                     android:layout_marginRight="90dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="170dp"
                     android:fontFamily="@font/re_font"
                     android:text="-"
                     android:textColor="@color/system_font_color"
@@ -69,13 +71,20 @@
                     android:gravity="center"
                     android:layout_marginLeft="120dp"
                     android:layout_marginRight="120dp"
-                     android:layout_marginTop="50dp"
+                     android:layout_marginTop="190dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
                     android:text="ร้านค้า"
                     android:textColor="@color/system_font_color"
                     android:textSize="22dp" />
             </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/userProfileImage"
+                android:layout_width="315dp"
+                android:layout_height="123dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/upload_profile" />
 
             <TextView
                 android:layout_width="92dp"
@@ -266,6 +275,149 @@
                 android:inputType="textPassword"
                 android:padding="10dp"/>
 
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="ชื่อร้าน :"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/registeRestName"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="สถานที่ตั้ง :"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/registeRestLocate"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="92dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="44dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="เวลาเปิด :"
+                    android:textColor="@color/system_font_color"
+                    android:fontFamily="@font/re_font"
+                    android:textSize="20dp" />
+                <TextView
+                    android:layout_width="92dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="เวลาปิด :"
+                    android:textColor="@color/system_font_color"
+                    android:fontFamily="@font/re_font"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/registeRestOpen"
+                    android:layout_width="290dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/user_font_color"
+                    android:background="@drawable/fill_shape_input"
+                    android:fontFamily="@font/re_font"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"/>
+
+                <EditText
+                    android:id="@+id/registeRestClose"
+                    android:layout_width="290dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/user_font_color"
+                    android:background="@drawable/fill_shape_input"
+                    android:fontFamily="@font/re_font"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="153dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="35dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/re_font"
+                android:text="ประเภทของร้าน :"
+                android:textColor="@color/system_font_color"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/registeRestType"
+                android:layout_width="290dp"
+                android:layout_height="39dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/user_font_color"
+                android:background="@drawable/fill_shape_input"
+                android:fontFamily="@font/re_font"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
             <Button
                 android:id="@+id/registerBtn"
                 android:layout_width="300dp"

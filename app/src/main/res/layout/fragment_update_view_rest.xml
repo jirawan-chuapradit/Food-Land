@@ -4,12 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/register_bg"/>
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_bg"/>
+
             <ImageView
                 android:layout_width="254dp"
                 android:layout_height="140dp"
@@ -28,13 +30,18 @@
                 android:layout_marginRight="61dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/logo_white" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/back_btn"
+                    android:layout_width="19dp"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="180dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="339dp"
+                    android:background="@drawable/ic_back_icon" />
                 <TextView
                     android:layout_width="127dp"
                     android:layout_height="40dp"
+                    android:layout_marginTop="190dp"
                     android:layout_marginLeft="125dp"
                     android:layout_marginRight="118dp"
                     android:layout_weight="1"
@@ -44,24 +51,18 @@
                     android:textSize="35dp" />
                 <Button
                     android:id="@+id/update_profile"
-                    android:layout_width="65dp"
+                    android:layout_width="60dp"
                     android:layout_height="77dp"
+                    android:layout_marginTop="180dp"
                     android:layout_marginLeft="260dp"
                     android:layout_marginRight="30dp"
                     android:background="@drawable/regis_restaurant_black" />
-                <Button
-                    android:id="@+id/back_btn"
-                    android:layout_width="19dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginRight="339dp"
-                    android:background="@drawable/ic_back_icon" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
                     android:layout_marginRight="90dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="215dp"
                     android:fontFamily="@font/re_font"
                     android:text="-"
                     android:textColor="@color/system_font_color"
@@ -88,7 +89,7 @@
                 android:layout_width="290dp"
                 android:layout_height="39dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:textColor="@color/user_font_color"
@@ -116,7 +117,7 @@
                 android:layout_height="39dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:textSize="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/user_font_color"
@@ -141,7 +142,7 @@
                 android:layout_width="290dp"
                 android:layout_height="39dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"
@@ -167,7 +168,7 @@
                 android:layout_width="290dp"
                 android:layout_height="39dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"
@@ -192,7 +193,7 @@
                 android:layout_width="290dp"
                 android:layout_height="122dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"

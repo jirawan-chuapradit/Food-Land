@@ -210,7 +210,7 @@
         android:layout_marginTop="300dp"
         >
     <Button
-        android:id="@+id/back_btn"
+        android:id="@+id/log_out_btn"
         android:layout_marginTop="150dp"
         android:layout_width="32dp"
         android:layout_height="32dp"

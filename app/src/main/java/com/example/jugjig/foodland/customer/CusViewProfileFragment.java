@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland.customer;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.ProfileCustomer;
 import com.example.jugjig.foodland.model.UserProfile;
@@ -35,7 +37,7 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
     private String uid,fname,lname,phone,email;
-    Button updateBtn;
+    Button updateBtn, logoutBtn;
     ProgressDialog progressDialog;
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -55,9 +57,10 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
 
         getParameter();
         setParmeter();
-
+        logoutBtn = getView().findViewById(R.id.log_out_btn);
         updateBtn = getView().findViewById(R.id.update_profile);
         updateBtn.setOnClickListener(this);
+        logoutBtn.setOnClickListener(this);
 
 
     }
@@ -97,6 +100,13 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
         profilePhone = getView().findViewById(R.id.cusPhone);
 
     }
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent myIntent = new Intent(getActivity(), MainActivity.class);
+        getActivity().startActivity(myIntent);
+
+        Log.d("USER ", "GO TO LOGIN");
+    }
 
     @Override
     public void onClick(View v) {
@@ -104,6 +114,10 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
             Log.d("USER ","CLICK UPDATE PROFILE");
             System.out.println("aaaaaaa");
             updateProfile();
+        }
+        else if(v==logoutBtn){
+            Log.d("USER ","CLICK LOGOUT");
+            logout();
         }
     }
 
