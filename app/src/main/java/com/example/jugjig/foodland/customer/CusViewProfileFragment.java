@@ -16,9 +16,7 @@ import android.widget.TextView;
 
 import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
-import com.example.jugjig.foodland.model.ProfileCustomer;
 import com.example.jugjig.foodland.model.UserProfile;
-import com.example.jugjig.foodland.restaurant.UpdateRestProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,7 +70,7 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        ProfileCustomer cusProfile = documentSnapshot.toObject(ProfileCustomer.class);
+                        UserProfile cusProfile = documentSnapshot.toObject(UserProfile.class);
                         fname = cusProfile.getfName();
                         lname = cusProfile.getlName();
                         phone = cusProfile.getPhone();
