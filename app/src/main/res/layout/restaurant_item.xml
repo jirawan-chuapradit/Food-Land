@@ -6,8 +6,11 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_width="match_parent"
-    android:background="@drawable/item_res"
-    android:layout_height="150dp">
+    android:layout_height="150dp"
+    android:elevation="4dp"
+    android:layout_margin="6dp"
+    android:background="@drawable/shadow_shape"
+    >
 
     <de.hdodenhof.circleimageview.CircleImageView
 

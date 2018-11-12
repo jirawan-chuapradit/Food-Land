@@ -3,10 +3,13 @@ package com.example.jugjig.foodland.customer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +33,8 @@ public class HomeFragment extends Fragment {
     SearchView search;
     ArrayList<Restaurant> restaurants;
     Bundle bundle;
+    AppBarLayout topBG;
+    boolean check_ScrollingUp = false;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater,
@@ -47,6 +52,9 @@ public class HomeFragment extends Fragment {
 
         resList = getActivity().findViewById(R.id.home_res_list);
         resList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        topBG = getActivity().findViewById(R.id.app_bar);
+
+        setOnScroll();
 
         if (restaurants != null) {
             adapter.setItemList(restaurants);
@@ -85,6 +93,35 @@ public class HomeFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 adapter.filter(newText);
                 return true;
+            }
+        });
+    }
+
+    void setOnScroll() {
+        resList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    // Scrolling up
+                    if(check_ScrollingUp)
+                    {
+                        topBG.setExpanded(true);
+                    }
+
+                } else {
+                    // Scrolling down
+                    if(!check_ScrollingUp ) {
+                        topBG.setExpanded(false);
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
             }
         });
     }

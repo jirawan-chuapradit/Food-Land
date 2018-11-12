@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/navigation_history"
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_inbox"
         android:title="History" />
 
     <item
         android:id="@+id/navigation_restaurants"
-        android:icon="@drawable/HOME"
+        android:icon="@drawable/ic_home"
         android:title="Restaurants"
 
         >@color/colorNav</item>
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/PROFILE"
+        android:icon="@drawable/ic_person"
         android:title="Profile" />
 
     <!--<item-->

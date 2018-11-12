@@ -22,9 +22,11 @@
         </activity>
         <activity
             android:name=".CusMainActivity"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_cus_main" />
         <activity
             android:name=".RestMainActivity"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_rest_main"></activity>
     </application>
 
