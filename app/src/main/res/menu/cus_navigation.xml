@@ -10,13 +10,14 @@
     <item
         android:id="@+id/navigation_restaurants"
         android:icon="@drawable/ic_home"
+
         android:title="Restaurants"
 
         >@color/colorNav</item>
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_person"
+        android:icon="@drawable/profile"
         android:title="Profile" />
 
     <!--<item-->

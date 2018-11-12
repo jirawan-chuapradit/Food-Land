@@ -2,6 +2,7 @@ package com.example.jugjig.foodland;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class LoginFragment extends Fragment {
     //Firebase
@@ -93,7 +96,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 EditText _userId = (EditText) getView().findViewById(R.id.login_userid);
                 EditText _password = (EditText) getView().findViewById(R.id.login_password);
-                String _userIdStr = _userId.getText().toString();
+                final String _userIdStr = _userId.getText().toString();
                 String _passwordStr = _password.getText().toString();
 
                 if (_userIdStr.isEmpty() || _passwordStr.isEmpty()) {
@@ -116,6 +119,11 @@ public class LoginFragment extends Fragment {
 //                                    chkIsVeriFied(authResult.getUser());
 
                                     uid = fbAuth.getCurrentUser().getUid();
+                                    //GET UID of Currnet user
+                                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+                                    prefs.putString("_userId", _userIdStr);
+                                    prefs.apply();
+                                    Log.d("_UserID: ", _userIdStr);
                                     getRole();
 
                                 }

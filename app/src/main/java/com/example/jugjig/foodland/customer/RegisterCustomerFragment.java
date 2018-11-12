@@ -1,7 +1,6 @@
 package com.example.jugjig.foodland.customer;
 
 import android.app.ProgressDialog;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,22 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
-import com.example.jugjig.foodland.model.ProfileCustomer;
 import com.example.jugjig.foodland.model.UserProfile;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterCustomerFragment extends Fragment implements View.OnClickListener {
@@ -96,7 +89,7 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                                     uid = fbAuth.getCurrentUser().getUid();
                                     setParameter();
 //                                    sendVerifiedEmail(authResult.getUser());
-
+                                    progressDialog.dismiss();
                                     fbAuth.getInstance().signOut();
                                     Log.d("LOGIN", "Send verify e-mail successful");
                                     getActivity().getSupportFragmentManager()
@@ -116,7 +109,7 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
     }
 
     private void setParameter() {
-        ProfileCustomer cusProfile = ProfileCustomer.getCusProfileInstance();
+        UserProfile cusProfile = UserProfile.getRestProfileInstance();
         cusProfile.setfName(fName);
         cusProfile.setlName(lName);
         cusProfile.setRole("customer");

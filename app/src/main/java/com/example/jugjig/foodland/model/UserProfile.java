@@ -7,13 +7,13 @@ public class UserProfile {
      **************************************/
     private String fName,lName,phone,email,desc,role;
 
-    private static UserProfile restProfileInstance;
+    private static UserProfile userProfileInstance;
 
    public static UserProfile getRestProfileInstance(){
-       if (restProfileInstance == null){
-           restProfileInstance = new UserProfile();
+       if (userProfileInstance == null){
+           userProfileInstance = new UserProfile();
        }
-       return restProfileInstance;
+       return userProfileInstance;
    }
 
     private UserProfile() {
@@ -28,8 +28,8 @@ public class UserProfile {
         this.role = role;
     }
 
-    public static void setRestProfileInstance(UserProfile restProfileInstance) {
-        UserProfile.restProfileInstance = restProfileInstance;
+    public static void setRestProfileInstance(UserProfile userProfileInstance) {
+        UserProfile.userProfileInstance = userProfileInstance;
     }
 
     public String getfName() {
