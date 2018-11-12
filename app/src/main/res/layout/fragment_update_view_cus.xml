@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/register_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
@@ -15,19 +16,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="150dp">
 
-        <ImageView
-            android:id="@+id/bg"
-            android:layout_width="match_parent"
-            android:layout_height="188dp"
-            android:background="@drawable/register_bg"/>
+
 
         <ImageView
             android:layout_centerInParent="true"
             android:layout_alignParentTop="true"
             android:layout_width="260dp"
             android:layout_height="100dp"
+
             android:src="@drawable/logo_white"
 
             />
@@ -35,66 +33,13 @@
 
     </RelativeLayout></ScrollView>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="1dp">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="80dp"
-        android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_centerInParent="true"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="111dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginRight="52dp"
-        android:layout_weight="1"
-        android:text="ข้อมูลส่วนตัว"
-        android:textStyle="bold"
-        android:textColor="@color/system_font_color"
-        android:fontFamily="@font/re_font"
-        android:textSize="35dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:layout_marginLeft="105dp"
-            android:text="_"
-            android:textScaleX="13"
-            android:textSize="30dp"
-            android:textColor="@color/system_font_color"
-            android:fontFamily="@font/re_font"
-            android:textStyle="bold" />
-
-
-    <Button
-        android:id="@+id/back_btn"
-        android:layout_marginTop="60dp"
-        android:layout_width="19dp"
-        android:layout_height="52dp"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/ic_back_icon"
-        />
-    </RelativeLayout></LinearLayout></ScrollView>
 
 
     <ScrollView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         >
 
         <LinearLayout
@@ -104,10 +49,62 @@
 
 
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:layout_width="150dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="ข้อมูลส่วนตัว"
+                        android:id="@+id/text"
+                        android:textStyle="bold"
+                        android:textColor="@color/system_font_color"
+                        android:fontFamily="@font/re_font"
+                        android:textSize="35dp" />
+
+
+
+                    <RelativeLayout
+                        android:layout_width="40dp"
+                        android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/back_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:background="@drawable/ic_back_icon"
+                            />
+
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="match_parent"
+                android:text="_"
+                android:textScaleX="20"
+                android:textSize="25sp"
+                android:textColor="@color/system_font_color"
+                android:fontFamily="@font/re_font"
+                android:textStyle="bold" />
+            </RelativeLayout>
+
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="130dp"
+                    android:layout_marginTop="30sp"
                     android:fontFamily="@font/re_font"
                     android:gravity="center"
                     android:layout_marginLeft="20dp"
@@ -119,7 +116,8 @@
                 <EditText
                     android:layout_marginLeft="20dp"
                     android:id="@+id/update_cus_FName"
-                    android:textColor="#ffff"
+                    android:padding="10dp"
+                    android:textColor="@color/user_font_color"
                     android:textSize="20dp"
                     android:hint="ดาวิกา"
                     android:fontFamily="@font/re_font"
@@ -145,7 +143,8 @@
 
                 <EditText
                     android:id="@+id/update_cus_LName"
-                    android:textColor="#ffff"
+                    android:padding="10dp"
+                    android:textColor="@color/user_font_color"
                     android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:hint="โฮเน่"
@@ -172,8 +171,8 @@
 
                 <TextView
                     android:id="@+id/update_cusEmail"
-                    android:textColor="#ffff"
-                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:textColor="@color/user_font_color"                    android:layout_marginLeft="20dp"
                     android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:hint="ab@gmail.com"
@@ -200,8 +199,8 @@
 
                 <EditText
                     android:id="@+id/update_cusPhone"
-                    android:textColor="#ffff"
-                    android:textSize="20dp"
+                    android:padding="10dp"
+                    android:textColor="@color/user_font_color"                    android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:layout_marginLeft="20dp"
                     android:hint=" 085- XXX - XXXX"
@@ -226,7 +225,8 @@
 
                 <EditText
                     android:id="@+id/update_cusPassword"
-                    android:textColor="#ffff"
+                    android:padding="10dp"
+                    android:textColor="@color/user_font_color"
                     android:textSize="20dp"
                     android:hint=" ••••••"
                     android:fontFamily="@font/re_font"
@@ -251,8 +251,8 @@
 
                 <EditText
                     android:id="@+id/update_cusRePassword"
-                    android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:padding="10dp"
+                    android:textColor="@color/user_font_color"                    android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:layout_marginLeft="20dp"
                     android:hint=" ••••••"

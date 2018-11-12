@@ -9,14 +9,14 @@
 
     <item
         android:id="@+id/navigation_restaurants"
-        android:icon="@drawable/HOME"
+        android:icon="@drawable/home"
         android:title="Restaurants"
 
         >@color/colorNav</item>
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/PROFILE"
+        android:icon="@drawable/profile"
         android:title="Profile" />
 
     <!--<item-->
