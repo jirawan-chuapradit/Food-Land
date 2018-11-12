@@ -9,8 +9,9 @@
 
     <item
         android:id="@+id/navigation_restaurants"
+
         android:icon="@drawable/ic_home"
-        android:icon="@drawable/home"
+
 
         android:title="Restaurants"
 
