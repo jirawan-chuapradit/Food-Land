@@ -3,24 +3,38 @@ package com.example.jugjig.foodland.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Restaurant implements Parcelable {
 
-    private String name, location, type, openTime, closeTime, profileImageURL;
+    private String name;
+    private String location;
+    private String type;
+    private String openTime;
+    private String closeTime;
+    private String telephone;
+    private String profileImageURL;
+    private ArrayList<String> imageDes;
+    private Double latitude;
+    private Double longitude;
 
 
     public Restaurant() {
 
     }
 
-    public Restaurant(String name, String location, String type, String openTime, String closeTime, String profileImageURL) {
+    public Restaurant(String name, String location, String type, String openTime, String closeTime, String telephone, String profileImageURL, ArrayList<String> imageDes, Double latitude, Double longitude) {
         this.name = name;
         this.location = location;
         this.type = type;
         this.openTime = openTime;
         this.closeTime = closeTime;
+        this.telephone = telephone;
         this.profileImageURL = profileImageURL;
+        this.imageDes = imageDes;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
-
 
     protected Restaurant(Parcel in) {
         name = in.readString();
@@ -106,5 +120,37 @@ public class Restaurant implements Parcelable {
 
     public void setProfileImageURL(String profileImageURL) {
         this.profileImageURL = profileImageURL;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public ArrayList<String> getImageDes() {
+        return imageDes;
+    }
+
+    public void setImageDes(ArrayList<String> imageDes) {
+        this.imageDes = imageDes;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
