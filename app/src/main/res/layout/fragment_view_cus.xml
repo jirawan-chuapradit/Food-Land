@@ -11,13 +11,11 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        >
+        android:layout_marginTop="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
 
             <ImageView
@@ -25,10 +23,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_width="260dp"
                 android:layout_height="100dp"
-                android:src="@drawable/logo_white"
-
-                />
-
+                android:src="@drawable/logo_white" />
 
         </RelativeLayout></ScrollView>
 
@@ -109,19 +104,19 @@
 
             <TextView
                 android:id="@+id/cusName"
-                android:layout_marginLeft="20dp"
-
-                android:textColor="#ffff"
-                android:textSize="20dp"
-                android:hint="ดาวิกา  โฮเน่"
-                android:fontFamily="@font/re_font"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/shape_search"
                 android:layout_width="match_parent"
+
                 android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                />
+                android:background="@drawable/shape_search"
+                android:fontFamily="@font/re_font"
+                android:hint="ดาวิกา  โฮเน่"
+                android:textColor="@color/user_font_color"
+                android:padding="10dp"
+                android:textSize="20dp" />
 
 
 
@@ -139,7 +134,7 @@
 
             <TextView
                 android:id="@+id/cusEmail"
-                android:textColor="#ffff"
+                android:textColor="@color/user_font_color"
                 android:layout_marginLeft="20dp"
                 android:textSize="20dp"
                 android:fontFamily="@font/re_font"
@@ -149,6 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginRight="20dp"
+                android:padding="10dp"
                 android:layout_weight="1"
                 />
 
@@ -167,7 +163,7 @@
 
             <TextView
                 android:id="@+id/cusPhone"
-                android:textColor="#ffff"
+                android:textColor="@color/user_font_color"
                 android:textSize="20dp"
                 android:fontFamily="@font/re_font"
                 android:layout_marginLeft="20dp"
@@ -178,16 +174,40 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                />
+                android:padding="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="35dp">
+                <Button
+                    android:id="@+id/update_password_btn"
+                    android:layout_width="134dp"
+                    android:layout_height="54dp"
+                    android:layout_marginLeft="43dp"
+                    android:layout_marginRight="21dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_change_password"/>
+
+                <Button
+                    android:id="@+id/log_out_btn"
+                    android:layout_width="134dp"
+                    android:layout_height="54dp"
+                    android:layout_marginRight="42dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_logout"/>
 
 
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                ></LinearLayout>
+                android:layout_marginTop="10dp">
+            </LinearLayout>
 
 
         </LinearLayout></ScrollView>
@@ -199,26 +219,14 @@
         >
     <Button
         android:id="@+id/update_profile"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="19dp"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/edit_profile" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        >
-    <Button
-        android:id="@+id/log_out_btn"
-        android:layout_marginTop="150dp"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/singout"
-        />
-    </RelativeLayout>
+
 
 
 

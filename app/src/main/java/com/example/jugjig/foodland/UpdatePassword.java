@@ -83,6 +83,7 @@ public class UpdatePassword extends Fragment {
                     Toast.makeText(getActivity(),"รหัสผ่านไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    delay();
                     SharedPreferences prefs = getContext().getSharedPreferences("FoodLand", Context.MODE_PRIVATE);
                     String email = prefs.getString("_userId", "empty email");
                     Log.d("USER ID: ", email);
@@ -145,6 +146,19 @@ public class UpdatePassword extends Fragment {
                     }
 
                 });
+    }
+
+    void delay(){
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
+        progressDialog.setMessage("กรุณารอสักครู่...");
+        // Progress Dialog Style Horizontal
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        // Display Progress Dialog
+        progressDialog.show();
+        // Cannot Cancel Progress Dialog
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
 }

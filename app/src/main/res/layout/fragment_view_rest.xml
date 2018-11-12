@@ -9,63 +9,40 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        >
+        android:layout_marginTop="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-
+            android:layout_height="match_parent">
 
             <ImageView
                 android:layout_centerInParent="true"
                 android:layout_alignParentTop="true"
                 android:layout_width="260dp"
                 android:layout_height="100dp"
-
-                android:src="@drawable/logo_white"
-
-                />
-
-
+                android:src="@drawable/logo_white" />
         </RelativeLayout></ScrollView>
 
 
-
     <ScrollView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        >
+        android:layout_marginTop="124dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="0dp"
-                android:layout_height="50dp">
-
-                <Button
-                    android:id="@+id/log_out_btn"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="140dp"
-                    android:background="@drawable/ic_log_out" />
+                android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     android:text="ข้อมูลส่วนตัว"
                     android:textStyle="bold"
                     android:textColor="@color/system_font_color"
@@ -74,7 +51,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -88,22 +65,14 @@
                         android:fontFamily="@font/re_font"
                         android:textStyle="bold" />
                 </RelativeLayout>
-
-                <Button
-                    android:id="@+id/update_profile"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_n_edit" />
             </RelativeLayout>
-
 
             <TextView
                 android:layout_width="92dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="51dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginRight="232dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -209,14 +178,52 @@
                 android:textColor="@color/user_font_color"
                 android:textSize="20dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="35dp">
+                <Button
+                    android:id="@+id/update_password_btn"
+                    android:layout_width="134dp"
+                    android:layout_height="54dp"
+                    android:layout_marginLeft="43dp"
+                    android:layout_marginRight="21dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_change_password"/>
+
+                <Button
+                    android:id="@+id/log_out_btn"
+                    android:layout_width="134dp"
+                    android:layout_height="54dp"
+                    android:layout_marginRight="42dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_logout"/>
 
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+            </LinearLayout>
+        </LinearLayout></ScrollView>
 
-        </LinearLayout>
-
-    </ScrollView>
-
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp">
+        <Button
+            android:id="@+id/update_profile"
+            android:layout_marginTop="120dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/edit_profile" />
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>

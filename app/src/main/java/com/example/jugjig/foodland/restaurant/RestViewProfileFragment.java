@@ -19,6 +19,7 @@ import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.RestMainActivity;
+import com.example.jugjig.foodland.UpdatePassword;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,7 +43,7 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
     private String uid,fname,lname,phone,desc,email;
-    Button updateBtn, logoutBtn;
+    Button updateBtn, logoutBtn,updatePasswordBtn;
     ProgressDialog progressDialog;
 
 
@@ -66,9 +67,11 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
         //getParameter from fragment
         updateBtn = getView().findViewById(R.id.update_profile);
         logoutBtn = getView().findViewById(R.id.log_out_btn);
+        updatePasswordBtn = getView().findViewById(R.id.update_password_btn);
 
         updateBtn.setOnClickListener(this);
         logoutBtn.setOnClickListener(this);
+        updatePasswordBtn.setOnClickListener(this);
 
     }
 
@@ -121,6 +124,22 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
             Log.d("USER ","CLICK LOGOUT");
             logout();
         }
+        else if(v==updatePasswordBtn){
+            Log.d("USER ","CLICK UPDATE PASSWORD");
+            updatePassword();
+        }
+    }
+
+
+
+    private void updatePassword() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.rest_main_view, new UpdatePassword())
+                .addToBackStack(null)
+                .commit();
+
+        Log.d("RESTAURANT ", "GO TO UPDATE PASSWORD");
     }
 
     private void logout() {

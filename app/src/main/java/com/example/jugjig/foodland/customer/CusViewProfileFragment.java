@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
+import com.example.jugjig.foodland.UpdatePassword;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +36,7 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
     private String uid,fname,lname,phone,email;
-    Button updateBtn, logoutBtn;
+    Button updateBtn, logoutBtn,updatePasswordBtn;
     ProgressDialog progressDialog;
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -55,11 +56,15 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
 
         getParameter();
         setParmeter();
+
         logoutBtn = getView().findViewById(R.id.log_out_btn);
         updateBtn = getView().findViewById(R.id.update_profile);
+        updatePasswordBtn = getView().findViewById(R.id.update_password_btn);
+
+
         updateBtn.setOnClickListener(this);
         logoutBtn.setOnClickListener(this);
-
+        updatePasswordBtn.setOnClickListener(this);
 
     }
 
@@ -117,6 +122,20 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
             Log.d("USER ","CLICK LOGOUT");
             logout();
         }
+        else if(v==updatePasswordBtn){
+            Log.d("USER ","CLICK UPDATE PASSWORD");
+            updatePassword();
+        }
+    }
+
+    private void updatePassword() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.cus_main_view, new UpdatePassword())
+                .addToBackStack(null)
+                .commit();
+
+        Log.d("CUSTOMER ", "GO TO UPDATE PASSWORD");
     }
 
     private void updateProfile() {

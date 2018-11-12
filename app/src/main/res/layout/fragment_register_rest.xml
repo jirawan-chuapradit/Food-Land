@@ -103,12 +103,12 @@
 
 
 
-            <ImageView
-                android:id="@+id/userProfileImage"
-                android:layout_width="315dp"
-                android:layout_height="123dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/upload_profile" />
+            <!--<ImageView-->
+                <!--android:id="@+id/userProfileImage"-->
+                <!--android:layout_width="315dp"-->
+                <!--android:layout_height="123dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--app:srcCompat="@drawable/upload_profile" />-->
 
             <TextView
                 android:layout_width="92dp"
