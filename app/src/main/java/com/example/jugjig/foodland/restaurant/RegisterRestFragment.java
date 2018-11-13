@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
+import com.example.jugjig.foodland.model.Restaurant;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,7 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RegisterRestFragment extends Fragment implements View.OnClickListener {
 
     private Button registerBtn;
-    private String fName, lName, email, phone, restDesc, password, rePassword, uid;
+    private String fName, lName, email, phone, restDesc, password, rePassword, uid, resName, resLocation, resOpen, resClose, resType;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private Button back;
@@ -121,23 +122,42 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         restProfile.setEmail(email);
         restProfile.setDesc(restDesc);
 
+        final Restaurant restaurant = new Restaurant();
+        restaurant.setName(resName);
+        restaurant.setLocation(resLocation);
+        restaurant.setOpenTime(resOpen);
+        restaurant.setCloseTime(resClose);
+        restaurant.setDescription(restDesc);
+        restaurant.setRestaurantId(uid);
+        restaurant.setType(resType);
+
         firestore.collection("UserProfile")
                 .document(uid)
                 .set(restProfile)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        progressDialog.dismiss();
+
                         Log.d("REGISTER", "VALUE HAS BEEN SAVED IN FIREBASE");
 
                         //USER SIGGOUT
-                        FirebaseAuth.getInstance().signOut();
-                        getActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.main_view, new LoginFragment())
-                                .addToBackStack(null)
-                                .commit();
-                        Log.d("USER", "GOTO LOGIN");
+
+                        firestore.collection("Restaurant")
+                                .document(uid)
+                                .set(restaurant).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                progressDialog.dismiss();
+
+                                FirebaseAuth.getInstance().signOut();
+                                getActivity().getSupportFragmentManager()
+                                        .beginTransaction()
+                                        .replace(R.id.main_view, new LoginFragment())
+                                        .addToBackStack(null)
+                                        .commit();
+                                Log.d("USER", "GOTO LOGIN");
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -161,6 +181,12 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         EditText passwordEdt = getView().findViewById(R.id.registerPassword);
         EditText repasswordEdt = getView().findViewById(R.id.registerRePassword);
 
+        EditText resNameEdt = getView().findViewById(R.id.registeRestName);
+        EditText resLocationEdt = getView().findViewById(R.id.registeRestLocate);
+        EditText resOpenEdt = getView().findViewById(R.id.registeRestOpen);
+        EditText resCloseEdt = getView().findViewById(R.id.registeRestClose);
+        EditText resTypeEdt = getView().findViewById(R.id.registeRestType);
+
         fName = fNameEdt.getText().toString().toUpperCase();
         lName = lNameEdt.getText().toString().toUpperCase();
         email = emailEdt.getText().toString();
@@ -168,6 +194,12 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         restDesc = descEdt.getText().toString();
         password = passwordEdt.getText().toString();
         rePassword = repasswordEdt.getText().toString();
+
+        resName = resNameEdt.getText().toString();
+        resLocation = resLocationEdt.getText().toString();
+        resOpen = resOpenEdt.getText().toString();
+        resClose = resCloseEdt.getText().toString();
+        resType = resTypeEdt.getText().toString();
 
     }
 

@@ -9,6 +9,7 @@ public class Restaurant implements Parcelable {
 
     private String name;
     private String location;
+    private String description;
     private String type;
     private String openTime;
     private String closeTime;
@@ -24,7 +25,7 @@ public class Restaurant implements Parcelable {
 
     }
 
-    public Restaurant(String name, String location, String type, String openTime, String closeTime, String telephone, String profileImageURL, ArrayList<String> imageDes, Double latitude, Double longitude, String restaurantId) {
+    public Restaurant(String name, String location, String type, String openTime, String closeTime, String telephone, String profileImageURL, ArrayList<String> imageDes, Double latitude, Double longitude, String restaurantId, String description) {
         this.name = name;
         this.location = location;
         this.type = type;
@@ -36,6 +37,7 @@ public class Restaurant implements Parcelable {
         this.latitude = latitude;
         this.longitude = longitude;
         this.restaurantId = restaurantId;
+        this.description = description;
     }
 
     protected Restaurant(Parcel in) {
@@ -162,5 +164,13 @@ public class Restaurant implements Parcelable {
 
     public void setRestaurantId(String restaurantId) {
         restaurantId = restaurantId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
