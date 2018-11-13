@@ -4,20 +4,22 @@ public class Reservation {
     private String customerId;
     private String restaurantId;
     private String date;
-    private Integer amont;
+    private Integer amount;
     private String comment;
     private String time;
+    private String status;
 
     public Reservation() {
     }
 
-    public Reservation(String customerId, String restaurantId, String date, Integer amont, String comment, String time) {
+    public Reservation(String customerId, String restaurantId, String date, Integer amount, String comment, String time, String status) {
         this.customerId = customerId;
         this.restaurantId = restaurantId;
         this.date = date;
-        this.amont = amont;
+        this.amount = amount;
         this.comment = comment;
         this.time = time;
+        this.status = status;
     }
 
     public String getCustomerId() {
@@ -45,12 +47,12 @@ public class Reservation {
         this.date = date;
     }
 
-    public Integer getAmont() {
-        return amont;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setAmont(Integer amont) {
-        this.amont = amont;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public String getComment() {
@@ -67,5 +69,13 @@ public class Reservation {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

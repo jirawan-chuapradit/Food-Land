@@ -15,6 +15,7 @@ public class HistoryViewHolder extends RecyclerView.ViewHolder {
     TextView reserDate;
     TextView reserTime;
     TextView reserPerson;
+    TextView restLocation;
     ImageView profileImage;
 
 
@@ -26,5 +27,6 @@ public class HistoryViewHolder extends RecyclerView.ViewHolder {
         reserTime = itemView.findViewById(R.id.reser_item_time);
         reserPerson = itemView.findViewById(R.id.reser_item_person);
         profileImage = itemView.findViewById(R.id.reser_item_profile_image);
+        restLocation = itemView.findViewById(R.id.reser_item_location);
     }
 }

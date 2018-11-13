@@ -1,39 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_red"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/history_topBG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY"
+        app:layout_collapseMode="parallax"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_bg" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ร้านอาหารที่คุณจอง"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/history_topBG" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/colorApp"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.0">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-        <TextView
+                <LinearLayout
+                    android:id="@+id/history_progress_bar_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/icon_signout"
-            android:layout_marginLeft="82dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="ประวัติการจอง"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#ffff"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+                    <ProgressBar
+                        android:id="@+id/history_progress_bar"
+                        style="?android:progressBarStyle"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
 
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/history_pending_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:clipToPadding="true"
+                        android:nestedScrollingEnabled="false" />
+                </LinearLayout>
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:text="กำลังจอง"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    <!--<include layout="@layout/bottom_nav_bar" />-->
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:text="จองแล้ว"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/history_progress_bar_container" />
+
+                <LinearLayout
+                    android:id="@+id/history_progress_bar_container2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                    <ProgressBar
+                        android:id="@+id/history_progress_bar2"
+                        style="?android:progressBarStyle"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/history_complete_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="?attr/actionBarSize"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:clipToPadding="true"
+                        android:nestedScrollingEnabled="false" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/history_pending_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="ไม่มีร้านที่กำลังจองอยู่ในขณะนี้"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/textView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/history_progress_bar_container"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/history_complete_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="ไม่มีร้านที่เคยจอง"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/history_progress_bar_container2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -18,6 +18,7 @@ import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 public class CusMainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment = new HomeFragment();
+    HistoryFragment historyFragment = new HistoryFragment();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -28,7 +29,7 @@ public class CusMainActivity extends AppCompatActivity {
                 case R.id.navigation_history:
                    getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.cus_main_view, new HistoryFragment())
+                            .replace(R.id.cus_main_view, historyFragment)
                             .commit();
                     Log.d("CUSTOMER", "GOTO  HISTORY");
                     return true;

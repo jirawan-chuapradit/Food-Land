@@ -22,7 +22,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
     public RestaurantListAdapter() {
         restaurantsCopy.addAll(restaurants);
 
-
     }
 
     @NonNull
@@ -62,13 +61,19 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
         else {
             text = text.toLowerCase();
             for(Restaurant restaurant: restaurantsCopy){
-                if(restaurant.getName().toLowerCase().contains(text) || restaurant.getType().toLowerCase().contains(text)){
+                if(restaurant.getName().toLowerCase().contains(text)){
                     restaurants.add(restaurant);
-                    Log.wtf("search",  restaurant.getName());
+                }
+                else if (restaurant.getType().toLowerCase().contains(text)) {
+                    restaurants.add(restaurant);
+                }
+                else if (restaurant.getLocation().toLowerCase().contains(text)) {
+                    restaurants.add(restaurant);
                 }
             }
         }
         notifyDataSetChanged();
     }
+
 
 }
