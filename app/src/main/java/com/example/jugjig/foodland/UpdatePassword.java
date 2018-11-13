@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class UpdatePassword extends Fragment {
 
     //Firebase
@@ -118,8 +120,8 @@ public class UpdatePassword extends Fragment {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-
-
+                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+                    prefs.clear().commit();
                     //FORCE USER SIGGOUT
                     FirebaseAuth.getInstance().signOut();
                     Intent myIntent = new Intent(getActivity(), MainActivity.class);

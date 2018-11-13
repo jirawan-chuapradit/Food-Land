@@ -16,10 +16,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/logo_o_black" />
 
@@ -29,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/fill_shape_input"
                 android:hint="example@gmail.com"
                 android:inputType="text"
@@ -68,16 +66,14 @@
 
             <TextView
                 android:id="@+id/login_register_Btn"
-                android:layout_width="93dp"
-                android:layout_height="26dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="190dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="58dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
                 android:text="ลงทะเบียน"
                 android:fontFamily="@font/re_font"
                 android:textColor="@color/system_font_color"
-                android:textSize="25sp" />
+                android:textSize="20dp" />
 
         </LinearLayout>
 

@@ -1,6 +1,8 @@
 package com.example.jugjig.foodland.restaurant;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
@@ -25,6 +31,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import static android.app.Activity.RESULT_OK;
 
 public class RegisterRestFragment extends Fragment implements View.OnClickListener {
 
@@ -33,9 +44,21 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private Button back;
+    private StorageReference storageReference;
+    private FirebaseStorage firebaseStorage;
+
+
+
 
     // Loading data dialog
     ProgressDialog progressDialog;
+
+    //ImageView
+    private ImageView userProfileImage;
+    //a constant to track the file chooser intent
+    private static int PICK_IMAGE = 123;
+    //a Uri object to store file path
+    private Uri filePath;
 
 
     public View onCreateView
@@ -52,14 +75,18 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         //Firebase
         fbAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
         //get parameter
         registerBtn = getView().findViewById(R.id.registerBtn);
         back = getView().findViewById(R.id.back_btn);
+        userProfileImage = getView().findViewById(R.id.restProfileImage);
 
         //attaching listener
         registerBtn.setOnClickListener(this);
         back.setOnClickListener(this);
+        userProfileImage.setOnClickListener(this);
 
     }
 
@@ -90,7 +117,30 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     uid = fbAuth.getCurrentUser().getUid();
+                    System.out.println("User id: "+uid);
+                    //save image to storage
+                    StorageReference imageReference = storageReference.child("restaurant_profile_image").child(uid).child("Profile Pic");//restaurant_profile_image/user id/Profile Pic.jpg
+                    UploadTask uploadTask = imageReference.putFile(filePath);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(
+                                    getActivity(),
+                                    "Upload failed!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
 
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            Toast.makeText(
+                                    getActivity(),
+                                    "Upload successful!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    });
                     //setParameter
                     setParameter();
                 }
@@ -171,6 +221,32 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
     }
 
+    //handling the image chooser activity result
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null){
+            filePath = data.getData();
+
+            Glide.with(getContext()).load(filePath)
+                    .apply(new RequestOptions()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .dontAnimate()
+                            .dontTransform()
+                    .override(300,200)
+                    .transform(new CircleCrop()))
+                   .into(userProfileImage);
+
+/*
+            Glide.with(getContext()).load(filePath).centerCrop()
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .transform((Transformation) new PicassoCircleTransformation())
+                    .into(userProfileImage);
+                    */
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     @Override
     public void onClick(View v) {
         if (v == registerBtn) {
@@ -179,7 +255,19 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         } else if (v == back) {
             Log.d("CKICK: ", "BACK");
             back();
+        }else if(v == userProfileImage){
+            //open file chooser
+            Log.d("REGISTER", "CLICK = USER_PROFIRE_IMAGE");
+            showFileChooser();
+
         }
+    }
+
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
     }
 
     private void back() {

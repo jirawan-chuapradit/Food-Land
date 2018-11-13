@@ -143,6 +143,8 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     }
 
     private void logout() {
+        SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+        prefs.clear().commit();
         FirebaseAuth.getInstance().signOut();
         Intent myIntent = new Intent(getActivity(), MainActivity.class);
         getActivity().startActivity(myIntent);

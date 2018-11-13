@@ -104,6 +104,8 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
 
     }
     private void logout() {
+        SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+        prefs.clear().commit();
         FirebaseAuth.getInstance().signOut();
         Intent myIntent = new Intent(getActivity(), MainActivity.class);
         getActivity().startActivity(myIntent);
@@ -134,7 +136,6 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
                 .replace(R.id.cus_main_view, new UpdatePassword())
                 .addToBackStack(null)
                 .commit();
-
         Log.d("CUSTOMER ", "GO TO UPDATE PASSWORD");
     }
 
