@@ -3,6 +3,7 @@ package com.example.jugjig.foodland.restaurant;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,17 +16,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.RestMainActivity;
 import com.example.jugjig.foodland.UpdatePassword;
+import com.example.jugjig.foodland.model.Restaurant;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -41,10 +49,13 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     //Firebase
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
-    private TextView profileName, profilePhone, profileDesc, profileEmail;
-    private String uid,fname,lname,phone,desc,email;
+    private TextView profileName, profilePhone, profileDesc, profileEmail
+            ,profile_rName,profile_rLocation,profile_rOpen,profile_rClose,profile_rType;
+    private String uid,fname,lname,phone,desc,email,restName, restLocation, restOpen, restClose, restType;
     Button updateBtn, logoutBtn,updatePasswordBtn;
     ProgressDialog progressDialog;
+    ImageView profileImage;
+    FirebaseStorage firebaseStorage;
 
 
     @Override
@@ -54,7 +65,7 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
         //Firebase
         firestore = FirebaseFirestore.getInstance();
         fbAuth = FirebaseAuth.getInstance();
-
+        firebaseStorage = FirebaseStorage.getInstance();
         //GET VALUDE FROM FIREBASE
         uid = fbAuth.getCurrentUser().getUid();
 
@@ -75,7 +86,42 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
 
     }
 
+
+    private void getImagePic() {
+        StorageReference storageReference = firebaseStorage.getReference();
+        storageReference.child("restaurant_profile_image/"+uid+"/Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if(getActivity() == null){
+                    return;
+                }
+
+                Glide.with(getContext()).load(uri)
+                        .apply(new RequestOptions()
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .dontAnimate()
+                                .placeholder(R.mipmap.ic_launcher_round)
+                                .error(R.mipmap.ic_launcher_round)
+                                .dontTransform()
+                                .fitCenter()
+                                .override(300,200)
+                                .transform(new CircleCrop()))
+                        .into(profileImage);
+                progressDialog.dismiss();
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("USER", "ERROR = " + e.getMessage());
+                    }
+                });
+    }
+
     private void setParmeter() {
+
+        getImagePic();
+
         firestore.collection("UserProfile")
                 .document(uid)
                 .get()
@@ -103,14 +149,48 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
                         Log.d("USER", "ERROR = " + e.getMessage());
                     }
                 });
+
+        firestore.collection("Restaurant")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Restaurant restaurant = documentSnapshot.toObject(Restaurant.class);
+                        restName = restaurant.getName();
+                        restType = restaurant.getType();
+                        restLocation = restaurant.getLocation();
+                        restOpen = restaurant.getOpenTime();
+                        restClose = restaurant.getCloseTime();
+
+                        profile_rName.setText(restName);
+                        profile_rType.setText(restType);
+                        profile_rLocation.setText(restLocation);
+                        profile_rOpen.setText(restOpen);
+                        profile_rClose.setText(restClose);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 
     private void getParameter() {
 
-        profileName = getView().findViewById(R.id.restName);
+        profileImage = getView().findViewById(R.id.restProfileImage);
+        profileName = getView().findViewById(R.id.fName);
         profileEmail = getView().findViewById(R.id.restEmail);
         profilePhone = getView().findViewById(R.id.restPhone);
         profileDesc = getView().findViewById(R.id.restDesc);
+
+        profile_rName = getView().findViewById(R.id.restName);
+        profile_rType = getView().findViewById(R.id.restType);
+        profile_rLocation = getView().findViewById(R.id.restLocate);
+        profile_rOpen = getView().findViewById(R.id.restOpen);
+        profile_rClose = getView().findViewById(R.id.restClose);
 
     }
 

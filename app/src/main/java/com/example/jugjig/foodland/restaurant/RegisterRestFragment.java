@@ -41,7 +41,9 @@ import static android.app.Activity.RESULT_OK;
 public class RegisterRestFragment extends Fragment implements View.OnClickListener {
 
     private Button registerBtn;
-    private String fName, lName, email, phone, restDesc, password, rePassword, uid, resName, resLocation, resOpen, resClose, resType;
+    private String fName, lName, email, phone, restDesc, password, rePassword
+            , uid, resName, resLocation, resOpen, resClose, resType
+    ,generatedFilePath;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private Button back;
@@ -140,14 +142,48 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
                                     "Upload successful!",
                                     Toast.LENGTH_SHORT
                             ).show();
+                            getProfileImageURL();
                         }
                     });
-                    //setParameter
-                    setParameter();
+
+
+
                 }
-            });
+            }).
+                    addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("USER", "not found UID");
+                            Toast.makeText(
+                                    getActivity(),
+                                    "Please check your network!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    });
 
         }
+    }
+
+    private void getProfileImageURL() {
+        storageReference.child("restaurant_profile_image/"+uid+"/Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+                Uri downloadUri = uri;
+                generatedFilePath = downloadUri.toString(); /// The string(file link) that you need
+                //setParameter
+                setParameter();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Handle any errors
+                Log.d("REGISTER", "ERROR =" + e.getMessage());
+                Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     void delay() {
@@ -179,6 +215,8 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         restaurant.setCloseTime(resClose);
         restaurant.setDescription(restDesc);
         restaurant.setRestaurantId(uid);
+        restaurant.setTelephone(phone);
+        restaurant.setProfileImageURL(generatedFilePath);
         restaurant.setType(resType);
 
         firestore.collection("UserProfile")
