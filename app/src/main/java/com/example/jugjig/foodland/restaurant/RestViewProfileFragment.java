@@ -240,6 +240,12 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
         prefs.putString("rest_email", email);
         prefs.putString("rest_phone", phone);
         prefs.putString("rest_desc", desc);
+
+        prefs.putString("restName", restName);
+        prefs.putString("restType", restType);
+        prefs.putString("restOpen", restOpen);
+        prefs.putString("restClose", restClose);
+        prefs.putString("restLocation", restLocation);
         prefs.apply();
 
         getActivity().getSupportFragmentManager()

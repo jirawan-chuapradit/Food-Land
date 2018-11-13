@@ -299,20 +299,15 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
             Glide.with(getContext()).load(filePath)
                     .apply(new RequestOptions()
+                            .centerCrop()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .dontAnimate()
                             .dontTransform()
+                            .placeholder(R.mipmap.ic_launcher_round)
+                            .error(R.mipmap.ic_launcher_round)
                     .override(300,200)
                     .transform(new CircleCrop()))
                    .into(userProfileImage);
-
-/*
-            Glide.with(getContext()).load(filePath).centerCrop()
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
-                    .transform((Transformation) new PicassoCircleTransformation())
-                    .into(userProfileImage);
-                    */
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
