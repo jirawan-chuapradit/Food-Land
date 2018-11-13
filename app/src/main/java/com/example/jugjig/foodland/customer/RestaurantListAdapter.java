@@ -22,7 +22,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
     public RestaurantListAdapter() {
         restaurantsCopy.addAll(restaurants);
 
-
     }
 
     @NonNull
@@ -70,5 +69,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
         }
         notifyDataSetChanged();
     }
+
 
 }

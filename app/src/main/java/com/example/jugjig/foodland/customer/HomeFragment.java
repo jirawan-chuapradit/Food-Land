@@ -32,9 +32,6 @@ public class HomeFragment extends Fragment {
     RestaurantListAdapter adapter;
     SearchView search;
     ArrayList<Restaurant> restaurants;
-    Bundle bundle;
-    AppBarLayout topBG;
-    boolean check_ScrollingUp = false;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater,
@@ -52,9 +49,7 @@ public class HomeFragment extends Fragment {
 
         resList = getActivity().findViewById(R.id.home_res_list);
         resList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        topBG = getActivity().findViewById(R.id.app_bar);
 
-        setOnScroll();
 
         if (restaurants != null) {
             adapter.setItemList(restaurants);
@@ -97,32 +92,4 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    void setOnScroll() {
-        resList.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) {
-                    // Scrolling up
-                    if(check_ScrollingUp)
-                    {
-                        topBG.setExpanded(true);
-                    }
-
-                } else {
-                    // Scrolling down
-                    if(!check_ScrollingUp ) {
-                        topBG.setExpanded(false);
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-        });
-    }
 }

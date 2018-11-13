@@ -2,92 +2,141 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:layout_width="match_parent"
-    android:background="@drawable/item_res"
-    android:layout_height="160dp">
+    android:layout_marginTop="8dp"
+    android:background="@drawable/shadow_shape"
+    android:layout_marginBottom="5dp"
+    android:elevation="4dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/reser_item_profile_image"
         android:layout_width="120dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="12dp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/logo"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/reser_item_name"
-        android:fontFamily="@font/re_font"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="#000"
-        android:drawableLeft="@drawable/location"
+        android:fontFamily="@font/re_font"
         android:text="siam center"
+        android:textColor="#000"
         android:textSize="22dp"
         app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/reser_item_tel"
+        android:id="@+id/reser_item_person_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#000"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/re_font"
-
-        android:drawableLeft="@drawable/call"
-        android:text="012-3456789"
+        android:text="จำนวน"
+        android:textColor="#000"
         app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
         app:layout_constraintTop_toBottomOf="@+id/reser_item_name" />
-
-    <TextView
-        android:id="@+id/reser_item_date"
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#000"
-        android:drawableLeft="@drawable/date"
-        android:fontFamily="@font/re_font"
-
-        android:text="7/11/2018"
-        app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
-        app:layout_constraintTop_toBottomOf="@+id/reser_item_tel" />
-
-    <TextView
-        android:id="@+id/reser_item_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/re_font"
-
-        android:textColor="#000"
-        android:drawableLeft="@drawable/clock"
-        android:text="10:00 - 21:00"
-        app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
-        app:layout_constraintTop_toBottomOf="@+id/reser_item_date" />
 
     <TextView
         android:id="@+id/reser_item_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/re_font"
+        android:text="3 คน"
+        android:textColor="#000"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/reser_item_person_text"
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_name" />
+
+    <TextView
+        android:id="@+id/reser_item_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/re_font"
+        android:text="เวลา"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@+id/reser_item_person"
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_name" />
+
+    <TextView
+        android:id="@+id/reser_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/re_font"
+        android:text="18:00"
+        android:textColor="#000"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reser_item_time_text"
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_name" />
+
+    <TextView
+        android:id="@+id/reser_item_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/re_font"
+        android:text="วัน เดือน ปี"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_person_text" />
+
+    <TextView
+        android:id="@+id/reser_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/re_font"
-
+        android:text="5 ธันวาคม 2018"
         android:textColor="#000"
-        android:drawableLeft="@drawable/people"
-        android:text="  3 คน"
+        android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
-        app:layout_constraintTop_toBottomOf="@+id/reser_item_time" />
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_date_text" />
+
+    <TextView
+        android:id="@+id/reser_item_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/location"
+        android:fontFamily="@font/re_font"
+        android:text="สยาม"
+        android:textColor="#000"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_date" />
+
+    <TextView
+        android:id="@+id/reser_item_tel"
+        android:layout_width="108dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/call"
+        android:fontFamily="@font/re_font"
+        android:text="012-3456789"
+        android:textColor="#000"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reser_item_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/reser_item_location" />
+
 </android.support.constraint.ConstraintLayout>
