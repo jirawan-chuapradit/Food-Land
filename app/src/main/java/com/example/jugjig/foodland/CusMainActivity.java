@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -35,13 +36,13 @@ public class CusMainActivity extends AppCompatActivity {
                             .commit();
                     Log.d("CUSTOMER", "GOTO  HISTORY");
                     return true;
-                case R.id.navigation_restaurants:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.cus_main_view, homeFragment)
-                            .commit();
-                    Log.d("CUSTOMER", "GOTO  Home");
-                    return true;
+//                case R.id.navigation_restaurants:
+//                    getSupportFragmentManager()
+//                            .beginTransaction()
+//                            .replace(R.id.cus_main_view, homeFragment)
+//                            .commit();
+//                    Log.d("CUSTOMER", "GOTO  Home");
+//                    return true;
                 case R.id.navigation_profile:
                     getSupportFragmentManager()
                             .beginTransaction()
@@ -62,8 +63,9 @@ public class CusMainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.cus_bottom_nav_bar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
         //home click
-        Button homeBtn = findViewById(R.id.homeBtn);
+        ImageButton homeBtn = findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +82,13 @@ public class CusMainActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.cus_main_view,
                             homeFragment).commit();
-            navigation.setSelectedItemId(R.id.navigation_restaurants);
+
+            getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.cus_main_view, homeFragment)
+                            .commit();
+                    Log.d("CUSTOMER", "GOTO  Home");
+            navigation.setSelectedItemId(0);
         }
     }
 
