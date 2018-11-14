@@ -10,18 +10,17 @@
     >
 
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <FrameLayout
             android:id="@+id/cus_main_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></FrameLayout>
-
-
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/cus_bottom_nav_bar"
@@ -40,4 +39,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:labelVisibilityMode="unlabeled" />
 
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
+        android:background="@drawable/home"
+        android:translationZ="800dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+    </Button>
 </android.support.constraint.ConstraintLayout>

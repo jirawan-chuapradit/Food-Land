@@ -100,7 +100,9 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
         //check parameter
         if (fName.isEmpty() || lName.isEmpty() || email.isEmpty()
-                || phone.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
+                || phone.isEmpty() || password.isEmpty() || rePassword.isEmpty()
+                || resName.isEmpty()||resLocation.isEmpty()||resType.isEmpty()
+                || resOpen.isEmpty()||resClose.isEmpty() ) {
             Log.d("REGISTER", "PARAMETER IS EMPTY");
             Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
         } else if (!password.equals(rePassword)) {
@@ -109,7 +111,12 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         } else if (password.length() <= 5 || rePassword.length() <= 5) {
             Log.d("REGISTER", "รหัสผ่านน้อยกว่า 6 ตัว");
             Toast.makeText(getActivity(), "กรุณาระบุรหัสผ่านมากกว่า 5 ตัว", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else if(filePath == null) {
+            Log.d("REGISTER", "ไม่ได้เลือกรูปภาพ");
+            Toast.makeText(getActivity(), "กรุณาใส่รูปภาพ", Toast.LENGTH_SHORT).show();
+        }
+        else {
             // Loading data dialog following owner network speed
             delay();
 

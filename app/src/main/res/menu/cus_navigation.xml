@@ -9,13 +9,7 @@
 
     <item
         android:id="@+id/navigation_restaurants"
-
-        android:icon="@drawable/ic_home"
-
-
-        android:title="Restaurants"
-
-        >@color/colorNav</item>
+        android:title="Restaurants"/>
 
     <item
         android:id="@+id/navigation_profile"
