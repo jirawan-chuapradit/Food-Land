@@ -2,20 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <group android:checkableBehavior="none">
+
     <item
         android:id="@+id/navigation_history"
         android:icon="@drawable/ic_inbox"
         android:title="History" />
 
     <item
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:title="Restaurants" />
-
-    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/profile"
         android:title="Profile" />
+
+    </group>
 
     <!--<item-->
     <!--android:id="@+id/cus_nav_logout"-->

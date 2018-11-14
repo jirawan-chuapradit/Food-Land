@@ -22,32 +22,36 @@
             android:layout_height="match_parent"></FrameLayout>
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <android.support.design.widget.BottomNavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cus_bottom_nav_bar"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@android:color/white"
         app:itemBackground="@drawable/navbar_color_selector"
         app:itemIconSize="35dp"
-        android:background="@android:color/white"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/cus_navigation"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:labelVisibilityMode="unlabeled" />
+        app:menu="@menu/cus_navigation" />
 
 
     <ImageButton
         android:id="@+id/homeBtn"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:background="@drawable/home"
-        android:translationZ="80dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="24dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/icn_add"
+        android:elevation="8dp"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </ImageButton>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cus_bottom_nav_bar"></ImageButton>
 </android.support.constraint.ConstraintLayout>
