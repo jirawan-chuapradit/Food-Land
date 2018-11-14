@@ -20,11 +20,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
-import com.example.jugjig.foodland.RestMainActivity;
-import com.example.jugjig.foodland.UpdatePassword;
 import com.example.jugjig.foodland.model.Restaurant;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -215,7 +212,7 @@ public class RestViewProfileFragment extends Fragment implements View.OnClickLis
     private void updatePassword() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.rest_main_view, new UpdatePassword())
+                .replace(R.id.rest_main_view, new RestUpdatePassword())
                 .addToBackStack(null)
                 .commit();
 

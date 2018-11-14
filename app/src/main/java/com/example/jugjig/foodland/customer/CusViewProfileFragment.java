@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.jugjig.foodland.MainActivity;
 import com.example.jugjig.foodland.R;
-import com.example.jugjig.foodland.UpdatePassword;
 import com.example.jugjig.foodland.model.UserProfile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -133,7 +132,7 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
     private void updatePassword() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.cus_main_view, new UpdatePassword())
+                .replace(R.id.cus_main_view, new CusUpdatePassword())
                 .addToBackStack(null)
                 .commit();
         Log.d("CUSTOMER ", "GO TO UPDATE PASSWORD");

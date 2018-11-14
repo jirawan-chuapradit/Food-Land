@@ -14,7 +14,7 @@
         android:layout_marginTop="0dp"
     >
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
@@ -25,13 +25,15 @@
             android:layout_alignParentTop="true"
             android:layout_width="260dp"
             android:layout_height="100dp"
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/logo_white"
 
             />
 
 
-    </RelativeLayout></ScrollView>
+    </android.support.constraint.ConstraintLayout></ScrollView>
 
 
 
@@ -49,7 +51,7 @@
 
 
 
-                <RelativeLayout
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="0dp"
                     android:layout_height="50dp">
@@ -64,7 +66,10 @@
                         android:textStyle="bold"
                         android:textColor="@color/system_font_color"
                         android:fontFamily="@font/re_font"
-                        android:textSize="35dp" />
+                        android:textSize="35dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
 
 
@@ -82,7 +87,7 @@
 
 
                     </RelativeLayout>
-                </RelativeLayout>
+                </android.support.constraint.ConstraintLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

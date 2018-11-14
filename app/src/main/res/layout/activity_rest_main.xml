@@ -5,7 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RestMainActivity">
+    tools:context=".RestMainActivity"
+    app:barrierDirection="bottom">
 
 
     <LinearLayout
@@ -26,16 +27,19 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/rest_bottom_nav_bar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
+        app:itemIconSize="35dp"
+        android:background="@android:color/white"
         app:itemBackground="@drawable/navbar_color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/rest_navigation"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" />
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:labelVisibilityMode="unlabeled" />
 
 
 </android.support.constraint.ConstraintLayout>
