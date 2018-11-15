@@ -19,6 +19,7 @@ public class Restaurant implements Parcelable {
     private Double latitude;
     private Double longitude;
     private String restaurantId;
+    private String status;
 
 
     public Restaurant() {
@@ -172,5 +173,13 @@ public class Restaurant implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

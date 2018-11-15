@@ -225,6 +225,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         restaurant.setTelephone(phone);
         restaurant.setProfileImageURL(generatedFilePath);
         restaurant.setType(resType);
+        restaurant.setStatus("close");
 
         firestore.collection("UserProfile")
                 .document(uid)
