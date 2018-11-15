@@ -65,7 +65,7 @@ public class CusUpdatePassword extends Fragment implements View.OnClickListener 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         saveBtn = getView().findViewById(R.id.saveBtn);
-        backBtn = getView().findViewById(R.id.backBtn);
+        backBtn = getView().findViewById(R.id.back_btn);
 
         saveBtn.setOnClickListener(this);
         backBtn.setOnClickListener(this);

@@ -38,13 +38,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/update_profile"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="19dp"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/edit_profile" />
+
                 <TextView
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
