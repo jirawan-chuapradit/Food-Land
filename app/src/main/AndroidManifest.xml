@@ -14,6 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +24,12 @@
         </activity>
         <activity
             android:name=".CusMainActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_cus_main" />
         <activity
             android:name=".RestMainActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_rest_main"></activity>
     </application>

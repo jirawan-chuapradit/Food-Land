@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 
     void getData() {
         restaurants = new ArrayList<>();
-        firestore.collection("Restaurant").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firestore.collection("Restaurant").whereEqualTo("status", "open").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 for (DocumentSnapshot item : task.getResult().getDocuments()) {

@@ -1,59 +1,137 @@
 package com.example.jugjig.foodland;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.jugjig.foodland.customer.CusViewProfileFragment;
 import com.example.jugjig.foodland.customer.HomeFragment;
 import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RestMainActivity extends AppCompatActivity {
 
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.rest_nav_home:
-                    Log.d("RESTAURANT", "Click Home");
-                    return true;
-                case R.id.rest_nav_power:
-                    Log.d("RESTAURANT", "Click Power");
-                    return true;
-                case R.id.rest_nav_profile:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.rest_main_view, new RestViewProfileFragment())
-                            .commit();
-                    Log.d("RESTAURANT", "Click  Profile Restaurant");
-                    return true;
-            }
-            return false;
-        }
-    };
+    AlertDialog.Builder builder;
+    String status;
+    FirebaseAuth user = FirebaseAuth.getInstance();
+    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    ImageButton homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest_main);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.rest_bottom_nav_bar);
+        homeBtn = findViewById(R.id.switchBtn);
+
+        final BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.rest_bottom_nav_bar);
+
+        builder = new AlertDialog.Builder(this);
+
+        firestore.collection("Restaurant").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                status = documentSnapshot.getString("status");
+                if (status.equals("close")) {
+                    homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                }
+                setDialog();
+            }
+        });
+
+        navigation.getMenu().getItem(0).setCheckable(false);
+
+        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+                = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_history:
+                        Log.d("RESTAURANT", "Click Home");
+                        navigation.getMenu().getItem(0).setCheckable(true);
+                        return true;
+                    case R.id.navigation_profile:
+                        navigation.getMenu().getItem(1).setCheckable(true);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.rest_main_view, new RestViewProfileFragment())
+                                .commit();
+                        Log.d("RESTAURANT", "Click  Profile Restaurant");
+                        return true;
+                }
+                return false;
+            }
+        };
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                builder.show();
+                for (int i = 0; i < navigation.getMenu().size(); i++) {
+                    navigation.getMenu().getItem(i).setChecked(false);
+                    navigation.getMenu().getItem(i).setCheckable(false);
+                }
+
+                Log.d("CUSTOMER", "GOTO  Home");
+            }
+        });
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.rest_main_view,
                             new RestViewProfileFragment()).commit();
-            navigation.setSelectedItemId(R.id.rest_nav_profile);
+            navigation.setSelectedItemId(R.id.navigation_profile);
         }
     }
 
+    void setDialog() {
+        if (status.equals("open")) {
+            builder.setMessage("คุณต้องการปิดรับการจองใช่หรือไม่");
+        }
+        else  {
+            builder.setMessage("คุณต้องการเปิดรับการจองใช่หรือไม่");
+        }
+
+        builder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (status.equals("open")) {
+                    status = "close";
+                    firestore.collection("Restaurant").document(user.getUid()).update("status", status);
+                    homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                    builder.setMessage("คุณต้องการเปิดรับการจองใช่หรือไม่");
+                }
+                else {
+                    status = "open";
+                    firestore.collection("Restaurant").document(user.getUid()).update("status", status);
+                    homeBtn.setBackgroundResource(R.drawable.icn_add);
+                    builder.setMessage("คุณต้องการปิดรับการจองใช่หรือไม่");
+                }
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 }
+
+

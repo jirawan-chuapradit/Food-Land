@@ -1,6 +1,7 @@
 package com.example.jugjig.foodland.customer;
 
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,12 +34,20 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder restaurantViewHolder, int i) {
-        Restaurant item = restaurants.get(i);
+        final Restaurant item = restaurants.get(i);
         restaurantViewHolder.restName.setText(item.getName());
         restaurantViewHolder.restLocation.setText(item.getLocation());
         restaurantViewHolder.restType.setText(item.getType());
         restaurantViewHolder.openTime.setText(item.getOpenTime() + " - " + item.getCloseTime());
         Glide.with(restaurantViewHolder.profileImage.getContext()).load(item.getProfileImageURL()).apply(RequestOptions.centerCropTransform().placeholder(R.drawable.logo)).into(restaurantViewHolder.profileImage);
+
+        restaurantViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+
+            }
+        });
     }
 
     @Override

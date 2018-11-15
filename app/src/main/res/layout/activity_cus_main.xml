@@ -53,5 +53,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cus_bottom_nav_bar"></ImageButton>
+        app:layout_constraintTop_toTopOf="@+id/cus_bottom_nav_bar"/>
 </android.support.constraint.ConstraintLayout>
