@@ -1,8 +1,10 @@
 package com.example.jugjig.foodland;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -40,7 +42,10 @@ public class LoginFragment extends Fragment {
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private String uid, role;
-    ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
+    private SQLiteDatabase myDB;
+    private UserProfile userProfile;
+
 
     @Nullable
     @Override
@@ -55,6 +60,11 @@ public class LoginFragment extends Fragment {
     public void onActivityCreated
             (@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        // Setup database
+        myDB = getActivity().openOrCreateDatabase("foodland.db", Context.MODE_PRIVATE, null);
+        myDB.execSQL("CREATE TABLE IF NOT EXISTS user (_id INTEGER PRIMARY KEY AUTOINCREMENT, userId VARCHAR(50), firstname VARCHAR(50), lastname VARCHAR(50), email VARCHAR(50), phone VAECHAR(10))");
+        myDB.execSQL("CREATE TABLE IF NOT EXISTS history (_id INTEGER PRIMARY KEY AUTOINCREMENT, restaurantId VARCHAR(50), name VARCHAR(50), amont VARCHAR(50), time VARCHAR(50), date VAECHAR(10), location VARCHAR(200), phone VARCHAR(10))");
+
         //set fonts
 
         //Firebase
@@ -149,7 +159,7 @@ public class LoginFragment extends Fragment {
             getActivity().startActivity(myIntent);
             Log.d("USER", "GOTO Restaurant Main Activity");
         } else if (role.equals("customer")) {
-
+            myDB.insert("user", null, userProfile.getContentValues());
             Intent myIntent = new Intent(getActivity(), CusMainActivity.class);
             getActivity().startActivity(myIntent);
             Log.d("USER", "GOTO Customer Main Activity");
@@ -163,8 +173,9 @@ public class LoginFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        UserProfile userProfile = documentSnapshot.toObject(UserProfile.class);
+                        userProfile = documentSnapshot.toObject(UserProfile.class);
                         role = userProfile.getRole();
+                        userProfile.setContentValues(uid);
                         GotoMenu();
                     }
                 })

@@ -1,8 +1,10 @@
 package com.example.jugjig.foodland.customer;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,8 +37,9 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
     private String uid,fname,lname,phone,email;
-    Button updateBtn, logoutBtn,updatePasswordBtn;
-    ProgressDialog progressDialog;
+    private Button updateBtn, logoutBtn,updatePasswordBtn;
+    private ProgressDialog progressDialog;
+    private SQLiteDatabase myDB;
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -109,6 +112,10 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
         Intent myIntent = new Intent(getActivity(), MainActivity.class);
         getActivity().startActivity(myIntent);
 
+        // Clear database
+        myDB = getActivity().openOrCreateDatabase("foodland.db", Context.MODE_PRIVATE, null);
+        myDB.execSQL("delete from user");
+        myDB.execSQL("delete from history");
         Log.d("USER ", "GO TO LOGIN");
     }
 
