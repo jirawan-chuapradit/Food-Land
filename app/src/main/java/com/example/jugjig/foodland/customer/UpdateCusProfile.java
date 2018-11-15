@@ -29,7 +29,7 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
     private String fName, lName, email, phone, uid;
     private EditText fNameEdt, lNameEdt, phoneEdt;
     private TextView profileEmail;
-    private Button saveBtn;
+    private Button saveBtn,backBtn;
 
     // Loading data dialog
     ProgressDialog progressDialog;
@@ -61,9 +61,11 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
         showParameter();
 
         saveBtn = getView().findViewById(R.id.saveBtn);
+        backBtn = getView().findViewById(R.id.back_btn);
 
 
         saveBtn.setOnClickListener(this);
+        backBtn.setOnClickListener(this);
     }
 
 
@@ -107,6 +109,12 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
         if (v == saveBtn) {
             Log.d("USER ", "CLIECK SAVE");
             saveInformation();
+        }else if (v == backBtn){
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.cus_main_view, new CusViewProfileFragment())
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 

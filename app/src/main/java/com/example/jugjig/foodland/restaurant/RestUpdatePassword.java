@@ -1,12 +1,10 @@
-package com.example.jugjig.foodland;
+package com.example.jugjig.foodland.restaurant;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jugjig.foodland.MainActivity;
+import com.example.jugjig.foodland.R;
+import com.example.jugjig.foodland.customer.CusViewProfileFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,12 +30,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class UpdatePassword extends Fragment {
+public class RestUpdatePassword extends Fragment implements View.OnClickListener {
 
     //Firebase
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
-    private Button saveBtn;
+    private Button saveBtn,backBtn;
     private EditText newPassword, reNewPassword,oldPassword;
     private FirebaseUser firebaseUser;
     private String userPasswordNew, userRePasswordNew,uid,userOldPassword;
@@ -58,61 +59,18 @@ public class UpdatePassword extends Fragment {
 
         //GET VALUDE FROM FIREBASE
         uid = fbAuth.getCurrentUser().getUid();
-        saveBtn = getView().findViewById(R.id.saveBtn);
         oldPassword = getView().findViewById(R.id.update_old_password);
         newPassword = getView().findViewById(R.id.update_new_password);
         reNewPassword = getView().findViewById(R.id.update_re_new_password);
 
-
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userOldPassword = oldPassword.getText().toString();
-                userPasswordNew = newPassword.getText().toString();
-                userRePasswordNew = reNewPassword.getText().toString();
+        saveBtn = getView().findViewById(R.id.saveBtn);
+        backBtn = getView().findViewById(R.id.back_btn);
+
+        saveBtn.setOnClickListener(this);
+        backBtn.setOnClickListener(this);
 
 
-                if (userPasswordNew.length() <= 5 || userRePasswordNew.length() <= 5){
-                    Log.d("UPDATE", "PASSWORD LESS THAN 6");
-                    Toast.makeText(getActivity(),"กรุณาระบุรหัสผ่านมากกว่า 5 ตัว",Toast.LENGTH_SHORT).show();
-                }else if(userPasswordNew.isEmpty() || userRePasswordNew.isEmpty()){
-                    Log.d("UPDATE", "VALUE IS EMPTY");
-                    Toast.makeText(getActivity(),"กรุณาระบุข้อมูลให้ครบถ้วน",Toast.LENGTH_SHORT).show();
-                }else if(!userPasswordNew.equals(userRePasswordNew)){
-                    Log.d("UPDATE", "PASSWORD NOT EQUALS RE PASSWORD");
-                    Toast.makeText(getActivity(),"รหัสผ่านไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    delay();
-                    SharedPreferences prefs = getContext().getSharedPreferences("FoodLand", Context.MODE_PRIVATE);
-                    String email = prefs.getString("_userId", "empty email");
-                    Log.d("USER ID: ", email);
-
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email,userOldPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            updatePassword(userPasswordNew);
-                        }
-                    })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    progressDialog.dismiss();
-                                    Log.d("UPDATE", "OLD PASSWORD WAS WRONG");
-                                    Toast.makeText(
-                                            getActivity(),
-                                            "รหัสผ่านไม่ถูกต้อง",
-                                            Toast.LENGTH_SHORT
-                                    ).show();
-                                }
-                            });
-
-                }
-
-            }
-        });
     }
     private void updatePassword(String userPasswordNew) {
 
@@ -163,4 +121,66 @@ public class UpdatePassword extends Fragment {
         progressDialog.show();
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v==saveBtn){
+            Log.d("CLICK: ", "SAVE");
+            save();
+        }
+        else if(v == backBtn){
+            Log.d("CLICK: ", "BACK");
+            back();
+        }
+    }
+    private void back() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.rest_main_view,new RestViewProfileFragment())
+                .addToBackStack(null)
+                .commit();
+        Log.d("RESTAURANT", "GOTO Select Register");
+    }
+
+    private void save() {
+
+        userOldPassword = oldPassword.getText().toString();
+        userPasswordNew = newPassword.getText().toString();
+        userRePasswordNew = reNewPassword.getText().toString();
+
+
+        if (userPasswordNew.length() <= 5 || userRePasswordNew.length() <= 5) {
+            Log.d("UPDATE", "PASSWORD LESS THAN 6");
+            Toast.makeText(getActivity(), "กรุณาระบุรหัสผ่านมากกว่า 5 ตัว", Toast.LENGTH_SHORT).show();
+        } else if (userPasswordNew.isEmpty() || userRePasswordNew.isEmpty()) {
+            Log.d("UPDATE", "VALUE IS EMPTY");
+            Toast.makeText(getActivity(), "กรุณาระบุข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
+        } else if (!userPasswordNew.equals(userRePasswordNew)) {
+            Log.d("UPDATE", "PASSWORD NOT EQUALS RE PASSWORD");
+            Toast.makeText(getActivity(), "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+        } else {
+            delay();
+            SharedPreferences prefs = getContext().getSharedPreferences("FoodLand", Context.MODE_PRIVATE);
+            String email = prefs.getString("_userId", "empty email");
+            Log.d("USER ID: ", email);
+
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, userOldPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    updatePassword(userPasswordNew);
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Log.d("UPDATE", "OLD PASSWORD WAS WRONG");
+                            Toast.makeText(
+                                    getActivity(),
+                                    "รหัสผ่านไม่ถูกต้อง",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    });
+        }
+    }
 }

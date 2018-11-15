@@ -25,42 +25,38 @@
             android:layout_alignParentTop="true"
             android:layout_width="260dp"
             android:layout_height="100dp"
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/logo_white"
 
             />
-
-
     </RelativeLayout></ScrollView>
 
 
+        <ScrollView
 
-    <ScrollView
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        >
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            >
 
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="0dp"
-                    android:layout_height="50dp">
+                    android:layout_height="wrap_content">
+
 
                     <TextView
                         android:layout_centerInParent="true"
                         android:layout_width="150dp"
-                        android:gravity="center"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="ข้อมูลส่วนตัว"
-                        android:id="@+id/text"
                         android:textStyle="bold"
                         android:textColor="@color/system_font_color"
                         android:fontFamily="@font/re_font"
@@ -69,37 +65,38 @@
 
 
                     <RelativeLayout
-                        android:layout_width="40dp"
-                        android:layout_height="50dp">
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="70dp"
+                        android:layout_height="wrap_content">
 
-                        <Button
-                            android:id="@+id/back_btn"
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:background="@drawable/ic_back_icon"
-                            />
-
-
+                            android:layout_centerInParent="true"
+                            android:text="_"
+                            android:textScaleX="13"
+                            android:textSize="30dp"
+                            android:textColor="@color/system_font_color"
+                            android:fontFamily="@font/re_font"
+                            android:textStyle="bold" />
                     </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        >
+                        <Button
+                            android:id="@+id/back_btn"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="19dp"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/ic_back_icon" />
+                    </RelativeLayout>
+
                 </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_alignParentTop="true"
-                android:layout_width="match_parent"
-                android:textAlignment="center"
-                android:layout_height="match_parent"
-                android:text="_"
-                android:textScaleX="20"
-                android:textSize="25sp"
-                android:textColor="@color/system_font_color"
-                android:fontFamily="@font/re_font"
-                android:textStyle="bold" />
-            </RelativeLayout>
 
                 <TextView
                     android:layout_width="80dp"
@@ -172,7 +169,8 @@
                 <TextView
                     android:id="@+id/update_cusEmail"
                     android:padding="10dp"
-                    android:textColor="@color/user_font_color"                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/user_font_color"
+                    android:layout_marginLeft="20dp"
                     android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:hint="ab@gmail.com"
@@ -200,7 +198,8 @@
                 <EditText
                     android:id="@+id/update_cusPhone"
                     android:padding="10dp"
-                    android:textColor="@color/user_font_color"                    android:textSize="20dp"
+                    android:textColor="@color/user_font_color"
+                    android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:layout_marginLeft="20dp"
                     android:hint=" 085- XXX - XXXX"
@@ -252,7 +251,8 @@
                 <EditText
                     android:id="@+id/update_cusRePassword"
                     android:padding="10dp"
-                    android:textColor="@color/user_font_color"                    android:textSize="20dp"
+                    android:textColor="@color/user_font_color"
+                    android:textSize="20dp"
                     android:fontFamily="@font/re_font"
                     android:layout_marginLeft="20dp"
                     android:hint=" ••••••"
@@ -295,6 +295,5 @@
 
         </LinearLayout></ScrollView>
 
-
-
 </android.support.constraint.ConstraintLayout>
+

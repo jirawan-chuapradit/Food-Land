@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -22,48 +24,57 @@ public class CusMainActivity extends AppCompatActivity {
     HomeFragment homeFragment = new HomeFragment();
     HistoryFragment historyFragment = new HistoryFragment();
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_history:
-                   getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.cus_main_view, historyFragment)
-                            .commit();
-                    Log.d("CUSTOMER", "GOTO  HISTORY");
-                    return true;
-                case R.id.navigation_restaurants:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.cus_main_view, homeFragment)
-                            .commit();
-                    Log.d("CUSTOMER", "GOTO  Home");
-                    return true;
-                case R.id.navigation_profile:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.cus_main_view, new CusViewProfileFragment())
-                            .commit();
-                    Log.d("CUSTOMER", "GOTO  Profile Customer");
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cus_main);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.cus_bottom_nav_bar);
+        final BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.cus_bottom_nav_bar);
+        final ImageButton homeBtn = findViewById(R.id.homeBtn);
+
+        navigation.getMenu().getItem(0).setCheckable(false);
+
+        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+                = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_history:
+                        navigation.getMenu().getItem(0).setCheckable(true);
+                        homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.cus_main_view, historyFragment)
+                                .commit();
+                        Log.d("CUSTOMER", "GOTO  HISTORY");
+                        return true;
+//                case R.id.navigation_restaurants:
+//                    getSupportFragmentManager()
+//                            .beginTransaction()
+//                            .replace(R.id.cus_main_view, homeFragment)
+//                            .commit();
+//                    Log.d("CUSTOMER", "GOTO  Home");
+//                    return true;
+                    case R.id.navigation_profile:
+                        navigation.getMenu().getItem(1).setCheckable(true);
+                        homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.cus_main_view, new CusViewProfileFragment())
+                                .commit();
+                        Log.d("CUSTOMER", "GOTO  Profile Customer");
+                        return true;
+                }
+                return false;
+            }
+        };
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
         //home click
-        Button homeBtn = findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +82,13 @@ public class CusMainActivity extends AppCompatActivity {
                         .beginTransaction()
                         .replace(R.id.cus_main_view, homeFragment)
                         .commit();
+
+                homeBtn.setBackgroundResource(R.drawable.icn_add);
+                for (int i = 0; i < navigation.getMenu().size(); i++) {
+                    navigation.getMenu().getItem(i).setChecked(false);
+                    navigation.getMenu().getItem(i).setCheckable(false);
+                }
+
                 Log.d("CUSTOMER", "GOTO  Home");
             }
         });
@@ -80,7 +98,12 @@ public class CusMainActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.cus_main_view,
                             homeFragment).commit();
-            navigation.setSelectedItemId(R.id.navigation_restaurants);
+
+            getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.cus_main_view, homeFragment)
+                            .commit();
+                    Log.d("CUSTOMER", "GOTO  Home");
         }
     }
 
