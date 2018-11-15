@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.example.jugjig.foodland.R;
 
-public class RestaurantViewHolder extends RecyclerView.ViewHolder {
+public class RestaurantViewHolder extends RecyclerView.ViewHolder{
 
     TextView restName;
     TextView restLocation;
@@ -23,4 +23,5 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         openTime = itemView.findViewById(R.id.res_item_time);
         profileImage = itemView.findViewById(R.id.res_item_profile_image);
     }
+
 }
