@@ -113,11 +113,13 @@ public class RestMainActivity extends AppCompatActivity {
                     status = "close";
                     firestore.collection("Restaurant").document(user.getUid()).update("status", status);
                     homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                    builder.setMessage("คุณต้องการเปิดรับการจองใช่หรือไม่");
                 }
                 else {
                     status = "open";
                     firestore.collection("Restaurant").document(user.getUid()).update("status", status);
                     homeBtn.setBackgroundResource(R.drawable.icn_add);
+                    builder.setMessage("คุณต้องการปิดรับการจองใช่หรือไม่");
                 }
                 dialog.dismiss();
             }
