@@ -14,7 +14,7 @@
         android:layout_marginTop="0dp"
     >
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
@@ -25,13 +25,15 @@
             android:layout_alignParentTop="true"
             android:layout_width="260dp"
             android:layout_height="100dp"
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/logo_white"
 
             />
 
 
-    </RelativeLayout></ScrollView>
+    </android.support.constraint.ConstraintLayout></ScrollView>
 
 
     <ScrollView
@@ -64,7 +66,7 @@
 
 
 
-                <RelativeLayout
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="70dp"
                     android:layout_height="wrap_content">
@@ -78,6 +80,7 @@
                         android:textSize="30dp"
                         android:textColor="@color/system_font_color"
                         android:fontFamily="@font/re_font"
+
                         android:textStyle="bold" />
                 </RelativeLayout>
                 <RelativeLayout
@@ -93,6 +96,30 @@
                         android:layout_height="32dp"
                         android:background="@drawable/ic_back_icon" />
                 </RelativeLayout>
+
+                        android:textSize="35dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+                    <RelativeLayout
+                        android:layout_width="40dp"
+                        android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/back_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:background="@drawable/ic_back_icon"
+                            />
+
+
+                    </RelativeLayout>
+                </android.support.constraint.ConstraintLayout>
+
 
             </RelativeLayout>
 

@@ -8,4 +8,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="history"><u>ร้านอาหารที่คุณจอง</u></string>
 </resources>
