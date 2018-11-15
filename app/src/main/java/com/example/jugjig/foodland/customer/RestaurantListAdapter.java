@@ -45,7 +45,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-
             }
         });
     }
