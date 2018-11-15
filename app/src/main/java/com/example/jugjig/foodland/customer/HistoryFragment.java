@@ -61,35 +61,34 @@ public class HistoryFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-            pendingEmptyText = getActivity().findViewById(R.id.history_pending_empty);
-            historyEmptyText = getActivity().findViewById(R.id.history_complete_empty);
+        pendingEmptyText = getActivity().findViewById(R.id.history_pending_empty);
+        historyEmptyText = getActivity().findViewById(R.id.history_complete_empty);
 
-            pendingRecycler = getActivity().findViewById(R.id.history_pending_list);
-            pendingRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        pendingRecycler = getActivity().findViewById(R.id.history_pending_list);
+        pendingRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-            historyRecycler = getActivity().findViewById(R.id.history_complete_list);
-            historyRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        historyRecycler = getActivity().findViewById(R.id.history_complete_list);
+        historyRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-            progressBar = getActivity().findViewById(R.id.history_progress_bar);
-            progressBar2 = getActivity().findViewById(R.id.history_progress_bar2);
+        progressBar = getActivity().findViewById(R.id.history_progress_bar);
+        progressBar2 = getActivity().findViewById(R.id.history_progress_bar2);
 
-            if (pendingList == null) {
-                getData();
+        if (pendingList == null) {
+            getData();
+        } else {
+            pendingListAdapter.setItemList(pendingList, pendingResList);
+            pendingRecycler.setAdapter(pendingListAdapter);
+
+            if (pendingList.isEmpty()) {
+                pendingEmptyText.setVisibility(View.VISIBLE);
             }
-            else {
-                pendingListAdapter.setItemList(pendingList, pendingResList);
-                pendingRecycler.setAdapter(pendingListAdapter);
-
-                if (pendingList.isEmpty()) {
-                    pendingEmptyText.setVisibility(View.VISIBLE);
-                }
-                if (historyList.isEmpty()) {
-                    historyEmptyText.setVisibility(View.VISIBLE);
-                }
-
-                historyListAdapter.setItemList(historyList, historyResList);
-                historyRecycler.setAdapter(historyListAdapter);
+            if (historyList.isEmpty()) {
+                historyEmptyText.setVisibility(View.VISIBLE);
             }
+
+            historyListAdapter.setItemList(historyList, historyResList);
+            historyRecycler.setAdapter(historyListAdapter);
+        }
 
     }
 
@@ -164,6 +163,14 @@ public class HistoryFragment extends Fragment {
                         });
 
                     }
+                }
+
+                if (task.getResult().size() == 0) {
+                    progressBar.setVisibility(View.GONE);
+                    progressBar2.setVisibility(View.GONE);
+                    pendingEmptyText.setVisibility(View.VISIBLE);
+                    historyEmptyText.setVisibility(View.VISIBLE);
+                    getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }
             }
         });
