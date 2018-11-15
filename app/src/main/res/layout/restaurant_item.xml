@@ -14,7 +14,6 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-
         android:id="@+id/res_item_profile_image"
         android:layout_width="120dp"
         android:layout_height="0dp"
@@ -92,28 +91,6 @@
         android:layout_marginTop="90dp">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
->
-
-        <Button
-            android:id="@+id/next_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/shape_login_btn"
-            android:fontFamily="@font/re_font"
-            android:text="เพิ่มเติม"
-            android:layout_marginRight="5dp"
-            android:textStyle="bold"
-            android:layout_alignParentRight="true"
-            android:textColor="#fff"
-            android:textSize="25sp"
-
-            />
-
-    </RelativeLayout></ScrollView>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
