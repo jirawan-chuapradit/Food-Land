@@ -27,6 +27,7 @@
         android:id="@+id/cus_bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="@android:color/white"
         app:itemBackground="@drawable/navbar_color_selector"
         app:itemIconSize="35dp"
