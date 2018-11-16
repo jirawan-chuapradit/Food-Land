@@ -7,29 +7,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <ScrollView
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/re_font"
+        android:text="@string/profile"
+        android:textColor="@color/system_font_color"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <ImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentTop="true"
-                android:layout_width="260dp"
-                android:layout_height="100dp"
-                android:src="@drawable/logo_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
-
-        </RelativeLayout></ScrollView>
-
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ScrollView
@@ -49,34 +53,11 @@
                 android:layout_height="wrap_content">
 
 
-                <TextView
-                    android:layout_centerInParent="true"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ข้อมูลส่วนตัว"
-                    android:textStyle="bold"
-                    android:textColor="@color/system_font_color"
-                    android:fontFamily="@font/re_font"
-                    android:textSize="35dp" />
-
-
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="70dp"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="_"
-                        android:textScaleX="13"
-                        android:textSize="30dp"
-                        android:textColor="@color/system_font_color"
-                        android:fontFamily="@font/re_font"
-                        android:textStyle="bold" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"

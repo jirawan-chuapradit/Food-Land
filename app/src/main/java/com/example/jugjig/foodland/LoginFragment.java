@@ -65,8 +65,6 @@ public class LoginFragment extends Fragment {
         myDB.execSQL("CREATE TABLE IF NOT EXISTS user (_id INTEGER PRIMARY KEY AUTOINCREMENT, userId VARCHAR(50), firstname VARCHAR(50), lastname VARCHAR(50), email VARCHAR(50), phone VAECHAR(10))");
         myDB.execSQL("CREATE TABLE IF NOT EXISTS history (_id INTEGER PRIMARY KEY AUTOINCREMENT, restaurantId VARCHAR(50), name VARCHAR(50), amont VARCHAR(50), time VARCHAR(50), date VAECHAR(10), location VARCHAR(200), phone VARCHAR(10))");
 
-        //set fonts
-
         //Firebase
         firestore = FirebaseFirestore.getInstance();
         fbAuth = FirebaseAuth.getInstance();

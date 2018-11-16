@@ -31,7 +31,7 @@
         <activity
             android:name=".CusMainActivity"
             android:label="@string/title_activity_cus_main"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustNothing" />
         <activity
             android:name=".RestMainActivity"
             android:label="@string/title_activity_rest_main"

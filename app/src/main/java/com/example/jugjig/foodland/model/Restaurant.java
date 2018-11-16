@@ -164,7 +164,7 @@ public class Restaurant implements Parcelable {
     }
 
     public void setRestaurantId(String restaurantId) {
-        restaurantId = restaurantId;
+        this.restaurantId = restaurantId;
     }
 
     public String getDescription() {
