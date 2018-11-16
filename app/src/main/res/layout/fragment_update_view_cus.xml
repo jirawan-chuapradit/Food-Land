@@ -201,59 +201,7 @@
                     />
 
 
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginLeft="20dp"
-                    android:fontFamily="@font/re_font"
-                    android:text="รหัสผ่าน :  "
-                    android:textColor="@color/system_font_color"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/update_cusPassword"
-                    android:padding="10dp"
-                    android:textColor="@color/user_font_color"
-                    android:textSize="20dp"
-                    android:hint=" ••••••"
-                    android:fontFamily="@font/re_font"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/shape_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-
-                    />
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="7dp"
-                    android:gravity="center"
-                    android:fontFamily="@font/re_font"
-                    android:text="ยืนยันรหัสผ่าน :  "
-                    android:textColor="@color/system_font_color"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/update_cusRePassword"
-                    android:padding="10dp"
-                    android:textColor="@color/user_font_color"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/re_font"
-                    android:layout_marginLeft="20dp"
-                    android:hint=" ••••••"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/shape_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-
-                    />
-
-            <LinearLayout
+                <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:gravity="center"

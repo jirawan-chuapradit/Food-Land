@@ -140,7 +140,7 @@ public class LoginFragment extends Fragment {
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
                             Log.d("USER", "INVALID USER OR PASSWORD");
-                            Toast.makeText(getContext(), "ERROR = " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "ชื่อผู้ใช้ หรือรหัสผ้่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
 
                         }
                     });

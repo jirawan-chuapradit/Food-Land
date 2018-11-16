@@ -17,6 +17,7 @@ import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.model.UserProfileRegis;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -88,18 +89,6 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                                 public void onSuccess(AuthResult authResult) {
                                     uid = fbAuth.getCurrentUser().getUid();
                                     setParameter();
-//                                    sendVerifiedEmail(authResult.getUser());
-                                    progressDialog.dismiss();
-                                    fbAuth.getInstance().signOut();
-                                    Log.d("LOGIN", "Send verify e-mail successful");
-                                    getActivity().getSupportFragmentManager()
-                                            .beginTransaction()
-                                            .addToBackStack(null)
-                                            .replace(R.id.main_view, new LoginFragment())
-                                            .commit();
-                                    Toast.makeText
-                                            (getContext(), "Please Verify Your E-Mail", Toast.LENGTH_SHORT)
-                                            .show();
                                 }
                             });
 
@@ -109,7 +98,7 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
     }
 
     private void setParameter() {
-        UserProfile cusProfile = UserProfile.getRestProfileInstance();
+        UserProfileRegis cusProfile = UserProfileRegis.getRestProfileInstance();
         cusProfile.setfName(fName);
         cusProfile.setlName(lName);
         cusProfile.setRole("customer");
@@ -124,7 +113,18 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                     public void onSuccess(Void aVoid) {
                         progressDialog.dismiss();
                         Log.d("REGISTER", "VALUE HAS BEEN SAVED IN FIREBASE");
-
+//                        sendVerifiedEmail(authResult.getUser());
+                        progressDialog.dismiss();
+                        fbAuth.getInstance().signOut();
+                        Log.d("LOGIN", "Send verify e-mail successful");
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .addToBackStack(null)
+                                .replace(R.id.main_view, new LoginFragment())
+                                .commit();
+                        Toast.makeText
+                                (getContext(), "Please Verify Your E-Mail", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -350,7 +350,7 @@
                 android:textSize="20dp" />
 
             <com.google.android.gms.maps.MapView
-                android:id="@+id/refis_rest_map"
+                android:id="@+id/regis_rest_map"
                 android:layout_width="250dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
@@ -441,33 +441,6 @@
 
             <EditText
                 android:id="@+id/registeRestType"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_shape_input"
-                android:fontFamily="@font/re_font"
-                android:padding="10dp"
-                android:textColor="@color/user_font_color"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="153dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="35dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/re_font"
-                android:text="อัพโหลดรูปภาพ :"
-                android:textColor="@color/system_font_color"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/registeRestImgDesc"
                 android:layout_width="290dp"
                 android:layout_height="39dp"
                 android:layout_gravity="center"

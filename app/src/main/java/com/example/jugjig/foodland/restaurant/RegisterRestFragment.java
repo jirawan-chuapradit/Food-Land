@@ -1,12 +1,21 @@
 package com.example.jugjig.foodland.restaurant;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,10 +34,21 @@ import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
 import com.example.jugjig.foodland.model.Restaurant;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.model.UserProfileRegis;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.collect.MapMaker;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,20 +58,18 @@ import com.google.firebase.storage.UploadTask;
 
 import static android.app.Activity.RESULT_OK;
 
-public class RegisterRestFragment extends Fragment implements View.OnClickListener {
+public class RegisterRestFragment extends Fragment implements View.OnClickListener, OnMapReadyCallback {
 
     private Button registerBtn;
-    private String fName, lName, email, phone, restDesc, password, rePassword
-            , uid, resName, resLocation, resOpen, resClose, resType
-    ,generatedFilePath;
+    private String fName, lName, email, phone, restDesc, password, rePassword, uid, resName, resLocation, resOpen, resClose, resType, generatedFilePath;
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private Button back;
     private StorageReference storageReference;
     private FirebaseStorage firebaseStorage;
-
-
-
+    private GoogleMap mMap;
+    private MapView mapView;
+    private LatLng midLatlng;
 
     // Loading data dialog
     ProgressDialog progressDialog;
@@ -64,11 +82,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     private Uri filePath;
 
 
-    public View onCreateView
-            (@NonNull LayoutInflater inflater,
-             @Nullable ViewGroup container,
-             @Nullable Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_register_rest, container, false);
     }
 
@@ -93,6 +107,15 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
 
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // Map Init
+        mapView = view.findViewById(R.id.regis_rest_map);
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume();
+        mapView.getMapAsync(this);
+    }
 
     private void register() {
         //get parameter
@@ -101,8 +124,8 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         //check parameter
         if (fName.isEmpty() || lName.isEmpty() || email.isEmpty()
                 || phone.isEmpty() || password.isEmpty() || rePassword.isEmpty()
-                || resName.isEmpty()||resLocation.isEmpty()||resType.isEmpty()
-                || resOpen.isEmpty()||resClose.isEmpty() ) {
+                || resName.isEmpty() || resLocation.isEmpty() || resType.isEmpty()
+                || resOpen.isEmpty() || resClose.isEmpty()) {
             Log.d("REGISTER", "PARAMETER IS EMPTY");
             Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show();
         } else if (!password.equals(rePassword)) {
@@ -111,12 +134,10 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         } else if (password.length() <= 5 || rePassword.length() <= 5) {
             Log.d("REGISTER", "รหัสผ่านน้อยกว่า 6 ตัว");
             Toast.makeText(getActivity(), "กรุณาระบุรหัสผ่านมากกว่า 5 ตัว", Toast.LENGTH_SHORT).show();
-        }
-        else if(filePath == null) {
+        } else if (filePath == null) {
             Log.d("REGISTER", "ไม่ได้เลือกรูปภาพ");
             Toast.makeText(getActivity(), "กรุณาใส่รูปภาพ", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             // Loading data dialog following owner network speed
             delay();
 
@@ -127,7 +148,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     uid = fbAuth.getCurrentUser().getUid();
-                    System.out.println("User id: "+uid);
+                    System.out.println("User id: " + uid);
                     //save image to storage
                     StorageReference imageReference = storageReference.child("restaurant_profile_image").child(uid).child("Profile Pic");//restaurant_profile_image/user id/Profile Pic.jpg
                     UploadTask uploadTask = imageReference.putFile(filePath);
@@ -154,7 +175,6 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
                     });
 
 
-
                 }
             }).
                     addOnFailureListener(new OnFailureListener() {
@@ -173,7 +193,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     }
 
     private void getProfileImageURL() {
-        storageReference.child("restaurant_profile_image/"+uid+"/Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageReference.child("restaurant_profile_image/" + uid + "/Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
@@ -193,7 +213,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         });
     }
 
-    void delay() {
+    private void delay() {
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
         progressDialog.setMessage("กรุณารอสักครู่...");
@@ -207,7 +227,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     }
 
     private void setParameter() {
-        UserProfile restProfile = UserProfile.getRestProfileInstance();
+        UserProfileRegis restProfile = UserProfileRegis.getRestProfileInstance();
         restProfile.setfName(fName);
         restProfile.setlName(lName);
         restProfile.setRole("restaurant");
@@ -226,6 +246,8 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         restaurant.setProfileImageURL(generatedFilePath);
         restaurant.setType(resType);
         restaurant.setStatus("close");
+        restaurant.setLatitude(midLatlng.latitude);
+        restaurant.setLongitude(midLatlng.longitude);
 
         firestore.collection("UserProfile")
                 .document(uid)
@@ -302,7 +324,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     //handling the image chooser activity result
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null){
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null) {
             filePath = data.getData();
 
             Glide.with(getContext()).load(filePath)
@@ -313,9 +335,9 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
                             .dontTransform()
                             .placeholder(R.mipmap.ic_launcher_round)
                             .error(R.mipmap.ic_launcher_round)
-                    .override(300,200)
-                    .transform(new CircleCrop()))
-                   .into(userProfileImage);
+                            .override(300, 200)
+                            .transform(new CircleCrop()))
+                    .into(userProfileImage);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -328,7 +350,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         } else if (v == back) {
             Log.d("CKICK: ", "BACK");
             back();
-        }else if(v == userProfileImage){
+        } else if (v == userProfileImage) {
             //open file chooser
             Log.d("REGISTER", "CLICK = USER_PROFIRE_IMAGE");
             showFileChooser();
@@ -352,5 +374,22 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         Log.d("CUSTOMER", "GOTO Select Register");
     }
 
+    @Override
+    public void onMapReady(final GoogleMap googleMap) {
+        mMap = googleMap;
+
+        LatLng latLng = new LatLng(13.833840, 100.509549);
+        mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        mMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
+            @Override
+            public void onCameraMove() {
+                midLatlng = mMap.getCameraPosition().target;
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(midLatlng));
+            }
+        });
+    }
 
 }
