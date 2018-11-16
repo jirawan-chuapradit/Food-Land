@@ -42,9 +42,8 @@
         android:id="@+id/switchBtn"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/icn_add"
+        android:background="@drawable/open"
         android:elevation="8dp"
         android:maxHeight="120dp"
         android:maxWidth="120dp"
@@ -52,8 +51,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rest_bottom_nav_bar"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

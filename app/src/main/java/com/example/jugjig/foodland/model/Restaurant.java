@@ -21,7 +21,6 @@ public class Restaurant implements Parcelable {
     private String restaurantId;
     private String status;
 
-
     public Restaurant() {
 
     }

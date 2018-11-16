@@ -45,7 +45,7 @@ public class RestMainActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 status = documentSnapshot.getString("status");
                 if (status.equals("close")) {
-                    homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                    homeBtn.setBackgroundResource(R.drawable.close);
                 }
                 setDialog();
             }
@@ -112,13 +112,13 @@ public class RestMainActivity extends AppCompatActivity {
                     status = "close";
                     firestore.collection("Restaurant").document(user.getUid()).update("status", status);
                     builder.setMessage("คุณต้องการเปิดรับการจองใช่หรือไม่");
-                    homeBtn.setBackgroundResource(R.drawable.icn_add_black);
+                    homeBtn.setBackgroundResource(R.drawable.close);
                 }
                 else {
                     status = "open";
                     firestore.collection("Restaurant").document(user.getUid()).update("status", status);
                     builder.setMessage("คุณต้องการปิดรับการจองใช่หรือไม่");
-                    homeBtn.setBackgroundResource(R.drawable.icn_add);
+                    homeBtn.setBackgroundResource(R.drawable.open);
                 }
                 dialog.dismiss();
             }
