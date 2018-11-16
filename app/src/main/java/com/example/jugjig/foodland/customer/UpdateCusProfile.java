@@ -3,6 +3,8 @@ package com.example.jugjig.foodland.customer;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,11 +34,14 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
     private Button saveBtn,backBtn;
 
     // Loading data dialog
-    ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
 
     //Firebase
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
+
+    private SQLiteDatabase myDB;
+    private UserProfile userProfile;
 
 
     @Nullable
@@ -148,7 +153,7 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
 
     private void setParameter() {
 
-        UserProfile userProfile = UserProfile.getRestProfileInstance();
+        userProfile = UserProfile.getRestProfileInstance();
         userProfile.setfName(fName);
         userProfile.setlName(lName);
         userProfile.setPhone(phone);
@@ -162,6 +167,7 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(Void aVoid) {
                         progressDialog.dismiss();
+                        setTextFromDB();
                         Log.d("REGISTER", "VALUE HAS BEEN SAVED IN FIREBASE");
 
 
@@ -181,5 +187,13 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
 
                     }
                 });
+    }
+
+    private void setTextFromDB() {
+        myDB = getActivity().openOrCreateDatabase("foodland.db", Context.MODE_PRIVATE, null);
+        Cursor myCursor = myDB.rawQuery("SELECT * FROM user", null);
+        myCursor.moveToNext();
+        userProfile.setContentValues(myCursor.getString(1));
+        myDB.update("user", userProfile.getContentValues(), "userId="+myCursor.getString(1), null);
     }
 }

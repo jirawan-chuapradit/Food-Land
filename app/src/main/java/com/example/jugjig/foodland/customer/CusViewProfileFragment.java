@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,11 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import static android.content.Context.MODE_PRIVATE;
 
 public class CusViewProfileFragment extends Fragment implements View.OnClickListener {
-
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_view_cus, container, false);
-    }
-
     private FirebaseAuth fbAuth;
     private FirebaseFirestore firestore;
     private TextView profileName, profilePhone, profileDesc, profileEmail;
@@ -40,6 +36,10 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
     private Button updateBtn, logoutBtn,updatePasswordBtn;
     private ProgressDialog progressDialog;
     private SQLiteDatabase myDB;
+
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_view_cus, container, false);
+    }
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -51,13 +51,14 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
         //GET VALUDE FROM FIREBASE
         uid = fbAuth.getCurrentUser().getUid();
 
-        // Loading data dialog
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please waiting...");
-        progressDialog.show();
+//        // Loading data dialog
+//        progressDialog = new ProgressDialog(getActivity());
+//        progressDialog.setMessage("Please waiting...");
+//        progressDialog.show();
 
         getParameter();
-        setParmeter();
+//        setParmeter();
+        setTextFromDB();
 
         logoutBtn = getView().findViewById(R.id.log_out_btn);
         updateBtn = getView().findViewById(R.id.update_profile);
@@ -159,5 +160,18 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
                 .commit();
 
         Log.d("USER ", "GO TO UPDATE PROFILE");
+    }
+
+    private void setTextFromDB() {
+        myDB = getActivity().openOrCreateDatabase("foodland.db", Context.MODE_PRIVATE, null);
+        Cursor myCursor = myDB.rawQuery("SELECT * FROM user", null);
+        myCursor.moveToNext();
+        fname = myCursor.getString(2);
+        lname = myCursor.getString(3);
+        phone = myCursor.getString(4);
+        email = myCursor.getString(559070);
+        profileName.setText("  "+myCursor.getString(2)+"  "+myCursor.getString(3));
+        profileEmail.setText("  "+myCursor.getString(4));
+        profilePhone.setText("  "+myCursor.getString(5));
     }
 }
