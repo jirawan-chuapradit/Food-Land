@@ -33,72 +33,72 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_width="127dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="0dp"
+                    android:id="@+id/view_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
+                    android:gravity="center"
                     android:text="ลงทะเบียน"
                     android:textColor="@color/system_font_color"
                     android:textSize="35dp"
                     android:textStyle="bold" />
 
-                <Button
-                    android:layout_width="60dp"
-                    android:layout_height="77dp"
-                    android:layout_marginLeft="260dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/regis_restaurant_black" />
-
                 <TextView
-                    android:id="@+id/dat"
+                    android:id="@+id/view_underline"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginTop="25sp"
-                    android:layout_marginRight="90dp"
+                    android:layout_height="3dp"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
+                    android:background="@android:color/black"
                     android:fontFamily="@font/re_font"
-                    android:text="-"
+                    android:gravity="center"
                     android:textColor="@color/system_font_color"
                     android:textScaleX="13"
                     android:textSize="30dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/view_register" />
+
+                <Button
+                    android:id="@+id/back_btn"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="19dp"
+                    android:background="@drawable/ic_back_icon"
+                    app:layout_constraintRight_toLeftOf="@id/view_change_password" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="77dp"
+                    app:layout_constraintLeft_toRightOf="@+id/view_underline"
+                    app:layout_constraintTop_toBottomOf="@+id/view_cus_name"
+                    android:background="@drawable/regis_restaurant_black" />
+
 
                 <TextView
-                    android:layout_width="127dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/dat"
-                    android:layout_marginLeft="120dp"
-                    android:layout_marginRight="120dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
                     android:gravity="center"
                     android:text="ร้านค้า"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_register"
                     android:textColor="@color/system_font_color"
                     android:textSize="22dp" />
+            </android.support.constraint.ConstraintLayout>
 
-                <RelativeLayout
-                    android:layout_width="40dp"
-                    android:layout_height="50dp">
-
-                    <Button
-                        android:id="@+id/back_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:background="@drawable/ic_back_icon" />
-
-
-                </RelativeLayout>
-            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/restProfileImage"
@@ -109,12 +109,12 @@
                 app:srcCompat="@drawable/upload_profile" />
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="19dp"
-                android:layout_marginRight="239dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
                 android:text="ชื่อจริง :"
@@ -123,10 +123,10 @@
 
             <EditText
                 android:id="@+id/registerFname"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -137,10 +137,11 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -150,10 +151,10 @@
 
             <EditText
                 android:id="@+id/registerLname"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -164,11 +165,12 @@
 
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
                 android:text="อีเมล :"
@@ -177,10 +179,10 @@
 
             <EditText
                 android:id="@+id/registerEmail"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -191,10 +193,11 @@
 
 
             <TextView
-                android:layout_width="139dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -204,10 +207,10 @@
 
             <EditText
                 android:id="@+id/registerPhone"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -217,10 +220,11 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="139dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -230,10 +234,10 @@
 
             <EditText
                 android:id="@+id/registerRestDesc"
-                android:layout_width="290dp"
-                android:layout_height="122dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -243,10 +247,11 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="139dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -256,10 +261,10 @@
 
             <EditText
                 android:id="@+id/registerPassword"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -270,10 +275,11 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="139dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -283,10 +289,10 @@
 
             <EditText
                 android:id="@+id/registerRePassword"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -297,10 +303,11 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -310,10 +317,10 @@
 
             <EditText
                 android:id="@+id/registeRestName"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -324,10 +331,11 @@
 
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/re_font"
@@ -337,10 +345,10 @@
 
             <EditText
                 android:id="@+id/registeRestLocate"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -359,80 +367,82 @@
                 android:layout_marginRight="20dp"
                 android:layout_gravity="center" />
 
-            <LinearLayout
+
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="92dp"
+                    android:id="@+id/view_time_open"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="44dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
                     android:text="เวลาเปิด :"
                     android:textColor="@color/system_font_color"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    app:layout_constraintRight_toLeftOf="@id/view_time_close"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="92dp"
+                    android:id="@+id/view_time_close"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="35dp"
+                    android:layout_marginStart="110dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
                     android:text="เวลาปิด :"
                     android:textColor="@color/system_font_color"
-                    android:textSize="20dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/view_time_open"
+                    app:layout_constraintTop_toTopOf="parent" />
                 <EditText
                     android:id="@+id/registeRestOpen"
-                    android:layout_width="220dp"
-                    android:layout_height="39dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="180dp"
                     android:layout_weight="1"
                     android:background="@drawable/fill_shape_input"
                     android:fontFamily="@font/re_font"
                     android:padding="10dp"
                     android:textColor="@color/user_font_color"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    app:layout_constraintRight_toLeftOf="@id/updateRestClose"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_time_open"/>
 
                 <EditText
                     android:id="@+id/registeRestClose"
-                    android:layout_width="220dp"
-                    android:layout_height="39dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:background="@drawable/fill_shape_input"
                     android:fontFamily="@font/re_font"
                     android:padding="10dp"
                     android:textColor="@color/user_font_color"
-                    android:textSize="20dp" />
-            </LinearLayout>
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_time_close"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+
 
 
             <TextView
-            android:layout_width="153dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginLeft="44dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/re_font"
             android:text="ประเภทของร้าน :"
@@ -444,7 +454,7 @@
                 android:layout_width="290dp"
                 android:layout_height="39dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/fill_shape_input"
@@ -468,12 +478,6 @@
                 android:textColor="@color/white"
                 android:textSize="37dp"
                 android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"></LinearLayout>
 
         </LinearLayout>
     </ScrollView>

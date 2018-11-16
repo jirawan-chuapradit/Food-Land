@@ -67,7 +67,6 @@
                     android:gravity="center"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_below="@+id/dat"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
                     android:text="ลูกค้า"

@@ -12,92 +12,95 @@
         android:alpha="0.33"
         android:background="@drawable/normal_bg"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="42dp"
+        android:layout_height="39dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="344dp"
+        android:clickable="true"
+        android:src="@drawable/ic_back_icon" />
+
+
+    <Button
+        android:id="@+id/customer_regis"
+        android:layout_width="121dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="88dp"
+        android:layout_weight="1"
+        android:background="@drawable/regis_user_black"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/rest_regis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972" />
+
+    <Button
+        android:id="@+id/rest_regis"
+        android:layout_width="86dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="72dp"
+        android:layout_weight="1"
+        android:background="@drawable/regis_restaurant_black"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="120dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/re_font"
+        android:gravity="center"
+        android:text="ÅÙ¡¤éÒ"
+        android:textColor="@color/system_font_color"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/back_btn"
-            android:layout_width="42dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="344dp"
-            android:clickable="true"
-            android:src="@drawable/ic_back_icon" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="120dp"
+        android:fontFamily="@font/re_font"
+        android:gravity="center"
+        android:text="ÃéÒ¹¤éÒ"
+        android:textColor="@color/system_font_color"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/customer_regis"
-                android:layout_width="121dp"
-                android:layout_height="121dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="1"
-                android:background="@drawable/regis_user_black"
-                android:gravity="center" />
-
-            <Button
-                android:id="@+id/rest_regis"
-                android:layout_width="86dp"
-                android:layout_height="134dp"
-                android:layout_marginLeft="29dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="75dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="1"
-                android:background="@drawable/regis_restaurant_black"
-                android:gravity="center" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="70dp"
-                android:layout_marginBottom="207dp"
-                android:layout_marginRight="221dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="ลูกค้า"
-                android:textColor="@color/system_font_color"
-                android:fontFamily="@font/re_font"
-                android:textSize="25dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="245dp"
-                android:layout_marginRight="66dp"
-                android:layout_marginBottom="207dp"
-                android:gravity="center"
-                android:text="ร้านค้า"
-                android:textColor="@color/system_font_color"
-                android:fontFamily="@font/re_font"
-                android:textSize="25dp" />
-        </RelativeLayout>
-    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
