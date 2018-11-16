@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.Reservation;
@@ -39,6 +41,8 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
         super.onActivityCreated(savedInstanceState);
 //        getRestaurantId();
 //        getCustomerId();
+        addAmont();
+        subAmont();
     }
 
     @Override
@@ -75,5 +79,27 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
         LatLng sydney = new LatLng(13, 100);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    private void addAmont() {
+        final TextView _amont = getView().findViewById(R.id.reservation_amont);
+        ImageButton _addAmont = getView().findViewById(R.id.reservation_amont_add);
+        _addAmont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _amont.setText(Integer.parseInt(_amont.getText().toString()) + 1);
+            }
+        });
+    }
+
+    private void subAmont() {
+        final TextView _amont = getView().findViewById(R.id.reservation_amont);
+        ImageButton _subAmont = getView().findViewById(R.id.reservation_amont_sub);
+        _subAmont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _amont.setText(Integer.parseInt(_amont.getText().toString()) - 1);
+            }
+        });
     }
 }
