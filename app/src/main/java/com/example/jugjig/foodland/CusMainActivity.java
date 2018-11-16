@@ -22,7 +22,6 @@ import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 public class CusMainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment = new HomeFragment();
-    HistoryFragment historyFragment = new HistoryFragment();
 
 
     @Override
@@ -46,7 +45,7 @@ public class CusMainActivity extends AppCompatActivity {
                         homeBtn.setBackgroundResource(R.drawable.icn_add_black);
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.cus_main_view, historyFragment)
+                                .replace(R.id.cus_main_view, new HistoryFragment())
                                 .commit();
                         Log.d("CUSTOMER", "GOTO  HISTORY");
                         return true;
