@@ -47,7 +47,7 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
     private EditText fNameEdt, lNameEdt, phoneEdt, descEdt
             ,restNameEdt,restTypeEdt,restOpenEdt,restCloseEdt,restLocationEdt;
     private TextView profileEmail;
-    private Button saveBtn;
+    private Button saveBtn,backBtn;
     private Uri filePath;
     ImageView userProfileImage;
     //a constant to track the file chooser intent
@@ -91,10 +91,11 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
 
         saveBtn = getView().findViewById(R.id.saveBtn);
         userProfileImage = getView().findViewById(R.id.updateProfileImage);
-
+        backBtn = getView().findViewById(R.id.back_btn);
 
         saveBtn.setOnClickListener(this);
         userProfileImage.setOnClickListener(this);
+        backBtn.setOnClickListener(this);
 
 
     }
@@ -189,6 +190,13 @@ public class UpdateRestProfile extends Fragment implements View.OnClickListener 
         else if(v==userProfileImage){
             Log.d("USER ", "CLIECK USER PROFILE IMAGE");
             showFileChooser();
+        }else if(v==backBtn){
+            Log.d("USER ", "CLICK BACK ");
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.rest_main_view, new RestViewProfileFragment())
+                    .addToBackStack(null)
+                    .commit();
         }
     }
     private void showFileChooser() {
