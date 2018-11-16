@@ -62,7 +62,7 @@
 
                 <LinearLayout
                     android:id="@+id/history_progress_bar_container"
-                    android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/history_pending_list"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:clipToPadding="true"
@@ -97,17 +97,17 @@
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
-                    android:text="จองแล้ว"
+                    android:text="ประวัติการจอง"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/history_progress_bar_container" />
 
                 <LinearLayout
                     android:id="@+id/history_progress_bar_container2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/history_complete_list"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="?attr/actionBarSize"
                         android:layout_marginStart="8dp"
@@ -135,9 +135,10 @@
 
                 <TextView
                     android:id="@+id/history_pending_empty"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:gravity="center"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:text="ไม่มีร้านที่กำลังจองอยู่ในขณะนี้"
@@ -149,13 +150,14 @@
 
                 <TextView
                     android:id="@+id/history_complete_empty"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:text="ไม่มีร้านที่เคยจอง"
                     android:visibility="gone"
+                    android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/history_progress_bar_container2"
@@ -169,9 +171,6 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/history_topBG"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/history_topBG"

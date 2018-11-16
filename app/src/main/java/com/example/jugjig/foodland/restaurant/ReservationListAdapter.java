@@ -33,7 +33,7 @@ public class ReservationListAdapter extends RecyclerView.Adapter<ReservationView
     @NonNull
     @Override
     public ReservationViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rest_reser_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rest_reservation_item, viewGroup, false);
         return new ReservationViewHolder(view);
     }
 

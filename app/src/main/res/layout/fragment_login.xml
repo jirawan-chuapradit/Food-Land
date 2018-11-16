@@ -32,8 +32,8 @@
                 android:hint="example@gmail.com"
                 android:inputType="text"
                 android:padding="10dp"
-                android:textColor="@color/user_font_color"
-                android:textColorHint="@color/system_font_color"
+                android:textColor="@color/system_font_color"
+                android:textColorHint="@color/user_font_color"
                 android:textSize="20dp" />
 
             <EditText
@@ -47,8 +47,8 @@
                 android:hint="password"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                android:textColor="@color/user_font_color"
-                android:textColorHint="@color/system_font_color"
+                android:textColor="@color/system_font_color"
+                android:textColorHint="@color/user_font_color"
                 android:textSize="20dp" />
 
             <Button
