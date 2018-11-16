@@ -33,12 +33,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
     @Override
     public RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.restaurant_item, viewGroup, false);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         return new RestaurantViewHolder(view);
     }
 
@@ -62,7 +56,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
                 bundle.putString("restaurantId", item.getRestaurantId());
                 reser.setArguments(bundle);
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.cus_main_view, reser).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.cus_main_view, reser).addToBackStack(null).commit();
             }
         });
     }

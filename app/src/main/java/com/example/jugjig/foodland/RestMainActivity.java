@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.jugjig.foodland.customer.CusViewProfileFragment;
 import com.example.jugjig.foodland.customer.HomeFragment;
+import com.example.jugjig.foodland.restaurant.ReservationListFragment;
 import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +62,9 @@ public class RestMainActivity extends AppCompatActivity {
                     case R.id.navigation_history:
                         Log.d("RESTAURANT", "Click Home");
                         navigation.getMenu().getItem(0).setCheckable(true);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.rest_main_view, new ReservationListFragment()).commit();
                         return true;
                     case R.id.navigation_profile:
                         navigation.getMenu().getItem(1).setCheckable(true);
@@ -81,11 +85,6 @@ public class RestMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 builder.show();
-                for (int i = 0; i < navigation.getMenu().size(); i++) {
-                    navigation.getMenu().getItem(i).setChecked(false);
-                    navigation.getMenu().getItem(i).setCheckable(false);
-                }
-
                 Log.d("CUSTOMER", "GOTO  Home");
             }
         });
@@ -112,11 +111,13 @@ public class RestMainActivity extends AppCompatActivity {
                 if (status.equals("open")) {
                     status = "close";
                     firestore.collection("Restaurant").document(user.getUid()).update("status", status);
+                    builder.setMessage("คุณต้องการเปิดรับการจองใช่หรือไม่");
                     homeBtn.setBackgroundResource(R.drawable.icn_add_black);
                 }
                 else {
                     status = "open";
                     firestore.collection("Restaurant").document(user.getUid()).update("status", status);
+                    builder.setMessage("คุณต้องการปิดรับการจองใช่หรือไม่");
                     homeBtn.setBackgroundResource(R.drawable.icn_add);
                 }
                 dialog.dismiss();

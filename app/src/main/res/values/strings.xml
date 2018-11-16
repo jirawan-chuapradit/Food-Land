@@ -10,4 +10,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_map_fragment">Map</string>
+    <string name="history"><u>ร้านอาหารที่คุณจอง</u></string>
+    <string name="reser_list"><u>รายการจองร้านของคุณ</u></string>
 </resources>
