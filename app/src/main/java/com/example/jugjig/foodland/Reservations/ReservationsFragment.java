@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -56,7 +57,7 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
     private Integer amont_new;
     private TextView _amont, _time, _date, _date_select, _name, _phone, _confirmBtn;
     private String time_new;
-    private final String DIFF_TIME = "00:05";
+    private final Integer DIFF_TIME = 15;
     private final SimpleDateFormat df = new SimpleDateFormat("HH:mm");
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d/M/y");
     private Format formatter = new SimpleDateFormat("dd MMMM yyyy", new Locale("th", "TH"));
@@ -66,6 +67,7 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
     private ImageView _backBtn;
     private FirebaseFirestore _firestore;
     private DocumentReference _documentReference;
+    private EditText _comment;
 
     @Nullable
     @Override
@@ -107,8 +109,9 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
         _phone = getView().findViewById(R.id.reservation_restaurant_phone);
         _backBtn = getView().findViewById(R.id.reservation_back_btn);
         _confirmBtn = getView().findViewById(R.id.reservation_confirm);
+        _comment = getView().findViewById(R.id.reservation_comment);
 
-        mapView = (MapView) view.findViewById(R.id.reservation_map);
+        mapView = view.findViewById(R.id.reservation_map);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
         mapView.getMapAsync(this);
@@ -192,7 +195,7 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
                     Date d = df.parse(parts[0]);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(d);
-                    cal.add(Calendar.MINUTE, 5);
+                    cal.add(Calendar.MINUTE, DIFF_TIME);
                     time_new = df.format(cal.getTime());
                     _time.setText(time_new + " น");
                 } catch (ParseException e) {
@@ -211,7 +214,7 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
                     Date d = df.parse(parts[0]);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(d);
-                    cal.add(Calendar.MINUTE, -5);
+                    cal.add(Calendar.MINUTE, -DIFF_TIME);
                     time_new = df.format(cal.getTime());
                     _time.setText(time_new + " น");
                 } catch (ParseException e) {
@@ -250,8 +253,8 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
     private void setInitValue() {
         _subAmont.setEnabled(false);
         _subAmont.setClickable(false);
-        _subtime.setEnabled(false);
-        _subtime.setClickable(false);
+//        _subtime.setEnabled(false);
+//        _subtime.setClickable(false);
 
         _name.setText(restaurant.getName());
         _phone.setText(restaurant.getTelephone());
@@ -287,7 +290,7 @@ public class ReservationsFragment extends Fragment implements OnMapReadyCallback
                 _documentReference = _firestore.collection("Reservations").document();
 
                 reservation.setAmount(Integer.parseInt(_amont.getText().toString().split(" ")[0]));
-                reservation.setComment("");
+                reservation.setComment(_comment.getText().toString());
                 reservation.setDate(_date.getText().toString());
                 reservation.setStatus("pending");
                 reservation.setTime(_time.getText().toString().split(" ")[0]);
