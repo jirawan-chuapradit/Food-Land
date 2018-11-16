@@ -85,12 +85,4 @@
         app:layout_constraintStart_toEndOf="@+id/res_item_profile_image"
         app:layout_constraintTop_toBottomOf="@+id/res_item_type" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="90dp">
-
-
-    </ScrollView>
-
 </android.support.constraint.ConstraintLayout>

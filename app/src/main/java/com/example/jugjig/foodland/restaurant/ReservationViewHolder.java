@@ -18,10 +18,10 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder {
     public ReservationViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        name = itemView.findViewById(R.id.rest_reser_name);
-        amount = itemView.findViewById(R.id.rest_reser_person);
-        time = itemView.findViewById(R.id.rest_reser_time);
-        date = itemView.findViewById(R.id.rest_reser_date);
-        comment = itemView.findViewById(R.id.rest_reser_comment);
+        name = itemView.findViewById(R.id.cus_name);
+        amount = itemView.findViewById(R.id.cus_amount);
+        time = itemView.findViewById(R.id.cus_time);
+        date = itemView.findViewById(R.id.cus_date);
+        comment = itemView.findViewById(R.id.cus_comment);
     }
 }

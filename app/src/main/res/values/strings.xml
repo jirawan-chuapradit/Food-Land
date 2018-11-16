@@ -12,4 +12,5 @@
     <string name="title_activity_map_fragment">Map</string>
     <string name="history"><u>ร้านอาหารที่คุณจอง</u></string>
     <string name="reser_list"><u>รายการจองร้านของคุณ</u></string>
+    <string name="profile"><u>ข้อมูลส่วนตัว</u></string>
 </resources>

@@ -5,53 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shadow_shape"
-    android:elevation="4dp">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:paddingLeft="4dp"
+    android:paddingBottom="4dp"
+    android:elevation="8dp">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="20dp">
+        <TextView
+            android:id="@+id/cus_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/re_font"
+            android:text="30 กุมพาพันธ์ 2018"
+            android:textColor="#334856"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cus_date"
+            app:layout_constraintTop_toBottomOf="@+id/cus_date"
+            tools:text="ไม่กินเผ็ด" />
+
         <TextView
             android:id="@+id/view_cus_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ชื่อลูกค้า"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="63dp"
-            android:textSize="22dp"
-            android:textColor="#334856"
             android:fontFamily="@font/re_font"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="ชื่อลูกค้า"
+            android:textColor="#334856"
+            android:textSize="22dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_cus_amount"
-            app:layout_constraintRight_toLeftOf="@id/cus_name" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cus_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
-            android:layout_marginLeft="75dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/re_font"
             android:text="คุณ ชญาณี จั่นโพล้ง"
             android:textColor="#334856"
             android:textSize="22dp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/view_cus_name"
+            app:layout_constraintStart_toEndOf="@+id/view_cus_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/view_cus_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/re_font"
             android:text="จำนวน"
             android:textColor="#334856"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
             android:textSize="22dp"
-            android:fontFamily="@font/re_font"
-            app:layout_constraintRight_toLeftOf="@+id/cus_amount"
-            app:layout_constraintTop_toBottomOf="@+id/view_cus_name"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_cus_name" />
 
 
         <TextView
@@ -59,72 +72,73 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="85dp"
             android:fontFamily="@font/re_font"
             android:text="2 ที่นั่ง"
-            android:textStyle="bold"
             android:textColor="#334856"
             android:textSize="22dp"
-            app:layout_constraintLeft_toRightOf="@+id/view_cus_amount"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cus_name"
             app:layout_constraintTop_toBottomOf="@+id/cus_name" />
 
         <TextView
             android:id="@+id/view_cus_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/re_font"
             android:text="เวลา"
             android:textColor="#334856"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
             android:textSize="22dp"
-            android:fontFamily="@font/re_font"
-            app:layout_constraintRight_toLeftOf="@+id/cus_time"
-            app:layout_constraintTop_toBottomOf="@+id/view_cus_amount"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_cus_amount" />
 
         <TextView
             android:id="@+id/cus_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="100dp"
             android:fontFamily="@font/re_font"
             android:text="10:00"
             android:textColor="#334856"
             android:textSize="22dp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/view_cus_time"
+            app:layout_constraintStart_toStartOf="@+id/cus_amount"
             app:layout_constraintTop_toBottomOf="@+id/cus_amount" />
 
         <TextView
             android:id="@+id/view_cus_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/re_font"
             android:text="วัน เดือน ปี"
             android:textColor="#334856"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
             android:textSize="22dp"
-            android:fontFamily="@font/re_font"
-            app:layout_constraintTop_toBottomOf="@+id/view_cus_time"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_cus_time" />
 
         <TextView
             android:id="@+id/cus_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="60dp"
             android:fontFamily="@font/re_font"
             android:text="30 กุมพาพันธ์ 2018"
-            android:textStyle="bold"
             android:textColor="#334856"
             android:textSize="22dp"
-            android:layout_marginBottom="40dp"
-            app:layout_constraintLeft_toRightOf="@+id/view_cus_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cus_time"
             app:layout_constraintTop_toBottomOf="@+id/cus_time" />
-    </android.support.constraint.ConstraintLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="160dp">
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/view_cus_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/re_font"
+            android:text="หมายเหตุ"
+            android:textColor="#334856"
+            android:textSize="22dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_cus_date" />
 </android.support.constraint.ConstraintLayout>
