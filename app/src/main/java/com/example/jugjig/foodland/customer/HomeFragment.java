@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -66,8 +67,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 for (DocumentSnapshot item : task.getResult().getDocuments()) {
-                    restaurants.add((item.toObject(Restaurant.class)));
+                    restaurants.add(item.toObject(Restaurant.class));
                 }
+//                System.out.println(restaurants.get(0).toString());
                 Log.wtf("home", "size " + restaurants.size());
                 adapter.setItemList(restaurants);
                 resList.setAdapter(adapter);
@@ -91,5 +93,4 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 }

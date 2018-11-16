@@ -19,7 +19,7 @@
             android:paddingTop="130sp">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/reservation_back_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="Back Button"
@@ -68,7 +68,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="266dp"
+            android:layout_height="354dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
@@ -103,7 +103,7 @@
                             android:id="@+id/reservation_amont"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="2 ที่นั่ง"
+                            android:hint="1 ที่นั่ง"
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
@@ -121,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/sub" />
+                            android:src="@drawable/sub_gray" />
 
                         <View
                             android:layout_width="10dp"
@@ -189,7 +189,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/sub" />
+                            android:src="@drawable/sub_gray" />
 
                         <View
                             android:layout_width="10dp"
@@ -239,7 +239,7 @@
                             android:id="@+id/reservation_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="30 กุมภาพันธ์ 2561"
+                            android:hint="1 มกราคม 2561"
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
@@ -299,18 +299,26 @@
                         android:layout_height="200dp" />
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:id="@+id/reservation_confirm"
+                    android:layout_width="281dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_login_btn"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="ยืนยันการจองร้านอาหาร"
+                    android:textColor="@color/white"
+                    android:textSize="23dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
             </LinearLayout>
         </ScrollView>
-
-        <TextView
-            android:id="@+id/reservation_confirm"
-            android:layout_width="281dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@drawable/shape_login_btn"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="ยืนยันการจองร้านอาหาร"
-            android:textColor="@color/white"
-            android:textSize="23dp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

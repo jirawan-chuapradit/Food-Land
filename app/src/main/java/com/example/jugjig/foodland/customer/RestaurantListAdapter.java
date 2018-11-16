@@ -51,12 +51,27 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
 
-                ReservationsFragment reser = new ReservationsFragment();
+                ReservationsFragment reservationsFragment = new ReservationsFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("restaurantId", item.getRestaurantId());
-                reser.setArguments(bundle);
+                bundle.putString("restaurantName", item.getName());
+                bundle.putString("restaurantOpen", item.getOpenTime());
+                bundle.putString("restaurantClose", item.getCloseTime());
+                bundle.putDouble("restaurantLat", item.getLatitude());
+                bundle.putDouble("restaurantLng", item.getLongitude());
+                bundle.putString("restaurantPhone", item.getTelephone());
+                reservationsFragment.setArguments(bundle);
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.cus_main_view, reser).addToBackStack(null).commit();
+                for (String key: bundle.keySet())
+                {
+                    Log.d ("myApplication", key + " is a key in the bundle" + String.valueOf(bundle.get(key)));
+                }
+
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.cus_main_view, reservationsFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }
