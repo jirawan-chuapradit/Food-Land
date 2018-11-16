@@ -34,6 +34,7 @@ import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
 import com.example.jugjig.foodland.model.Restaurant;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.model.UserProfileRegis;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -226,7 +227,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
     }
 
     private void setParameter() {
-        UserProfile restProfile = UserProfile.getRestProfileInstance();
+        UserProfileRegis restProfile = UserProfileRegis.getRestProfileInstance();
         restProfile.setfName(fName);
         restProfile.setlName(lName);
         restProfile.setRole("restaurant");

@@ -17,6 +17,7 @@ import com.example.jugjig.foodland.LoginFragment;
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.SelectRegisterFragment;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.model.UserProfileRegis;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -109,7 +110,7 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
     }
 
     private void setParameter() {
-        UserProfile cusProfile = UserProfile.getRestProfileInstance();
+        UserProfileRegis cusProfile = UserProfileRegis.getRestProfileInstance();
         cusProfile.setfName(fName);
         cusProfile.setlName(lName);
         cusProfile.setRole("customer");
