@@ -4,111 +4,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_bg"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-
-    <ScrollView
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-        </RelativeLayout>
-    </ScrollView>
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <ScrollView
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        >
+        android:layout_marginTop="120dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:layout_width="127dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerInParent="true"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/re_font"
-                    android:text="ลงทะเบียน"
-                    android:textStyle="bold"
-                    android:textColor="@color/system_font_color"
-                    android:textSize="35dp"
-                    android:layout_marginTop="0dp"/>
-                <Button
-                    android:layout_width="60dp"
-                    android:layout_height="77dp"
-                    android:layout_marginLeft="260dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/regis_user_black" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
                 <TextView
-                    android:id="@+id/dat"
+                    android:id="@+id/view_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp"
-                    android:layout_marginTop="25sp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/re_font"
-                    android:text="-"
+                    android:gravity="center"
+                    android:text="ลงทะเบียน"
+                    android:textColor="@color/system_font_color"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/view_underline"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginRight="100dp"
+                    android:background="@android:color/black"
+                    android:fontFamily="@font/re_font"
+                    android:gravity="center"
                     android:textColor="@color/system_font_color"
                     android:textScaleX="13"
                     android:textSize="30dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/view_register" />
+
+                <Button
+                    android:id="@+id/back_btn"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="19dp"
+                    android:background="@drawable/ic_back_icon"
+                    app:layout_constraintRight_toLeftOf="@id/view_change_password" />
+
                 <TextView
-                    android:layout_width="127dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginLeft="120dp"
-                    android:layout_marginRight="120dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:layout_below="@+id/dat"
                     android:layout_weight="1"
                     android:fontFamily="@font/re_font"
                     android:text="ลูกค้า"
                     android:textColor="@color/system_font_color"
-                    android:textSize="22dp" />
+                    android:textSize="22dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_register"
+                    />
 
-                <RelativeLayout
-                    android:layout_width="40dp"
-                    android:layout_height="50dp">
-
-                    <Button
-                        android:id="@+id/back_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:background="@drawable/ic_back_icon"
-                        />
+                <Button
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/regis_user_black"
+                    app:layout_constraintLeft_toRightOf="@+id/view_underline"
+                    app:layout_constraintTop_toBottomOf="@+id/view_cus_name"/>
 
 
-                </RelativeLayout>
-            </RelativeLayout>
+            </android.support.constraint.ConstraintLayout>
+
+
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginTop="19dp"
-                android:layout_marginLeft="44dp"
-                android:layout_marginRight="239dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:text="ชื่อจริง :"
                 android:textColor="@color/system_font_color"
@@ -119,10 +107,10 @@
         <EditText
             android:id="@+id/regis_Fname_cus"
             android:padding="10dp"
-            android:layout_width="290dp"
-            android:layout_height="39dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:background="@drawable/fill_shape_input"
             android:inputType="text"
@@ -132,10 +120,11 @@
             android:layout_gravity="center"/>
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="นามสกุล :"
@@ -145,11 +134,11 @@
 
         <EditText
             android:id="@+id/regis_Lname_cus"
-            android:layout_width="290dp"
-            android:layout_height="39dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:padding="10dp"
             android:textColor="@color/user_font_color"
@@ -159,10 +148,11 @@
 
 
             <TextView
-                android:layout_width="92dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="อีเมล :"
@@ -172,10 +162,10 @@
 
             <EditText
                 android:id="@+id/regis_mail_cus"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"
@@ -186,10 +176,11 @@
 
 
         <TextView
-            android:layout_width="139dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="44dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:layout_gravity="left"
             android:text="เบอร์โทรศัพท์ :"
@@ -199,10 +190,10 @@
 
             <EditText
                 android:id="@+id/regis_phone_cus"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"
@@ -213,10 +204,11 @@
 
 
             <TextView
-                android:layout_width="139dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="รหัสผ่าน :"
@@ -226,10 +218,10 @@
 
             <EditText
                 android:id="@+id/regis_pass_cus"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"
@@ -240,10 +232,11 @@
                 android:padding="10dp"/>
 
             <TextView
-                android:layout_width="139dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:layout_marginLeft="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:text="ยืนยันรหัสผ่าน :"
@@ -253,10 +246,10 @@
 
             <EditText
                 android:id="@+id/regis_rePass_cus"
-                android:layout_width="290dp"
-                android:layout_height="39dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                android:textColor="@color/user_font_color"
                 android:background="@drawable/fill_shape_input"
@@ -268,7 +261,7 @@
 
         <Button
             android:id="@+id/regis_cus_btn"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
