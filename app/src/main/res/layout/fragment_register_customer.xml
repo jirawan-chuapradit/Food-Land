@@ -7,19 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <ScrollView
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-        </RelativeLayout>
-    </ScrollView>
 
 
 
@@ -54,7 +42,7 @@
                     android:layout_marginTop="0dp"/>
                 <Button
                     android:layout_width="60dp"
-                    android:layout_height="77dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="260dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="0dp"
@@ -64,13 +52,13 @@
                     android:id="@+id/dat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="25sp"
+                    android:layout_marginRight="90dp"
                     android:fontFamily="@font/re_font"
                     android:text="-"
                     android:textColor="@color/system_font_color"
-                    android:textScaleX="13"
+                    android:textScaleX="15"
                     android:textSize="30dp"
                     android:textStyle="bold" />
                 <TextView

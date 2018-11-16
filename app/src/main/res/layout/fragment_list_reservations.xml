@@ -68,13 +68,14 @@
                     android:textStyle="bold"
                     android:textColor="@color/system_font_color"
                     android:fontFamily="@font/re_font"
-                    android:textSize="35dp" />
+                    android:textSize="28dp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="75dp"
                     android:layout_marginLeft="55dp"
+                    android:layout_marginRight="30sp"
                     android:text="_"
                     android:textScaleX="18"
                     android:textSize="36dp"
