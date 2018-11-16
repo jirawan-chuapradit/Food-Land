@@ -18,6 +18,7 @@ import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.Reservation;
 import com.example.jugjig.foodland.model.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,14 +33,14 @@ public class HistoryFragment extends Fragment {
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     FirebaseAuth user = FirebaseAuth.getInstance();
 
+    HashMap<String, Restaurant> resList;
+
     ArrayList<Reservation> pendingList;
-    HashMap<String, Restaurant> pendingResList;
-    HistoryListAdapter pendingListAdapter;
+    HistoryListAdapter pendingListAdapter = new HistoryListAdapter();
     RecyclerView pendingRecycler;
 
     ArrayList<Reservation> historyList;
-    HashMap<String, Restaurant> historyResList;
-    HistoryListAdapter historyListAdapter;
+    HistoryListAdapter historyListAdapter = new HistoryListAdapter();
     RecyclerView historyRecycler;
 
     ProgressBar progressBar;
@@ -48,11 +49,13 @@ public class HistoryFragment extends Fragment {
     TextView pendingEmptyText;
     TextView historyEmptyText;
 
+    Boolean pendingEmpty = true;
+    Boolean historyEmpty = true;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        pendingListAdapter = new HistoryListAdapter();
-        historyListAdapter = new HistoryListAdapter();
+
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 
@@ -60,7 +63,69 @@ public class HistoryFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        setRecycle();
 
+        progressBar = getActivity().findViewById(R.id.history_progress_bar);
+        progressBar2 = getActivity().findViewById(R.id.history_progress_bar2);
+
+        getData();
+
+    }
+
+    void getData() {
+        pendingList = new ArrayList<>();
+        historyList = new ArrayList<>();
+        resList = new HashMap<>();
+
+        setLoading(true);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+        firestore.collection("Reservations").whereEqualTo("customerId", user.getUid()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot documentSnapshots) {
+                for (int i = 0; i < documentSnapshots.getDocuments().size(); i++) {
+                    DocumentSnapshot item = documentSnapshots.getDocuments().get(i);
+                    final Reservation reservation = item.toObject(Reservation.class);
+                    Log.wtf("document", reservation.getReservationId());
+                    setAdapter(reservation.getStatus(), reservation, i, documentSnapshots.getDocuments().size());
+                }
+
+                //null data
+                if (documentSnapshots.getDocuments().size() == 0) {
+                    setEmptyList();
+                }
+            }
+
+        });
+
+    }
+
+    void setAdapter(final String status, final Reservation reservation, final int count, final int size) {
+        firestore.collection("Restaurant").document(reservation.getRestaurantId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task2) {
+                resList.put(reservation.getRestaurantId(), task2.getResult().toObject(Restaurant.class));
+                if (status.equals("pending")) {
+                    pendingList.add(reservation);
+                    pendingEmpty = false;
+                } else {
+                    Log.wtf("reser", "false");
+                    historyList.add(reservation);
+                    historyEmpty = false;
+                }
+                //last loop
+                if (count == size - 1) {
+                    pendingListAdapter.setItemList(pendingList, resList);
+                    pendingRecycler.setAdapter(pendingListAdapter);
+                    historyListAdapter.setItemList(historyList, resList);
+                    historyRecycler.setAdapter(historyListAdapter);
+                    setEmptyList();
+                }
+            }
+        });
+    }
+
+    void setRecycle() {
         pendingEmptyText = getActivity().findViewById(R.id.history_pending_empty);
         historyEmptyText = getActivity().findViewById(R.id.history_complete_empty);
 
@@ -69,111 +134,31 @@ public class HistoryFragment extends Fragment {
 
         historyRecycler = getActivity().findViewById(R.id.history_complete_list);
         historyRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-
-        progressBar = getActivity().findViewById(R.id.history_progress_bar);
-        progressBar2 = getActivity().findViewById(R.id.history_progress_bar2);
-
-        if (pendingList == null) {
-            getData();
-        } else {
-            pendingListAdapter.setItemList(pendingList, pendingResList);
-            pendingRecycler.setAdapter(pendingListAdapter);
-
-            if (pendingList.isEmpty()) {
-                pendingEmptyText.setVisibility(View.VISIBLE);
-            }
-            if (historyList.isEmpty()) {
-                historyEmptyText.setVisibility(View.VISIBLE);
-            }
-
-            historyListAdapter.setItemList(historyList, historyResList);
-            historyRecycler.setAdapter(historyListAdapter);
-        }
-
     }
 
-    void getData() {
-        pendingList = new ArrayList<>();
-        historyList = new ArrayList<>();
-        pendingResList = new HashMap<>();
-        historyResList = new HashMap<>();
-        progressBar.setVisibility(View.VISIBLE);
-        progressBar2.setVisibility(View.VISIBLE);
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        firestore.collection("Reservations").whereEqualTo("customerId", user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull final Task<QuerySnapshot> task) {
-                Boolean pendingEmpty = true;
-                Boolean historyEmpty = true;
-                for (int i = 0; i < task.getResult().getDocuments().size(); i++) {
-                    DocumentSnapshot item = task.getResult().getDocuments().get(i);
-                    final int finalI = i;
-                    final Reservation reservation = item.toObject(Reservation.class);
+    void showText(TextView text) {
+        text.setVisibility(View.VISIBLE);
+    }
 
-                    if (reservation.getStatus().equals("pending")) {
-                        pendingEmpty = false;
-                        pendingList.add(reservation);
-                        final Boolean finalPendingEmpty = pendingEmpty;
-                        final Boolean finalHistoryEmpty = historyEmpty;
-                        firestore.collection("Restaurant").document(reservation.getRestaurantId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task2) {
-                                pendingResList.put(reservation.getRestaurantId(), task2.getResult().toObject(Restaurant.class));
-                                pendingListAdapter.setItemList(pendingList, pendingResList);
-                                pendingRecycler.setAdapter(pendingListAdapter);
+    void setEmptyList() {
+        if (pendingEmpty) {
+            showText(pendingEmptyText);
+        }
+        if (historyEmpty) {
+            showText(historyEmptyText);
+        }
+        setLoading(false);
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
 
-                                if (finalI == task.getResult().size() - 1) {
-                                    progressBar.setVisibility(View.GONE);
-                                    progressBar2.setVisibility(View.GONE);
-                                    if (finalPendingEmpty) {
-                                        pendingEmptyText.setVisibility(View.VISIBLE);
-                                    }
-                                    if (finalHistoryEmpty) {
-                                        historyEmptyText.setVisibility(View.VISIBLE);
-                                    }
-                                    getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                                }
-                            }
-                        });
-                    } else {
-                        historyList.add(reservation);
-                        historyEmpty = false;
-                        final Boolean finalPendingEmpty1 = pendingEmpty;
-                        final Boolean finalHistoryEmpty1 = historyEmpty;
-                        firestore.collection("Restaurant").document(reservation.getRestaurantId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task2) {
-                                historyResList.put(reservation.getRestaurantId(), task2.getResult().toObject(Restaurant.class));
-                                historyListAdapter.setItemList(historyList, historyResList);
-                                historyRecycler.setAdapter(historyListAdapter);
-
-                                if (finalI == task.getResult().size() - 1) {
-                                    progressBar.setVisibility(View.GONE);
-                                    progressBar2.setVisibility(View.GONE);
-                                    if (finalPendingEmpty1) {
-                                        pendingEmptyText.setVisibility(View.VISIBLE);
-                                    }
-                                    if (finalHistoryEmpty1) {
-                                        historyEmptyText.setVisibility(View.VISIBLE);
-                                    }
-                                    getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                                }
-
-                            }
-                        });
-
-                    }
-                }
-
-                if (task.getResult().size() == 0) {
-                    progressBar.setVisibility(View.GONE);
-                    progressBar2.setVisibility(View.GONE);
-                    pendingEmptyText.setVisibility(View.VISIBLE);
-                    historyEmptyText.setVisibility(View.VISIBLE);
-                    getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                }
-            }
-        });
+    void setLoading(boolean loading) {
+        if (loading) {
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar2.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+            progressBar2.setVisibility(View.GONE);
+        }
 
     }
 }
