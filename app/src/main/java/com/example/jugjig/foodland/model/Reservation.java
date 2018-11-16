@@ -3,6 +3,7 @@ package com.example.jugjig.foodland.model;
 public class Reservation {
     private String customerId;
     private String restaurantId;
+    private String reservationId;
     private String date;
     private Integer amount;
     private String comment;
@@ -77,5 +78,13 @@ public class Reservation {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(String reservationId) {
+        this.reservationId = reservationId;
     }
 }

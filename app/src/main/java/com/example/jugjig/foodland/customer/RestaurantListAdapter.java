@@ -1,6 +1,8 @@
 package com.example.jugjig.foodland.customer;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.jugjig.foodland.R;
+import com.example.jugjig.foodland.Reservations.ReservationsFragment;
+import com.example.jugjig.foodland.model.Reservation;
 import com.example.jugjig.foodland.model.Restaurant;
 
 import java.util.ArrayList;
@@ -33,7 +37,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RestaurantViewHolder restaurantViewHolder, int i) {
+    public void onBindViewHolder(@NonNull RestaurantViewHolder restaurantViewHolder,final int i) {
         final Restaurant item = restaurants.get(i);
         restaurantViewHolder.restName.setText(item.getName());
         restaurantViewHolder.restLocation.setText(item.getLocation());
@@ -44,8 +48,15 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
         restaurantViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
 
+                ReservationsFragment reser = new ReservationsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("restaurantId", item.getRestaurantId());
+                reser.setArguments(bundle);
+
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.cus_main_view, reser).addToBackStack(null).commit();
             }
         });
     }
@@ -83,6 +94,5 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantViewHo
         }
         notifyDataSetChanged();
     }
-
 
 }

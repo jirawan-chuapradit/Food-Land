@@ -38,13 +38,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/update_profile"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="19dp"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/edit_profile" />
+
                 <TextView
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
@@ -71,6 +65,19 @@
                         android:textColor="@color/system_font_color"
                         android:fontFamily="@font/re_font"
                         android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/update_profile"
+                        android:layout_marginTop="0dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="19dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/edit_profile" />
                 </RelativeLayout>
             </RelativeLayout>
 
