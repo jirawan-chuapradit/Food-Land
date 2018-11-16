@@ -20,7 +20,7 @@ public class UserProfile {
         return userProfileInstance;
     }
 
-    private UserProfile() {
+    public UserProfile() {
     }
 
     public UserProfile(String fName, String lName, String phone, String email, String desc, String role) {
