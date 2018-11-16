@@ -89,18 +89,6 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                                 public void onSuccess(AuthResult authResult) {
                                     uid = fbAuth.getCurrentUser().getUid();
                                     setParameter();
-//                                    sendVerifiedEmail(authResult.getUser());
-                                    progressDialog.dismiss();
-                                    fbAuth.getInstance().signOut();
-                                    Log.d("LOGIN", "Send verify e-mail successful");
-                                    getActivity().getSupportFragmentManager()
-                                            .beginTransaction()
-                                            .addToBackStack(null)
-                                            .replace(R.id.main_view, new LoginFragment())
-                                            .commit();
-                                    Toast.makeText
-                                            (getContext(), "Please Verify Your E-Mail", Toast.LENGTH_SHORT)
-                                            .show();
                                 }
                             });
 
@@ -125,7 +113,18 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                     public void onSuccess(Void aVoid) {
                         progressDialog.dismiss();
                         Log.d("REGISTER", "VALUE HAS BEEN SAVED IN FIREBASE");
-
+//                        sendVerifiedEmail(authResult.getUser());
+                        progressDialog.dismiss();
+                        fbAuth.getInstance().signOut();
+                        Log.d("LOGIN", "Send verify e-mail successful");
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .addToBackStack(null)
+                                .replace(R.id.main_view, new LoginFragment())
+                                .commit();
+                        Toast.makeText
+                                (getContext(), "Please Verify Your E-Mail", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
