@@ -112,7 +112,8 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
+                        fbAuth.getInstance().signOut();
                         Log.d("REGISTER", "VALUE HAS BEEN SAVED IN FIREBASE");
 
                         progressDialog.dismiss();
@@ -165,8 +166,6 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
         _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-
-                fbAuth.getInstance().signOut();
                 setParameter();
 //                Log.d("LOGIN", "Send verify e-mail successful");
 //                getActivity().getSupportFragmentManager()
