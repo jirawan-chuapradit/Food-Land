@@ -209,7 +209,14 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp" /> </LinearLayout>
 
-        </LinearLayout></ScrollView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
+                </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
 
