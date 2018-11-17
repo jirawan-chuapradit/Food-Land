@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterCustomerFragment extends Fragment implements View.OnClickListener {
@@ -88,7 +89,7 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     uid = fbAuth.getCurrentUser().getUid();
-                                    setParameter();
+                                    sendVerifiedEmail(authResult.getUser());
                                 }
                             });
 
@@ -113,9 +114,9 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
                     public void onSuccess(Void aVoid) {
                         progressDialog.dismiss();
                         Log.d("REGISTER", "VALUE HAS BEEN SAVED IN FIREBASE");
-//                        sendVerifiedEmail(authResult.getUser());
+
                         progressDialog.dismiss();
-                        fbAuth.getInstance().signOut();
+//                        fbAuth.getInstance().signOut();
                         Log.d("LOGIN", "Send verify e-mail successful");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
@@ -160,36 +161,37 @@ public class RegisterCustomerFragment extends Fragment implements View.OnClickLi
     /****************************************************************
      * อาจจะต้องมีการ register หลายๆรอบ จนกว่าregister จะนิ่ง ยังไม่อยากให้เปิด verfiled mail*
      ****************************************************************/
-//    void sendVerifiedEmail(FirebaseUser _user){
-//        _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//
-//                fbAuth.getInstance().signOut();
+    void sendVerifiedEmail(FirebaseUser _user){
+        _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                fbAuth.getInstance().signOut();
+                setParameter();
 //                Log.d("LOGIN", "Send verify e-mail successful");
 //                getActivity().getSupportFragmentManager()
-////                        .beginTransaction()
-////                        .addToBackStack(null)
-////                        .replace(R.id.main_view, new LoginFragment())
-////                        .commit();
+//                        .beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.main_view, new LoginFragment())
+//                        .commit();
 //                Toast.makeText
 //                        (getContext(),"Please Verify Your E-Mail",Toast.LENGTH_SHORT)
 //                        .show();
-//
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//
-//                Toast.makeText(getActivity(),"ERROR = " + e.getMessage()
-//                        ,Toast.LENGTH_SHORT)
-//                        .show();
-//
-//                Log.d("LOGIN", "Send vefiry e-mail failure");
-//
-//            }
-//        });
-//    }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Toast.makeText(getActivity(),"ERROR = " + e.getMessage()
+                        ,Toast.LENGTH_SHORT)
+                        .show();
+
+                Log.d("LOGIN", "Send vefiry e-mail failure");
+
+            }
+        });
+    }
 
     private void back() {
         getActivity().getSupportFragmentManager()

@@ -147,34 +147,37 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
             fbAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    uid = fbAuth.getCurrentUser().getUid();
-                    System.out.println("User id: " + uid);
-                    //save image to storage
-                    StorageReference imageReference = storageReference.child("restaurant_profile_image").child(uid).child("Profile Pic");//restaurant_profile_image/user id/Profile Pic.jpg
-                    UploadTask uploadTask = imageReference.putFile(filePath);
-                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                    fbAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(
-                                    getActivity(),
-                                    "Upload failed!",
-                                    Toast.LENGTH_SHORT
-                            ).show();
+                        public void onSuccess(Void aVoid) {
+                            uid = fbAuth.getCurrentUser().getUid();
+                            System.out.println("User id: " + uid);
+                            //save image to storage
+                            StorageReference imageReference = storageReference.child("restaurant_profile_image").child(uid).child("Profile Pic");//restaurant_profile_image/user id/Profile Pic.jpg
+                            UploadTask uploadTask = imageReference.putFile(filePath);
+                            uploadTask.addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(
+                                            getActivity(),
+                                            "Upload failed!",
+                                            Toast.LENGTH_SHORT
+                                    ).show();
 
-                        }
-                    }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            Toast.makeText(
-                                    getActivity(),
-                                    "Upload successful!",
-                                    Toast.LENGTH_SHORT
-                            ).show();
-                            getProfileImageURL();
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                    Toast.makeText(
+                                            getActivity(),
+                                            "Upload successful!",
+                                            Toast.LENGTH_SHORT
+                                    ).show();
+                                    getProfileImageURL();
+                                }
+                            });
                         }
                     });
-
-
                 }
             }).
                     addOnFailureListener(new OnFailureListener() {

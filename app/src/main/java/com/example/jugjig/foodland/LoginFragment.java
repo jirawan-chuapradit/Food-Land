@@ -124,7 +124,7 @@ public class LoginFragment extends Fragment {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     Log.d("USER", "Login Success");
-//                                    chkIsVeriFied(authResult.getUser());
+                                    chkIsVeriFied(authResult.getUser());
 
                                     uid = fbAuth.getCurrentUser().getUid();
                                     //GET UID of Currnet user
@@ -132,7 +132,7 @@ public class LoginFragment extends Fragment {
                                     prefs.putString("_userId", _userIdStr);
                                     prefs.apply();
                                     Log.d("_UserID: ", _userIdStr);
-                                    getRole();
+//                                    getRole();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -188,28 +188,28 @@ public class LoginFragment extends Fragment {
     /****************************************************************
      * อาจจะต้องมีการ register หลายๆรอบ จนกว่าregister จะนิ่ง ยังไม่อยากให้เปิด verfiled mail*
      ****************************************************************/
-//    void chkIsVeriFied(final FirebaseUser _user) {
+    void chkIsVeriFied(final FirebaseUser _user) {
+
+        //USER CONFIRM EMAIL
+        if(_user.isEmailVerified()){
+
+            uid = fbAuth.getCurrentUser().getUid();
 //
-//        //USER CONFIRM EMAIL
-//        if(_user.isEmailVerified()){
-//
-//            uid = fbAuth.getCurrentUser().getUid();
-////
-////            getRole();
-//            Toast.makeText
-//                    (getContext(),"EMAIL IS VERIFIED , GO TO PROFILE",Toast.LENGTH_SHORT)
-//                    .show();
-//        }else{
-//            FirebaseAuth.getInstance().signOut();
-//            Log.d("USER", "EMAIL IS NOT VERIFIED");
-//            Toast.makeText
-//                    (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
-//                    .show();
-//
-//        }
-//
-//
-//    }
+            getRole();
+            Toast.makeText
+                    (getContext(),"EMAIL IS VERIFIED , GO TO PROFILE",Toast.LENGTH_SHORT)
+                    .show();
+        }else{
+            FirebaseAuth.getInstance().signOut();
+            Log.d("USER", "EMAIL IS NOT VERIFIED");
+            Toast.makeText
+                    (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
+                    .show();
+
+        }
+
+
+    }
 
     void initRegisterBtn() {
         TextView _registerBtn = (TextView) getView().findViewById(R.id.login_register_Btn);
