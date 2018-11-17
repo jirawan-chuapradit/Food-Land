@@ -199,6 +199,7 @@ public class LoginFragment extends Fragment {
                     .show();
         }else{
             FirebaseAuth.getInstance().signOut();
+            progressDialog.dismiss();
             Log.d("USER", "EMAIL IS NOT VERIFIED");
             Toast.makeText
                     (getContext(),"EMAIL IS NOT VERIFIED",Toast.LENGTH_SHORT)
