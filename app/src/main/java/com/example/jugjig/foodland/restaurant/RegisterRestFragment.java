@@ -381,7 +381,7 @@ public class RegisterRestFragment extends Fragment implements View.OnClickListen
         LatLng latLng = new LatLng(13.833840, 100.509549);
         mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
+        midLatlng = new LatLng(13.833840,100.509549);
         mMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
             @Override
             public void onCameraMove() {
