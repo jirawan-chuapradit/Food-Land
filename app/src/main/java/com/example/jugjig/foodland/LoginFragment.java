@@ -105,7 +105,7 @@ public class LoginFragment extends Fragment {
                 EditText _userId = (EditText) getView().findViewById(R.id.login_userid);
                 EditText _password = (EditText) getView().findViewById(R.id.login_password);
                 final String _userIdStr = _userId.getText().toString();
-                String _passwordStr = _password.getText().toString();
+                final String _passwordStr = _password.getText().toString();
 
                 if (_userIdStr.isEmpty() || _passwordStr.isEmpty()) {
                     Toast.makeText(
@@ -124,15 +124,7 @@ public class LoginFragment extends Fragment {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     Log.d("USER", "Login Success");
-                                    chkIsVeriFied(authResult.getUser());
-
-                                    uid = fbAuth.getCurrentUser().getUid();
-                                    //GET UID of Currnet user
-                                    SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
-                                    prefs.putString("_userId", _userIdStr);
-                                    prefs.apply();
-                                    Log.d("_UserID: ", _userIdStr);
-//                                    getRole();
+                                    chkIsVeriFied(authResult.getUser(), _userIdStr);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -188,12 +180,18 @@ public class LoginFragment extends Fragment {
     /****************************************************************
      * อาจจะต้องมีการ register หลายๆรอบ จนกว่าregister จะนิ่ง ยังไม่อยากให้เปิด verfiled mail*
      ****************************************************************/
-    void chkIsVeriFied(final FirebaseUser _user) {
+    void chkIsVeriFied(final FirebaseUser _user, String _userIdStr) {
 
         //USER CONFIRM EMAIL
         if(_user.isEmailVerified()){
 
             uid = fbAuth.getCurrentUser().getUid();
+
+            //GET UID of Currnet user
+            SharedPreferences.Editor prefs = getContext().getSharedPreferences("FoodLand",MODE_PRIVATE).edit();
+            prefs.putString("_userId", _userIdStr);
+            prefs.apply();
+            Log.d("_UserID: ", _userIdStr);
 //
             getRole();
             Toast.makeText
