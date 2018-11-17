@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.jugjig.foodland.R;
 import com.example.jugjig.foodland.model.UserProfile;
+import com.example.jugjig.foodland.model.UserProfileRegis;
 import com.example.jugjig.foodland.restaurant.RestViewProfileFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,7 +42,8 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
     private FirebaseFirestore firestore;
 
     private SQLiteDatabase myDB;
-    private UserProfile userProfile;
+    private UserProfileRegis userProfile;
+    private UserProfile user;
 
 
     @Nullable
@@ -153,7 +155,7 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
 
     private void setParameter() {
 
-        userProfile = UserProfile.getRestProfileInstance();
+        userProfile = UserProfileRegis.getRestProfileInstance();
         userProfile.setfName(fName);
         userProfile.setlName(lName);
         userProfile.setPhone(phone);
@@ -193,7 +195,8 @@ public class UpdateCusProfile extends Fragment implements View.OnClickListener {
         myDB = getActivity().openOrCreateDatabase("foodland.db", Context.MODE_PRIVATE, null);
         Cursor myCursor = myDB.rawQuery("SELECT * FROM user", null);
         myCursor.moveToNext();
-        userProfile.setContentValues(myCursor.getString(1));
-        myDB.update("user", userProfile.getContentValues(), "userId="+myCursor.getString(1), null);
+        user = new UserProfile(fName, lName, phone, email, "", "customer");
+        user.setContentValues(myCursor.getString(1));
+        myDB.update("user", user.getContentValues(), "userId='"+myCursor.getString(1)+"'", null);
     }
 }

@@ -168,8 +168,8 @@ public class CusViewProfileFragment extends Fragment implements View.OnClickList
         myCursor.moveToNext();
         fname = myCursor.getString(2);
         lname = myCursor.getString(3);
-        phone = myCursor.getString(4);
-        email = myCursor.getString(5);
+        email = myCursor.getString(4);
+        phone = myCursor.getString(5);
         profileName.setText("  "+myCursor.getString(2)+"  "+myCursor.getString(3));
         profileEmail.setText("  "+myCursor.getString(4));
         profilePhone.setText("  "+myCursor.getString(5));

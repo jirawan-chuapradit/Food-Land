@@ -1,5 +1,6 @@
 package com.example.jugjig.foodland.restaurant;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.jugjig.foodland.R;
@@ -45,6 +47,13 @@ public class ReservationListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("ระบบกำลังประมวลผล"); // Setting Title
+        progressDialog.setMessage("กรุณารอสักครู่...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         reserRecycler = getActivity().findViewById(R.id.reser_list_list);
         reserRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
@@ -56,6 +65,7 @@ public class ReservationListFragment extends Fragment {
                 if (documentSnapshots.getDocuments().size() == 0) {
                     TextView nullText = getActivity().findViewById(R.id.reser_list_null_text);
                     nullText.setVisibility(View.VISIBLE);
+                    progressDialog.dismiss();
                 }
                 int count = 0;
                 final int size = documentSnapshots.getDocuments().size();
@@ -73,6 +83,7 @@ public class ReservationListFragment extends Fragment {
                             if (finalCount == size) {
                                 adapter.setItemList(reservations, nameList);
                                 reserRecycler.setAdapter(adapter);
+                                progressDialog.dismiss();
                             }
 
                         }

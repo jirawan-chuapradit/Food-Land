@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="130sp">
+            android:paddingTop="100dp">
 
             <ImageView
                 android:id="@+id/reservation_back_btn"
@@ -46,7 +46,7 @@
         <LinearLayout
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
+            android:layout_height="34dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -68,10 +68,10 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="354dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="70dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
